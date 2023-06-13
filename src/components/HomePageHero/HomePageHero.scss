@@ -23,4 +23,14 @@
         }
 
     }
+
+    &__get-started-button {
+        text-transform: uppercase;
+        background-color: $secondary-background;
+        color: $secondary-text-color;
+        border: none;
+        padding: 1rem;
+        margin: 1rem 0;
+        border-radius: 1rem;
+    }
 }
