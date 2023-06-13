@@ -1,0 +1,59 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.footer {
+    border-top: 2px solid black;
+    @include flexbox(column-reverse, null, null);
+    padding: 5rem 1.6rem;
+    font-size: $font-size-mobile;
+
+    @include media-tablet {
+        @include flexbox(row, null, flex-end);
+    }
+
+    &__author-container {
+
+        @include media-tablet {
+            margin-right: 40%;
+        }
+
+        @include media-desktop {
+            margin-right: 50%;
+        }
+    }
+
+    &__logo {
+        font-size: 4rem;
+
+    }
+
+    &__author {
+        font-size: 2rem;
+        
+
+    }
+
+    &__contact-info {
+        margin-bottom: 10rem;
+
+        @include media-tablet {
+            margin-bottom: 0;
+        }
+
+    }
+
+    &__contact-title {
+        font-size: 2rem;
+
+    }
+
+    &__contact-info-list {
+        list-style: none;
+
+    }
+
+    &__contact-info-item {
+        margin-top: 1rem;
+
+    }
+}

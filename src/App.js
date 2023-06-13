@@ -10,6 +10,7 @@ import Header from "./components/Header/Header";
 import LoginSignUpPage from "./pages/LoginSignUpPage/LoginSignUpPage";
 
 import "./App.scss";
+import Footer from "./components/Footer/Footer";
 
 const App = () => {
   return <>
@@ -26,6 +27,7 @@ const App = () => {
     <Route path="/login" element={<LoginSignUpPage />} />
     <Route path="*" element={<NotFoundPage />} />
   </Routes>
+  <Footer />
   </BrowserRouter>
   </>;
 };
