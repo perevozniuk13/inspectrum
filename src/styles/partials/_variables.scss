@@ -1,0 +1,38 @@
+@use "./fonts";
+
+// breakpoints
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1280px;
+
+// colors
+$primary-text-color: #323232;
+$secondary-text-color: #afafaf;
+
+$button-background: #0095ff;
+$button-hover-color: #0065ad;
+$button-text-color: #ffffff;
+
+$line-color: #e1e1e1;
+$input-background: #fafafa;
+$video-player-background: #000000;
+
+// fonts
+$main-font-family: Avenir Next, "Courier New", Courier, monospace;
+
+$font-weight-regular: 400;
+$font-weight-bold: 700;
+
+$font-size-mobile: 1.3rem;
+$font-size-tablet-desktop: 1.4rem;
+$font-size-title-mobile: 2.4rem;
+$font-size-title-tablet-desktop: 3.3rem;
+
+$line-height-mobile: 1.8rem;
+$line-height-tablet-desktop: 2.2rem;
+$line-height-title-mobile: 3.2rem;
+$line-height-title-tablet-desktop: 4.4rem;
+
+// paddings
+$padding-mobile: 1.6rem;
+$padding-tablet: 3.6rem;
+$padding-desktop: 15rem;

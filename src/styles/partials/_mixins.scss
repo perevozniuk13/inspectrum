@@ -1,0 +1,26 @@
+@use "./variables" as *;
+
+@mixin media-tablet {
+  @media (min-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin media-desktop {
+  @media (min-width: $breakpoint-desktop) {
+    @content;
+  }
+}
+
+@mixin flexbox($direction, $justify, $align) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin setIcon($iconURL) {
+  background-image: url($iconURL);
+  background-repeat: no-repeat;
+  background-position: 1rem 1rem;
+}
