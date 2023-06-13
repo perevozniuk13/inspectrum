@@ -6,10 +6,13 @@ import CreatePalettePage from "./pages/CreatePalettePage/CreatePalettePage";
 import ImagePalettePage from "./pages/ImagePalettePage/ImagePalettePage";
 import UserPage from "./pages/UserPage/UserPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
+import Header from "./components/Header/Header";
+import LoginSignUpPage from "./pages/LoginSignUpPage/LoginSignUpPage";
 
 const App = () => {
   return <>
   <BrowserRouter>
+  <Header />
   <Routes>
     <Route path="/" element={<HomePage />}/>
     <Route path="/explore" element={<ExplorePage />}/>
@@ -17,6 +20,8 @@ const App = () => {
     <Route path="/create" element={<CreatePalettePage />}/>
     <Route path="/imagePalette" element={<ImagePalettePage />}/>
     <Route path="/users/:userId" element={<UserPage />}/>
+    <Route path="/signup" element={<LoginSignUpPage />} />
+    <Route path="/login" element={<LoginSignUpPage />} />
     <Route path="*" element={<NotFoundPage />} />
   </Routes>
   </BrowserRouter>
