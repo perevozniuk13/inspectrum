@@ -23,8 +23,8 @@ const App = () => {
     <Route path="/create" element={<CreatePalettePage />}/>
     <Route path="/imagePalette" element={<ImagePalettePage />}/>
     <Route path="/users/:userId" element={<UserPage />}/>
-    <Route path="/signup" element={<LoginSignUpPage />} />
-    <Route path="/login" element={<LoginSignUpPage />} />
+    <Route path="/signup" element={<LoginSignUpPage page="signup"/>} />
+    <Route path="/login" element={<LoginSignUpPage page="login"/>} />
     <Route path="*" element={<NotFoundPage />} />
   </Routes>
   <Footer />
