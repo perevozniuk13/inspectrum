@@ -1,0 +1,26 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+
+.homepage-hero {
+    // @include flexbox(column, space-between, null);
+    padding: 20rem 1.6rem 2rem;
+
+
+    &__title {
+        font-size: 4rem;
+
+        @include media-tablet {
+            padding-top: 20rem;
+            width: 70%;
+            font-size: 6rem;
+        }
+
+        @include media-desktop {
+            padding-top: 10rem;
+            width: 50%;
+            font-size: 8rem;
+        }
+
+    }
+}
