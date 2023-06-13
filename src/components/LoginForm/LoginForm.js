@@ -7,17 +7,19 @@ export default function LoginForm() {
 
   return (
     <>
-      <section>
-        <form>
-          <div>
-            <label htmlFor="loginUsername">Username</label>
-            <input type="text" name="loginUsername" id="loginUsername" />
+      <section className="login">
+        <h2 className="login__title">Log in</h2>
+
+        <form className="login-form">
+          <div className="login-form__label-input-container">
+            <label className="login-form__label" htmlFor="loginUsername">Username</label>
+            <input className="login-form__input" type="text" name="loginUsername" id="loginUsername" />
           </div>
-          <div>
-            <label htmlFor="loginPassword">Password</label>
-            <input type="password" name="loginPassword" id="loginPassword" />
+          <div className="login-form__label-input-container">
+            <label className="login-form__label" htmlFor="loginPassword">Password</label>
+            <input className="login-form__input" type="password" name="loginPassword" id="loginPassword" />
           </div>
-          <button>Login</button>
+          <button className="login-form__button">Login</button>
           {/* {loginError && <p>{loginError}</p>} */}
         </form>
       </section>
