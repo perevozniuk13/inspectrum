@@ -9,6 +9,8 @@ import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import Header from "./components/Header/Header";
 import LoginSignUpPage from "./pages/LoginSignUpPage/LoginSignUpPage";
 
+import "./App.scss";
+
 const App = () => {
   return <>
   <BrowserRouter>
