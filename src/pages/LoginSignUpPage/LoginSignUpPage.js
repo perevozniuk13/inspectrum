@@ -3,7 +3,7 @@ import "./LoginSignUpPage.scss"
 import SignupForm from "../../components/SignupForm/SignupForm";
 import LoginForm from "../../components/LoginForm/LoginForm";
 
-export default function LoginSignUpPage({page}) {
+export default function LoginSignUpPage({page}, {setIsLoggedIn}) {
 
   return <>
   {page === "signup" && <SignupForm />}

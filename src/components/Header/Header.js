@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import menuIconURL from "../../assets/images/menu.svg";
 import { useState } from "react";
 
-export default function Header() {
+export default function Header({isLoggedIn}) {
 
   const [isMenuClicked, setIsMenuClicked] = useState(false);   
 
@@ -17,7 +17,6 @@ export default function Header() {
   }
 
   return <>
-  {/* if  */}
   {!isMenuClicked && 
   <nav className="nav">
     <Link to="/" className="nav__logo">LOGO</Link>
@@ -26,7 +25,14 @@ export default function Header() {
         <Link to="/explore" className="nav__link">Explore Palettes</Link>
         <Link to="/create" className="nav__link">Create palette</Link>
         <Link to="/imagePalette" className="nav__link">Get Image Palette</Link>
-        <Link to="/signup" className="nav__link">Login/SignUp</Link>
+        {!isLoggedIn && <>
+        <Link to="/signup" className="nav__link">Sign Up</Link>
+        <Link to="/login" className="nav__link">Log In</Link>
+        </>}
+
+        {isLoggedIn && <>
+          <Link to="/user" className="nav__link">Profile</Link>
+        </>}
     </div>
     <img src={menuIconURL} onClick={() => setIsMenuClicked(true)} alt="menu icon" className="nav__menu-icon"/>
   </nav>}
@@ -39,7 +45,8 @@ export default function Header() {
         <Link to="/explore" className="menu-nav__link">Explore Palettes</Link>
         <Link to="/create" className="menu-nav__link">Create palette</Link>
         <Link to="/imagePalette" className="menu-nav__link">Get Image Palette</Link>
-        <Link to="/signup" className="menu-nav__link">Login/SignUp</Link>
+        <Link to="/signup" className="menu-nav__link">Sign Up</Link>
+        <Link to="/login" className="menu-nav__link">Log In</Link>
     </div>
     <img src={menuIconURL} onClick={handleMenuClick} alt="menu icon" className="menu-nav__menu-icon"/>
   </nav>}
