@@ -2,8 +2,7 @@
 @use "../../styles/partials/variables" as *;
 
 
-.homepage-hero {
-    // @include flexbox(column, space-between, null);
+.explore-hero {
     padding: 20rem 1.6rem 2rem;
 
 
@@ -24,7 +23,7 @@
 
     }
 
-    &__get-started-button {
+    &__create-button {
         text-transform: uppercase;
         background-color: $primary-background;
         color: $secondary-text-color;
