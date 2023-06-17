@@ -16,30 +16,36 @@ import Footer from "./components/Footer/Footer";
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-
   useEffect(() => {
     if (sessionStorage.getItem("authToken")) {
       setIsLoggedIn(true);
     }
-  }, [])
+  }, []);
 
-  return <>
-  <BrowserRouter>
-  <Header isLoggedIn={isLoggedIn} />
-  <Routes>
-    <Route path="/" element={<HomePage/>}/>
-    <Route path="/explore" element={<ExplorePage />}/>
-    <Route path="/palettes/:paletteId" element={<PaletteInfoPage />}/>
-    <Route path="/create" element={<CreatePalettePage />}/>
-    <Route path="/imagePalette" element={<ImagePalettePage />}/>
-    <Route path="/users" element={<UserPage />}/>
-    <Route path="/signup" element={<LoginSignUpPage page="signup"/>} />
-    <Route path="/login" element={<LoginSignUpPage page="login" setIsLoggedIn={setIsLoggedIn}/>} />
-    <Route path="*" element={<NotFoundPage />} />
-  </Routes>
-  <Footer />
-  </BrowserRouter>
-  </>;
+  return (
+    <>
+      <BrowserRouter>
+        <Header isLoggedIn={isLoggedIn} />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/explore" element={<ExplorePage />} />
+          <Route path="/palettes/:paletteId" element={<PaletteInfoPage />} />
+          <Route path="/create" element={<CreatePalettePage />} />
+          <Route path="/imagePalette" element={<ImagePalettePage />} />
+          <Route path="/users" element={<UserPage />} />
+          <Route path="/signup" element={<LoginSignUpPage page="signup" />} />
+          <Route
+            path="/login"
+            element={
+              <LoginSignUpPage page="login" setIsLoggedIn={setIsLoggedIn} />
+            }
+          />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </>
+  );
 };
 
 export default App;

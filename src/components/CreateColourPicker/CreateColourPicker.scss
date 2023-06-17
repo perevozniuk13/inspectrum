@@ -1,0 +1,15 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.picker {
+  width: 50%;
+  border-radius: 4px;
+}
+
+.slider-picker {
+  &__result {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+  }
+}

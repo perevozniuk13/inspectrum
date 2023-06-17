@@ -1,0 +1,35 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+
+.create-hero {
+    padding: 20rem 1.6rem 2rem;
+
+
+    &__title {
+        font-size: 4rem;
+
+        @include media-tablet {
+            padding-top: 20rem;
+            width: 70%;
+            font-size: 6rem;
+        }
+
+        @include media-desktop {
+            padding-top: 10rem;
+            width: 50%;
+            font-size: 8rem;
+        }
+
+    }
+
+    &__image-palette-button {
+        text-transform: uppercase;
+        background-color: $primary-background;
+        color: $secondary-text-color;
+        border: none;
+        padding: 2rem;
+        margin: 1rem 0;
+        border-radius: 1rem;
+    }
+}
