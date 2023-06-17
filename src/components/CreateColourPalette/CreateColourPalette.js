@@ -1,15 +1,44 @@
 import { useNavigate } from "react-router-dom";
 import "./CreateColourPalette.scss";
+import { useEffect } from "react";
 
 export default function CreateColourPalette({
   colour1,
   colour2,
   colour3,
   colour4,
+  setColour1,
+  setColour2,
+  setColour3,
+  setColour4,
   setSelectedCard,
   selectedCard,
 }) {
   const navigate = useNavigate();
+
+  const handleSavingColours = () => {
+    console.log(colour1, colour2, colour3, colour4);
+    localStorage.setItem("colour1", colour1);
+    localStorage.setItem("colour2", colour2);
+    localStorage.setItem("colour3", colour3);
+    localStorage.setItem("colour4", colour4);
+    window.location.reload();
+  };
+
+  useEffect(() => {
+    if (localStorage.getItem("colour1")) {
+      setColour1(localStorage.getItem("colour1"));
+    }
+    if (localStorage.getItem("colour2")) {
+      setColour2(localStorage.getItem("colour2"));
+    }
+    if (localStorage.getItem("colour3")) {
+      setColour3(localStorage.getItem("colour3"));
+    }
+    if (localStorage.getItem("colour4")) {
+      setColour4(localStorage.getItem("colour4"));
+    }
+  }, []);
 
   const addBorder1 =
     selectedCard === "colour1" ? "2px solid red" : "1px solid black";
@@ -55,10 +84,11 @@ export default function CreateColourPalette({
         </div>
 
         <button
-          onClick={() => navigate("/palettes/:paletteId")}
+          //   onClick={() => navigate("/palettes/:paletteId")}
+          onClick={handleSavingColours}
           className="create-palette__view-button"
         >
-          View
+          Save changes
         </button>
       </section>
     </>

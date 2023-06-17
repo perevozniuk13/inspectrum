@@ -1,0 +1,25 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.mockups-section {
+  &__mockup1-container {
+    position: relative;
+    width: 50%;
+  }
+
+  &__mockup1 {
+    border: 1px solid blue;
+    width: 100%;
+    height: 50vh;
+  }
+
+  &__button {
+    padding: 2rem;
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    background-color: black;
+    color: white;
+    border-radius: 4px;
+  }
+}

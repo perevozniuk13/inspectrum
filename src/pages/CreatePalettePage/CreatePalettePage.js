@@ -2,10 +2,12 @@ import CreateColourPicker from "../../components/CreateColourPicker/CreateColour
 import CreatePaletteHero from "../../components/CreatePaletteHero/CreatePaletteHero";
 import CreateColourPicker2 from "../../components/CreateColourPicker2/CreateColourPicker2";
 import CreateColourPalette from "../../components/CreateColourPalette/CreateColourPalette";
+import Mockups from "../../components/Mockups/Mockups";
 import "./CreatePalettePage.scss";
 import { useState, useEffect } from "react";
+import Header from "../../components/Header/Header";
 
-export default function CreatePalettePage() {
+export default function CreatePalettePage({ isLoggedIn }) {
   const [selectedCard, setSelectedCard] = useState("");
   const [pickedColour, setPickedColour] = useState("");
   const [colour1, setColour1] = useState("");
@@ -35,6 +37,7 @@ export default function CreatePalettePage() {
 
   return (
     <>
+      <Header isLoggedIn={isLoggedIn} />
       <CreatePaletteHero />
       {/* <CreateColourPicker /> */}
       <CreateColourPicker2 setPickedColour={setPickedColour} />
@@ -44,9 +47,15 @@ export default function CreatePalettePage() {
         colour2={colour2}
         colour3={colour3}
         colour4={colour4}
+        setColour1={setColour1}
+        setColour2={setColour2}
+        setColour3={setColour3}
+        setColour4={setColour4}
         setSelectedCard={setSelectedCard}
         selectedCard={selectedCard}
       />
+
+      <Mockups />
     </>
   );
 }

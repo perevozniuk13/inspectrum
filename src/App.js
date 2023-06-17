@@ -6,15 +6,16 @@ import CreatePalettePage from "./pages/CreatePalettePage/CreatePalettePage";
 import ImagePalettePage from "./pages/ImagePalettePage/ImagePalettePage";
 import UserPage from "./pages/UserPage/UserPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
-import Header from "./components/Header/Header";
 import LoginSignUpPage from "./pages/LoginSignUpPage/LoginSignUpPage";
 import { useEffect, useState } from "react";
 
 import "./App.scss";
 import Footer from "./components/Footer/Footer";
+import Mockup1 from "./components/Mockup1/Mockup1";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [isMockup, setIsMockup] = useState(false);
 
   useEffect(() => {
     if (sessionStorage.getItem("authToken")) {
@@ -25,21 +26,33 @@ const App = () => {
   return (
     <>
       <BrowserRouter>
-        <Header isLoggedIn={isLoggedIn} />
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/explore" element={<ExplorePage />} />
-          <Route path="/palettes/:paletteId" element={<PaletteInfoPage />} />
-          <Route path="/create" element={<CreatePalettePage />} />
+          <Route path="/" element={<HomePage isLoggedIn={isLoggedIn} />} />
+          <Route
+            path="/explore"
+            element={<ExplorePage isLoggedIn={isLoggedIn} />}
+          />
+          <Route
+            path="/palettes/:paletteId"
+            element={<PaletteInfoPage isLoggedIn={isLoggedIn} />}
+          />
+          <Route
+            path="/create"
+            element={<CreatePalettePage isLoggedIn={isLoggedIn} />}
+          />
           <Route path="/imagePalette" element={<ImagePalettePage />} />
-          <Route path="/users" element={<UserPage />} />
-          <Route path="/signup" element={<LoginSignUpPage page="signup" />} />
+          <Route path="/users" element={<UserPage isLoggedIn={isLoggedIn} />} />
+          <Route
+            path="/signup"
+            element={<LoginSignUpPage page="signup" isLoggedIn={isLoggedIn} />}
+          />
           <Route
             path="/login"
             element={
               <LoginSignUpPage page="login" setIsLoggedIn={setIsLoggedIn} />
             }
           />
+          <Route path="/mockup1" element={<Mockup1 />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
         <Footer />

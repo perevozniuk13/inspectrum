@@ -1,0 +1,9 @@
+.mockup1 {
+  border: 1pz solid blue;
+}
+
+.mockup1-main {
+  &__hero-image {
+    width: 100%;
+  }
+}
