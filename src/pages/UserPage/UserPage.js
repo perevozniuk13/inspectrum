@@ -1,11 +1,48 @@
 import "./UserPage.scss";
 import Header from "../../components/Header/Header";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Collections from "../../components/Collections/Collections";
 import ReducedPalette from "../../components/ReducedPalette/ReducedPalette";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+import FavouritesMyPalettes from "../../components/FavouritesMyPalettes/FavouritesMyPalettes";
 
 export default function UserPage({ isLoggedIn }) {
   const [librarySection, setLibrarySection] = useState("collections");
+  const [userPalettesData, setUserPalettesData] = useState(null);
+  const [userFavouritesData, setUserFavouritesData] = useState(null);
+  const { userId } = useParams();
+
+  const getUserPalettes = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_SERVER_URL}/users/${userId}/palettes`
+      );
+      setUserPalettesData(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const getUserFavourites = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_SERVER_URL}/users/${userId}/favourites`
+      );
+      setUserFavouritesData(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getUserPalettes();
+    getUserFavourites();
+  }, []);
+
+  if (!userPalettesData || !userFavouritesData) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <>
@@ -55,190 +92,10 @@ export default function UserPage({ isLoggedIn }) {
 
         {librarySection === "collections" && <Collections />}
         {librarySection === "palettes" && (
-          <>
-            <section className="user-library__palettes">
-              <ReducedPalette
-                colour1={"black"}
-                colour2={"white"}
-                colour3={"blue"}
-                colour4={"red"}
-              />
-              <ReducedPalette
-                colour1={"black"}
-                colour2={"white"}
-                colour3={"blue"}
-                colour4={"red"}
-              />
-              <ReducedPalette
-                colour1={"black"}
-                colour2={"white"}
-                colour3={"blue"}
-                colour4={"red"}
-              />
-              <ReducedPalette
-                colour1={"black"}
-                colour2={"white"}
-                colour3={"blue"}
-                colour4={"red"}
-              />
-              <ReducedPalette
-                colour1={"black"}
-                colour2={"white"}
-                colour3={"blue"}
-                colour4={"red"}
-              />
-              <ReducedPalette
-                colour1={"black"}
-                colour2={"white"}
-                colour3={"blue"}
-                colour4={"red"}
-              />
-              <ReducedPalette
-                colour1={"black"}
-                colour2={"white"}
-                colour3={"blue"}
-                colour4={"red"}
-              />
-              <ReducedPalette
-                colour1={"black"}
-                colour2={"white"}
-                colour3={"blue"}
-                colour4={"red"}
-              />
-              <ReducedPalette
-                colour1={"black"}
-                colour2={"white"}
-                colour3={"blue"}
-                colour4={"red"}
-              />
-              <ReducedPalette
-                colour1={"black"}
-                colour2={"white"}
-                colour3={"blue"}
-                colour4={"red"}
-              />
-              <ReducedPalette
-                colour1={"black"}
-                colour2={"white"}
-                colour3={"blue"}
-                colour4={"red"}
-              />
-              <ReducedPalette
-                colour1={"black"}
-                colour2={"white"}
-                colour3={"blue"}
-                colour4={"red"}
-              />
-              <ReducedPalette
-                colour1={"black"}
-                colour2={"white"}
-                colour3={"blue"}
-                colour4={"red"}
-              />
-              <ReducedPalette
-                colour1={"black"}
-                colour2={"white"}
-                colour3={"blue"}
-                colour4={"red"}
-              />
-              <ReducedPalette
-                colour1={"black"}
-                colour2={"white"}
-                colour3={"blue"}
-                colour4={"red"}
-              />
-              <ReducedPalette
-                colour1={"black"}
-                colour2={"white"}
-                colour3={"blue"}
-                colour4={"red"}
-              />
-            </section>
-          </>
+          <FavouritesMyPalettes data={userPalettesData} />
         )}
         {librarySection === "favourites" && (
-          <>
-            <section className="user-library__palettes">
-              <ReducedPalette
-                colour1={"black"}
-                colour2={"white"}
-                colour3={"blue"}
-                colour4={"red"}
-              />
-              <ReducedPalette
-                colour1={"black"}
-                colour2={"white"}
-                colour3={"blue"}
-                colour4={"red"}
-              />
-              <ReducedPalette
-                colour1={"black"}
-                colour2={"white"}
-                colour3={"blue"}
-                colour4={"red"}
-              />
-              <ReducedPalette
-                colour1={"black"}
-                colour2={"white"}
-                colour3={"blue"}
-                colour4={"red"}
-              />
-              <ReducedPalette
-                colour1={"black"}
-                colour2={"white"}
-                colour3={"blue"}
-                colour4={"red"}
-              />
-              <ReducedPalette
-                colour1={"black"}
-                colour2={"white"}
-                colour3={"blue"}
-                colour4={"red"}
-              />
-              <ReducedPalette
-                colour1={"black"}
-                colour2={"white"}
-                colour3={"blue"}
-                colour4={"red"}
-              />
-              <ReducedPalette
-                colour1={"black"}
-                colour2={"white"}
-                colour3={"blue"}
-                colour4={"red"}
-              />
-              <ReducedPalette
-                colour1={"black"}
-                colour2={"white"}
-                colour3={"blue"}
-                colour4={"red"}
-              />
-              <ReducedPalette
-                colour1={"black"}
-                colour2={"white"}
-                colour3={"blue"}
-                colour4={"red"}
-              />
-              <ReducedPalette
-                colour1={"black"}
-                colour2={"white"}
-                colour3={"blue"}
-                colour4={"red"}
-              />
-              <ReducedPalette
-                colour1={"black"}
-                colour2={"white"}
-                colour3={"blue"}
-                colour4={"red"}
-              />
-              <ReducedPalette
-                colour1={"black"}
-                colour2={"white"}
-                colour3={"blue"}
-                colour4={"red"}
-              />
-            </section>
-          </>
+          <FavouritesMyPalettes data={userFavouritesData} />
         )}
       </section>
     </>
