@@ -1,0 +1,25 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.library-collections {
+  @include flexbox(column, null, null);
+
+  &__container {
+    padding: 3rem;
+    margin: 2rem;
+    border: 1px solid blue;
+    border-radius: 4px;
+    @include flexbox(column, null, null);
+  }
+
+  &__button {
+    text-transform: uppercase;
+    background-color: $primary-background;
+    color: $secondary-text-color;
+    border: none;
+    padding: 2rem;
+    margin: 1rem 3rem;
+    border-radius: 1rem;
+    align-self: flex-end;
+  }
+}

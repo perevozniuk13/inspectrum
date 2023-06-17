@@ -1,0 +1,32 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.user-info {
+  font-size: 2rem;
+  padding: 2rem;
+  border: 1px solid blue;
+  margin: 10rem 2rem;
+}
+
+.user-library {
+  margin: 10rem 2rem;
+  padding: 2rem;
+  font-size: 2rem;
+  border: 1px solid blue;
+
+  &__nav {
+    list-style: none;
+    display: flex;
+  }
+
+  &__nav-link {
+    padding: 2rem;
+    font-size: 4rem;
+
+    &--selected {
+      background-color: blue;
+      color: white;
+      border-radius: 4px;
+    }
+  }
+}

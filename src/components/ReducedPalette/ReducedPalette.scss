@@ -1,0 +1,16 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.reduced-palette {
+  @include flexbox(column, null, null);
+  height: 12rem;
+  width: 10rem;
+  border-radius: 4px;
+  margin: 2rem;
+  overflow: hidden;
+
+  &__colour {
+    height: 25%;
+    width: 100%;
+  }
+}
