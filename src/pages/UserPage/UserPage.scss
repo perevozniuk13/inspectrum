@@ -29,4 +29,10 @@
       border-radius: 4px;
     }
   }
+
+  &__palettes {
+    @include flexbox(row, null, null);
+    flex-wrap: wrap;
+    padding: 2rem;
+  }
 }
