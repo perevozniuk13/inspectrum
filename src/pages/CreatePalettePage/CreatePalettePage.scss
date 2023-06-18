@@ -1,0 +1,24 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.create-palette-buttons {
+  @include flexbox(row, flex-end, center);
+
+  &__button {
+    text-transform: uppercase;
+    background-color: $primary-background;
+    color: $secondary-text-color;
+    border: none;
+    padding: 2rem 3rem;
+    margin: 1rem 2rem;
+    border-radius: 1rem;
+  }
+}
+
+.add {
+  width: 20rem;
+}
+
+.add-c {
+  width: 10rem;
+}
