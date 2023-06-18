@@ -36,16 +36,54 @@ export default function CreatePalettePage({ isLoggedIn }) {
     }
   };
 
-  const handleAddToPalettes = async (e) => {
+  const handleAddToCollection = async (e) => {
     e.preventDefault();
+
+    try {
+      const addedPletteId = await axios.post(
+        `${process.env.REACT_APP_SERVER_URL}/users/palettes/`,
+        {
+          colour1: colour1,
+          colour2: colour2,
+          colour3: colour3,
+          colour4: colour4,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+        }
+      );
+      console.log("adeedpal", addedPletteId);
+      await axios.post(
+        `${process.env.REACT_APP_SERVER_URL}/users/collections/${
+          collectionsData.find(
+            (c) => c.collection_name === e.target.collections.value
+          ).id
+        }`,
+        {
+          palette_id: addedPletteId.data,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+        }
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleAddToPalettes = async () => {
     const authToken = sessionStorage.getItem("authToken");
 
-    let collectionId = null;
-    if (e.target.collections) {
-      collectionId = collectionsData.find(
-        (c) => c.collection_name === e.target.collections.value
-      ).id;
-    }
+    // let collectionId = null;
+    // if (e.target.collections) {
+    //   collectionId = collectionsData.find(
+    //     (c) => c.collection_name === e.target.collections.value
+    //   ).id;
+    // }
 
     try {
       const response = await axios.post(
@@ -55,7 +93,6 @@ export default function CreatePalettePage({ isLoggedIn }) {
           colour2: colour2,
           colour3: colour3,
           colour4: colour4,
-          collection_id: collectionId,
         },
         {
           headers: {
@@ -121,11 +158,11 @@ export default function CreatePalettePage({ isLoggedIn }) {
         <button
           // onClick={handleAddToFavourites}
           className="create-palette-buttons__button"
-          onClick={(e) => handleAddToPalettes(e)}
+          onClick={handleAddToPalettes}
         >
           add to my palettes
         </button>
-        <form className="add" onSubmit={(e) => handleAddToPalettes(e)}>
+        <form className="add" onSubmit={(e) => handleAddToCollection(e)}>
           add to collection
           <select className="add-c" name="collections" id="collections">
             {collectionsData.map((col) => {

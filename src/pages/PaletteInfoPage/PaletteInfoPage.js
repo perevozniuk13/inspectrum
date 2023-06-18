@@ -4,11 +4,31 @@ import Header from "../../components/Header/Header";
 import "./PaletteInfoPage.scss";
 import copyIconURL from "../../assets/images/copy-icon.svg";
 import Mockups from "../../components/Mockups/Mockups";
+import { useState, useEffect } from "react";
 
 export default function PaletteInfoPage({ palettesData, isLoggedIn }) {
   const { paletteId } = useParams();
   const palette = palettesData.find((p) => p.id == paletteId);
   localStorage.setItem("colour1", palette.colour1);
+
+  const [collectionsData, setCollectionsData] = useState(null);
+  const authToken = sessionStorage.getItem("authToken");
+
+  const getCollectionsData = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_SERVER_URL}/users/collections`,
+        {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+        }
+      );
+      setCollectionsData(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handleAddToFavourites = async () => {
     const authToken = sessionStorage.getItem("authToken");
@@ -29,7 +49,42 @@ export default function PaletteInfoPage({ palettesData, isLoggedIn }) {
     }
   };
 
-  const handleAddToCollection = () => {};
+  const handleAddToCollection = async (e) => {
+    e.preventDefault();
+    console.log(
+      collectionsData.find(
+        (c) => c.collection_name === e.target.collections.value
+      ).id
+    );
+
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_SERVER_URL}/users/collections/${
+          collectionsData.find(
+            (c) => c.collection_name === e.target.collections.value
+          ).id
+        }`,
+        {
+          palette_id: palette.id,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+        }
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getCollectionsData();
+  }, []);
+
+  if (!collectionsData) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <>
@@ -130,9 +185,21 @@ export default function PaletteInfoPage({ palettesData, isLoggedIn }) {
         >
           add to favourites
         </button>
-        <button className="palette-info-buttons__button">
+        <form className="add" onSubmit={(e) => handleAddToCollection(e)}>
           add to collection
-        </button>
+          <select className="add-c" name="collections" id="collections">
+            {collectionsData.map((col) => {
+              return (
+                <option value={col.collection_name}>
+                  {col.collection_name}
+                </option>
+              );
+            })}
+          </select>
+          <button className="palette-info-buttons__button">
+            add to collection
+          </button>
+        </form>
       </section>
     </>
   );
