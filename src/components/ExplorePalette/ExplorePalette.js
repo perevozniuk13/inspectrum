@@ -1,7 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import "./ExplorePalette.scss";
 
-export default function ExplorePalette({ colour1, colour2, colour3, colour4 }) {
+export default function ExplorePalette({
+  colour1,
+  colour2,
+  colour3,
+  colour4,
+  id,
+}) {
   const navigate = useNavigate();
 
   return (
@@ -35,7 +41,7 @@ export default function ExplorePalette({ colour1, colour2, colour3, colour4 }) {
         </div>
 
         <button
-          onClick={() => navigate("/palettes/:paletteId")}
+          onClick={() => navigate(`/palettes/${id}`)}
           className="explore-palette__view-button"
         >
           View

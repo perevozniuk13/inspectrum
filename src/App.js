@@ -10,18 +10,36 @@ import LoginSignUpPage from "./pages/LoginSignUpPage/LoginSignUpPage";
 import { useEffect, useState } from "react";
 
 import "./App.scss";
+import axios from "axios";
 import Footer from "./components/Footer/Footer";
 import Mockup1 from "./components/Mockup1/Mockup1";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   // const [isMockup, setIsMockup] = useState(false);
+  const [palettesData, setPalettesData] = useState(null);
+
+  const getPalettesData = async () => {
+    try {
+      const receivedPalettesData = await axios.get(
+        `${process.env.REACT_APP_SERVER_URL}/palettes`
+      );
+      setPalettesData(receivedPalettesData.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
+    getPalettesData();
     if (sessionStorage.getItem("authToken")) {
       setIsLoggedIn(true);
     }
   }, []);
+
+  if (!palettesData) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <>
@@ -30,11 +48,21 @@ const App = () => {
           <Route path="/" element={<HomePage isLoggedIn={isLoggedIn} />} />
           <Route
             path="/explore"
-            element={<ExplorePage isLoggedIn={isLoggedIn} />}
+            element={
+              <ExplorePage
+                isLoggedIn={isLoggedIn}
+                palettesData={palettesData}
+              />
+            }
           />
           <Route
             path="/palettes/:paletteId"
-            element={<PaletteInfoPage isLoggedIn={isLoggedIn} />}
+            element={
+              <PaletteInfoPage
+                isLoggedIn={isLoggedIn}
+                palettesData={palettesData}
+              />
+            }
           />
           <Route
             path="/create"
@@ -56,6 +84,7 @@ const App = () => {
             }
           />
           <Route path="/mockup1" element={<Mockup1 />} />
+          {console.log(palettesData)}
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
         <Footer />

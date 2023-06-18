@@ -3,12 +3,12 @@ import ExplorePalettes from "../../components/ExplorePalettes/ExplorePalettes";
 import Header from "../../components/Header/Header";
 import "./ExplorePage.scss";
 
-export default function ExplorePage({ isLoggedIn }) {
+export default function ExplorePage({ isLoggedIn, palettesData }) {
   return (
     <>
       <Header isLoggedIn={isLoggedIn} />
       <ExplorePageHero />
-      <ExplorePalettes />
+      <ExplorePalettes palettesData={palettesData} />
     </>
   );
 }

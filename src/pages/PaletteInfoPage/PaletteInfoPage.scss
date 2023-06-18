@@ -1,0 +1,65 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.palette-info {
+  @include flexbox(column, null, null);
+
+  &__colours-container {
+    @include flexbox(row, center, null);
+    border: 2px solid black;
+    padding: 4rem;
+  }
+
+  &__card-container {
+  }
+
+  &__colour-card {
+    width: 15rem;
+    height: 20rem;
+    border: 1px solid black;
+    @include flexbox(row, center, center);
+  }
+
+  &__copy-text-container {
+    position: relative;
+    margin: 1rem 0;
+    padding: 1rem;
+    @include flexbox(row, space-around, center);
+  }
+
+  &__colour {
+    font-size: 2rem;
+  }
+
+  &__copy-icon {
+    width: 2.5rem;
+    // position: absolute;
+    // right: 0;
+    // bottom: 0;
+  }
+
+  &__view-button {
+    text-transform: uppercase;
+    background-color: $primary-background;
+    color: $secondary-text-color;
+    border: none;
+    padding: 2rem 3rem;
+    margin: 1rem 4rem;
+    border-radius: 1rem;
+    align-self: flex-end;
+  }
+}
+
+.palette-info-buttons {
+  @include flexbox(row, flex-end, center);
+
+  &__button {
+    text-transform: uppercase;
+    background-color: $primary-background;
+    color: $secondary-text-color;
+    border: none;
+    padding: 2rem 3rem;
+    margin: 1rem 2rem;
+    border-radius: 1rem;
+  }
+}

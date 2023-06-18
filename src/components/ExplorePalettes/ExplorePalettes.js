@@ -3,28 +3,7 @@ import axios from "axios";
 import ExplorePalette from "../ExplorePalette/ExplorePalette";
 import "./ExplorePalettes.scss";
 
-export default function ExplorePalettes() {
-  const [palettesData, setPalettesData] = useState(null);
-
-  const getPalettesData = async () => {
-    try {
-      const receivedPalettesData = await axios.get(
-        `${process.env.REACT_APP_SERVER_URL}/palettes`
-      );
-      setPalettesData(receivedPalettesData.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    getPalettesData();
-  }, []);
-
-  if (!palettesData) {
-    return <p>Loading...</p>;
-  }
-
+export default function ExplorePalettes({ palettesData }) {
   // axios call to get palettes list data
   return (
     <>
@@ -33,6 +12,7 @@ export default function ExplorePalettes() {
           return (
             <ExplorePalette
               key={palette.id}
+              id={palette.id}
               colour1={palette.colour1}
               colour2={palette.colour2}
               colour3={palette.colour3}
