@@ -70,7 +70,7 @@ const App = () => {
           />
           <Route path="/imagePalette" element={<ImagePalettePage />} />
           <Route
-            path="/profile/:userId"
+            path="/profile"
             element={<UserPage isLoggedIn={isLoggedIn} />}
           />
           <Route

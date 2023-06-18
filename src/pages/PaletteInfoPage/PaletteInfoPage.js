@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import axios from "axios";
 import Header from "../../components/Header/Header";
 import "./PaletteInfoPage.scss";
 import copyIconURL from "../../assets/images/copy-icon.svg";
@@ -7,8 +8,29 @@ import Mockups from "../../components/Mockups/Mockups";
 export default function PaletteInfoPage({ palettesData, isLoggedIn }) {
   const { paletteId } = useParams();
   const palette = palettesData.find((p) => p.id == paletteId);
-  console.log(palette);
   localStorage.setItem("colour1", palette.colour1);
+
+  const handleAddToFavourites = async () => {
+    const authToken = sessionStorage.getItem("authToken");
+
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_SERVER_URL}/users/favourites`,
+        { palette_id: palette.id },
+        {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+        }
+      );
+      console.log(response);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleAddToCollection = () => {};
+
   return (
     <>
       <Header isLoggedIn={isLoggedIn} />
@@ -102,7 +124,10 @@ export default function PaletteInfoPage({ palettesData, isLoggedIn }) {
       <Mockups />
 
       <section className="palette-info-buttons">
-        <button className="palette-info-buttons__button">
+        <button
+          onClick={handleAddToFavourites}
+          className="palette-info-buttons__button"
+        >
           add to favourites
         </button>
         <button className="palette-info-buttons__button">

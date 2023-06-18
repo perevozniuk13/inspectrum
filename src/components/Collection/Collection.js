@@ -3,13 +3,19 @@ import ReducedPalette from "../ReducedPalette/ReducedPalette";
 import "./Collection.scss";
 import axios from "axios";
 
-export default function Collection({ collectionId, userId, collectionName }) {
+export default function Collection({ collectionId, collectionName }) {
   const [collectionPalettesData, setCollectionPalettesData] = useState(null);
+  const authToken = sessionStorage.getItem("authToken");
 
   const getCollectionPalettesData = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_SERVER_URL}/users/${userId}/collections/${collectionId}/palettes`
+        `${process.env.REACT_APP_SERVER_URL}/users/collections/${collectionId}/palettes`,
+        {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+        }
       );
       setCollectionPalettesData(response.data);
     } catch (err) {

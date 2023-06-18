@@ -6,13 +6,17 @@ import { useParams } from "react-router-dom";
 
 export default function Collections() {
   const [collectionsData, setCollectionsData] = useState(null);
-
-  const { userId } = useParams();
+  const authToken = sessionStorage.getItem("authToken");
 
   const getCollectionsData = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_SERVER_URL}/users/${userId}/collections`
+        `${process.env.REACT_APP_SERVER_URL}/users/collections`,
+        {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+        }
       );
       setCollectionsData(response.data);
     } catch (error) {
@@ -36,7 +40,6 @@ export default function Collections() {
             <Collection
               key={collection.id}
               collectionId={collection.id}
-              userId={userId}
               collectionName={collection.collection_name}
             />
           );

@@ -11,12 +11,17 @@ export default function UserPage({ isLoggedIn }) {
   const [librarySection, setLibrarySection] = useState("collections");
   const [userPalettesData, setUserPalettesData] = useState(null);
   const [userFavouritesData, setUserFavouritesData] = useState(null);
-  const { userId } = useParams();
+  const authToken = sessionStorage.getItem("authToken");
 
   const getUserPalettes = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_SERVER_URL}/users/${userId}/palettes`
+        `${process.env.REACT_APP_SERVER_URL}/users/palettes`,
+        {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+        }
       );
       setUserPalettesData(response.data);
     } catch (err) {
@@ -27,7 +32,12 @@ export default function UserPage({ isLoggedIn }) {
   const getUserFavourites = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_SERVER_URL}/users/${userId}/favourites`
+        `${process.env.REACT_APP_SERVER_URL}/users/favourites`,
+        {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+        }
       );
       setUserFavouritesData(response.data);
     } catch (err) {
