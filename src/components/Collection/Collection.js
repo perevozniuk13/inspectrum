@@ -5,6 +5,8 @@ import axios from "axios";
 import deleteIconURL from "../../assets/images/delete-icon.svg";
 import editIconURL from "../../assets/images/edit-icon.svg";
 import crossIconURL from "../../assets/images/cross-icon.png";
+import viewIconURL from "../../assets/images/view-icon.png";
+import { useNavigate } from "react-router-dom";
 
 export default function Collection({
   collectionId,
@@ -15,6 +17,7 @@ export default function Collection({
   const authToken = sessionStorage.getItem("authToken");
   const [editCollectionError, setEditCollectionError] = useState("");
   const [modalState, setModalState] = useState(false);
+  const navigate = useNavigate();
 
   const handleModal = async (event) => {
     await setModalState(true);
@@ -137,6 +140,14 @@ export default function Collection({
                 src={deleteIconURL}
                 alt="delete icon"
                 onClick={() => handleDeleteCollectionPalette(palette.id)}
+              />
+              <img
+                className="library-collection__delete-palette-button"
+                src={viewIconURL}
+                alt="view icon"
+                onClick={() =>
+                  navigate(`/palettes/${palette.id}`, { state: "user" })
+                }
               />
             </div>
           );

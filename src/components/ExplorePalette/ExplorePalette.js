@@ -41,7 +41,7 @@ export default function ExplorePalette({
         </div>
 
         <button
-          onClick={() => navigate(`/palettes/${id}`)}
+          onClick={() => navigate(`/palettes/${id}`, { state: "explore" })}
           className="explore-palette__view-button"
         >
           View

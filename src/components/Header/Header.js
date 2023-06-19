@@ -1,10 +1,11 @@
 import "./Header.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import menuIconURL from "../../assets/images/menu.svg";
 import { useState } from "react";
 
 export default function Header({ isLoggedIn }) {
   const [isMenuClicked, setIsMenuClicked] = useState(false);
+  const navigate = useNavigate();
 
   const handleMenuClick = () => {
     if (isMenuClicked) {
@@ -12,6 +13,12 @@ export default function Header({ isLoggedIn }) {
     } else {
       setIsMenuClicked(true);
     }
+  };
+
+  const handleLink = (e, to) => {
+    e.preventDefault();
+    localStorage.clear();
+    navigate(to);
   };
 
   return (
@@ -23,15 +30,18 @@ export default function Header({ isLoggedIn }) {
           </Link>
 
           <div className="nav__tablet-links-container">
-            <Link to="/explore" className="nav__link">
+            <a onClick={(e) => handleLink(e, "/explore")} className="nav__link">
               Explore Palettes
-            </Link>
-            <Link to="/create" className="nav__link">
+            </a>
+            <a onClick={(e) => handleLink(e, "/create")} className="nav__link">
               Create palette
-            </Link>
-            <Link to="/imagePalette" className="nav__link">
+            </a>
+            <a
+              onClick={(e) => handleLink(e, "/imagePalette")}
+              className="nav__link"
+            >
               Get Image Palette
-            </Link>
+            </a>
             {!isLoggedIn && (
               <>
                 <Link to="/signup" className="nav__link">
@@ -45,9 +55,12 @@ export default function Header({ isLoggedIn }) {
 
             {isLoggedIn && (
               <>
-                <Link to="/profile" className="nav__link">
+                <a
+                  onClick={(e) => handleLink(e, "/profile")}
+                  className="nav__link"
+                >
                   Profile
-                </Link>
+                </a>
               </>
             )}
           </div>
@@ -67,21 +80,36 @@ export default function Header({ isLoggedIn }) {
           </Link>
 
           <div className="menu-nav__links-container">
-            <Link to="/explore" className="menu-nav__link">
+            <a
+              onClick={(e) => handleLink(e, "/explore")}
+              className="menu-nav__link"
+            >
               Explore Palettes
-            </Link>
-            <Link to="/create" className="menu-nav__link">
+            </a>
+            <a
+              onClick={(e) => handleLink(e, "/create")}
+              className="menu-nav__link"
+            >
               Create palette
-            </Link>
-            <Link to="/imagePalette" className="menu-nav__link">
+            </a>
+            <a
+              onClick={(e) => handleLink(e, "/imagePalette")}
+              className="menu-nav__link"
+            >
               Get Image Palette
-            </Link>
-            <Link to="/signup" className="menu-nav__link">
+            </a>
+            <a
+              onClick={(e) => handleLink(e, "/signup")}
+              className="menu-nav__link"
+            >
               Sign Up
-            </Link>
-            <Link to="/login" className="menu-nav__link">
+            </a>
+            <a
+              onClick={(e) => handleLink(e, "/login")}
+              className="menu-nav__link"
+            >
               Log In
-            </Link>
+            </a>
           </div>
           <img
             src={menuIconURL}

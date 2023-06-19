@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Header from "../../components/Header/Header";
 import "./PaletteInfoPage.scss";
@@ -10,10 +10,14 @@ export default function PaletteInfoPage({ palettesData, isLoggedIn }) {
   const { paletteId } = useParams();
   const palette = palettesData.find((p) => p.id == paletteId);
   localStorage.setItem("colour1", palette.colour1);
+  localStorage.setItem("colour2", palette.colour2);
+  localStorage.setItem("colour3", palette.colour3);
+  localStorage.setItem("colour4", palette.colour4);
 
   const [collectionsData, setCollectionsData] = useState(null);
   const authToken = sessionStorage.getItem("authToken");
   const navigate = useNavigate();
+  const location = useLocation();
 
   const getCollectionsData = async () => {
     try {
@@ -168,30 +172,31 @@ export default function PaletteInfoPage({ palettesData, isLoggedIn }) {
       </section>
 
       <Mockups />
-
-      <section className="palette-info-buttons">
-        <button
-          onClick={handleAddToFavourites}
-          className="palette-info-buttons__button"
-        >
-          add to favourites
-        </button>
-        <form className="add" onSubmit={(e) => handleAddToCollection(e)}>
-          add to collection
-          <select className="add-c" name="collections" id="collections">
-            {collectionsData.map((col) => {
-              return (
-                <option value={col.collection_name}>
-                  {col.collection_name}
-                </option>
-              );
-            })}
-          </select>
-          <button className="palette-info-buttons__button">
-            add to collection
+      {location.state === "explore" && (
+        <section className="palette-info-buttons">
+          <button
+            onClick={handleAddToFavourites}
+            className="palette-info-buttons__button"
+          >
+            add to favourites
           </button>
-        </form>
-      </section>
+          <form className="add" onSubmit={(e) => handleAddToCollection(e)}>
+            add to collection
+            <select className="add-c" name="collections" id="collections">
+              {collectionsData.map((col) => {
+                return (
+                  <option value={col.collection_name}>
+                    {col.collection_name}
+                  </option>
+                );
+              })}
+            </select>
+            <button className="palette-info-buttons__button">
+              add to collection
+            </button>
+          </form>
+        </section>
+      )}
     </>
   );
 }

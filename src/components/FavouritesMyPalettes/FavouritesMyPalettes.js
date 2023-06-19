@@ -1,12 +1,15 @@
 import ReducedPalette from "../ReducedPalette/ReducedPalette";
 import deleteIcon from "../../assets/images/delete-icon.svg";
+import viewIconURL from "../../assets/images/view-icon.png";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function FavouritesMyPalettes({
   data,
   librarySection,
   getData,
 }) {
+  const navigate = useNavigate();
   const authToken = sessionStorage.getItem("authToken");
 
   const handleDeletePalette = async (favouriteId) => {
@@ -62,6 +65,22 @@ export default function FavouritesMyPalettes({
                 src={deleteIcon}
                 alt="delete icon"
                 onClick={() => deleteFunction(palette.id)}
+              />
+              <img
+                className="library-collection__delete-button"
+                src={viewIconURL}
+                alt="view icon"
+                onClick={() => {
+                  librarySection === "favourites"
+                    ? navigate(
+                        `/palettes/${
+                          data.find((favourite) => favourite.id === palette.id)
+                            .palette_id
+                        }`,
+                        { state: "user" }
+                      )
+                    : navigate(`/palettes/${palette.id}`);
+                }}
               />
             </div>
           );
