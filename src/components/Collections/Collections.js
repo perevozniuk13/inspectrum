@@ -5,8 +5,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import crossIconURL from "../../assets/images/cross-icon.png";
 
-export default function Collections() {
-  const [collectionsData, setCollectionsData] = useState(null);
+export default function Collections({ collectionsData, setCollectionsData }) {
   const authToken = sessionStorage.getItem("authToken");
   const [modalState, setModalState] = useState(false);
   const [createCollectionError, setCreateCollectionError] = useState("");

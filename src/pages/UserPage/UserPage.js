@@ -11,6 +11,7 @@ export default function UserPage({ isLoggedIn }) {
   const [librarySection, setLibrarySection] = useState("collections");
   const [userPalettesData, setUserPalettesData] = useState(null);
   const [userFavouritesData, setUserFavouritesData] = useState(null);
+  const [collectionsData, setCollectionsData] = useState(null);
   const authToken = sessionStorage.getItem("authToken");
 
   const getUserPalettes = async () => {
@@ -100,7 +101,12 @@ export default function UserPage({ isLoggedIn }) {
           </li>
         </ul>
 
-        {librarySection === "collections" && <Collections />}
+        {librarySection === "collections" && (
+          <Collections
+            collectionsData={collectionsData}
+            setCollectionsData={setCollectionsData}
+          />
+        )}
         {librarySection === "palettes" && (
           <FavouritesMyPalettes
             data={userPalettesData}

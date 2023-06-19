@@ -162,7 +162,7 @@ export default function CreatePalettePage({ isLoggedIn }) {
           <select className="add-c" name="collections" id="collections">
             {collectionsData.map((col) => {
               return (
-                <option value={col.collection_name}>
+                <option key={col.id} value={col.collection_name}>
                   {col.collection_name}
                 </option>
               );
