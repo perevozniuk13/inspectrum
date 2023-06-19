@@ -1,5 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import "./ExplorePalette.scss";
+import likeIconURL from "../../assets/images/like-icon.png";
+import likedIconURL from "../../assets/images/liked-icon.png";
+import { useState } from "react";
 
 export default function ExplorePalette({
   colour1,
@@ -9,6 +12,11 @@ export default function ExplorePalette({
   id,
 }) {
   const navigate = useNavigate();
+  const [paletteLiked, setPaletteLiked] = useState(false);
+
+  const handleLike = async () => {
+    return;
+  };
 
   return (
     <>
@@ -46,6 +54,21 @@ export default function ExplorePalette({
         >
           View
         </button>
+
+        {!paletteLiked ? (
+          <img
+            className="explore-palette__like-button"
+            src={likeIconURL}
+            alt="like icon"
+            onClick={handleLike}
+          />
+        ) : (
+          <img
+            className="explore-palette__like-button"
+            src={likedIconURL}
+            alt="liked icon"
+          />
+        )}
       </section>
     </>
   );
