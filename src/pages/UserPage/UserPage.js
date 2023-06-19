@@ -102,10 +102,18 @@ export default function UserPage({ isLoggedIn }) {
 
         {librarySection === "collections" && <Collections />}
         {librarySection === "palettes" && (
-          <FavouritesMyPalettes data={userPalettesData} />
+          <FavouritesMyPalettes
+            data={userPalettesData}
+            librarySection={librarySection}
+            getData={getUserPalettes}
+          />
         )}
         {librarySection === "favourites" && (
-          <FavouritesMyPalettes data={userFavouritesData} />
+          <FavouritesMyPalettes
+            data={userFavouritesData}
+            librarySection={librarySection}
+            getData={getUserFavourites}
+          />
         )}
       </section>
     </>
