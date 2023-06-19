@@ -10,4 +10,12 @@
   &__palettes-container {
     @include flexbox(row, null, null);
   }
+
+  &__edit-button {
+    width: 4rem;
+  }
+
+  &__delete-button {
+    width: 4rem;
+  }
 }

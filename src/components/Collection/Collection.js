@@ -3,6 +3,8 @@ import ReducedPalette from "../ReducedPalette/ReducedPalette";
 import "./Collection.scss";
 import axios from "axios";
 import deleteIconURL from "../../assets/images/delete-icon.svg";
+import editIconURL from "../../assets/images/edit-icon.svg";
+import crossIconURL from "../../assets/images/cross-icon.png";
 
 export default function Collection({
   collectionId,
@@ -11,6 +13,16 @@ export default function Collection({
 }) {
   const [collectionPalettesData, setCollectionPalettesData] = useState(null);
   const authToken = sessionStorage.getItem("authToken");
+  const [editCollectionError, setEditCollectionError] = useState("");
+  const [modalState, setModalState] = useState(false);
+
+  const handleModal = async (event) => {
+    await setModalState(true);
+  };
+
+  const handleCancel = async (event) => {
+    await setModalState(false);
+  };
 
   const getCollectionPalettesData = async () => {
     try {
@@ -60,6 +72,34 @@ export default function Collection({
     }
   };
 
+  const handleEditCollectionPalette = async (e) => {
+    e.preventDefault();
+    const newCollectionName = e.target.collectionName.value;
+    if (!newCollectionName || newCollectionName.length < 3) {
+      setEditCollectionError(
+        "Collection name must be at least 3 characters long!"
+      );
+      return;
+    }
+
+    try {
+      const response = await axios.put(
+        `${process.env.REACT_APP_SERVER_URL}/users/collections/${collectionId}`,
+        { collection_name: newCollectionName },
+        {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+        }
+      );
+      console.log(response);
+      getCollectionsData();
+      setModalState(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getCollectionPalettesData();
   }, []);
@@ -71,6 +111,12 @@ export default function Collection({
   return (
     <section className="library-collection">
       <h3 className="library-collection__name">{collectionName}</h3>
+      <img
+        className="library-collection__edit-button"
+        src={editIconURL}
+        alt="edit icon"
+        onClick={handleModal}
+      />
       <img
         className="library-collection__delete-button"
         src={deleteIconURL}
@@ -96,6 +142,29 @@ export default function Collection({
             </div>
           );
         })}
+      </div>
+      <div className={`overlay ${modalState ? "" : "hidden"}`}></div>
+      <div className={`modal ${modalState ? "" : "hidden"}`}>
+        <img
+          className="modal__cross"
+          src={crossIconURL}
+          alt="cancel"
+          onClick={handleCancel}
+        />
+        <h1 className="modal__title">Edit collection name</h1>
+        <form
+          className="modal__form"
+          onSubmit={(e) => handleEditCollectionPalette(e)}
+        >
+          <input
+            type="text"
+            name="collectionName"
+            id="collectionName"
+            placeholder={collectionName}
+          />
+          {editCollectionError && <p>{editCollectionError}</p>}
+          <button className="modal__form-btn">Save Changes</button>
+        </form>
       </div>
     </section>
   );
