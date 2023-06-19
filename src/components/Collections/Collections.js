@@ -5,7 +5,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import crossIconURL from "../../assets/images/cross-icon.png";
 
-export default function Collections({ collectionsData, setCollectionsData }) {
+export default function Collections({ collectionsData, getCollectionsData }) {
   const authToken = sessionStorage.getItem("authToken");
   const [modalState, setModalState] = useState(false);
   const [createCollectionError, setCreateCollectionError] = useState("");
@@ -44,30 +44,6 @@ export default function Collections({ collectionsData, setCollectionsData }) {
       console.log(error);
     }
   };
-
-  const getCollectionsData = async () => {
-    try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_SERVER_URL}/users/collections`,
-        {
-          headers: {
-            Authorization: `Bearer ${authToken}`,
-          },
-        }
-      );
-      setCollectionsData(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    getCollectionsData();
-  }, []);
-
-  if (!collectionsData) {
-    return <p>Loading...</p>;
-  }
 
   return (
     <div className="library-collections">

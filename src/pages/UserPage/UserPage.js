@@ -12,7 +12,24 @@ export default function UserPage({ isLoggedIn }) {
   const [userPalettesData, setUserPalettesData] = useState(null);
   const [userFavouritesData, setUserFavouritesData] = useState(null);
   const [collectionsData, setCollectionsData] = useState(null);
+  const [userData, setUserData] = useState(null);
   const authToken = sessionStorage.getItem("authToken");
+
+  const getUserData = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_SERVER_URL}/users/user`,
+        {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+        }
+      );
+      setUserData(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const getUserPalettes = async () => {
     try {
@@ -46,12 +63,35 @@ export default function UserPage({ isLoggedIn }) {
     }
   };
 
+  const getCollectionsData = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_SERVER_URL}/users/collections`,
+        {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+        }
+      );
+      setCollectionsData(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
+    getUserData();
+    getCollectionsData();
     getUserPalettes();
     getUserFavourites();
   }, []);
 
-  if (!userPalettesData || !userFavouritesData) {
+  if (
+    !userPalettesData ||
+    !userFavouritesData ||
+    !collectionsData ||
+    !userData
+  ) {
     return <p>Loading...</p>;
   }
 
@@ -60,11 +100,19 @@ export default function UserPage({ isLoggedIn }) {
       <Header isLoggedIn={isLoggedIn} />
 
       <section className="user-info">
-        <p className="user-info__username">User: user123</p>
-        <p className="user-info__name">Name: Sasha</p>
-        <p className="user-info__collections">Collections: 0</p>
-        <p className="user-info__favourites">Favourites: 5</p>
-        <p className="user-info__favourites">Created palettes: 5</p>
+        <p className="user-info__username">User: {userData.username}</p>
+        <p className="user-info__name">
+          Name: {userData.first_name} {userData.last_name}
+        </p>
+        <p className="user-info__collections">
+          Collections: {collectionsData.length}
+        </p>
+        <p className="user-info__favourites">
+          Favourites: {userFavouritesData.length}
+        </p>
+        <p className="user-info__favourites">
+          Created palettes: {userPalettesData.length}
+        </p>
       </section>
 
       <section className="user-library">
@@ -104,7 +152,7 @@ export default function UserPage({ isLoggedIn }) {
         {librarySection === "collections" && (
           <Collections
             collectionsData={collectionsData}
-            setCollectionsData={setCollectionsData}
+            getCollectionsData={getCollectionsData}
           />
         )}
         {librarySection === "palettes" && (
