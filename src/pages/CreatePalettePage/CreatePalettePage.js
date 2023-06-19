@@ -30,7 +30,6 @@ export default function CreatePalettePage({ isLoggedIn }) {
         }
       );
       setCollectionsData(response.data);
-      console.log(response.data, "a");
     } catch (error) {
       console.log(error);
     }
@@ -54,7 +53,6 @@ export default function CreatePalettePage({ isLoggedIn }) {
           },
         }
       );
-      console.log("adeedpal", addedPletteId);
       await axios.post(
         `${process.env.REACT_APP_SERVER_URL}/users/collections/${
           collectionsData.find(
@@ -70,6 +68,7 @@ export default function CreatePalettePage({ isLoggedIn }) {
           },
         }
       );
+      localStorage.clear();
     } catch (err) {
       console.log(err);
     }
@@ -77,13 +76,6 @@ export default function CreatePalettePage({ isLoggedIn }) {
 
   const handleAddToPalettes = async () => {
     const authToken = sessionStorage.getItem("authToken");
-
-    // let collectionId = null;
-    // if (e.target.collections) {
-    //   collectionId = collectionsData.find(
-    //     (c) => c.collection_name === e.target.collections.value
-    //   ).id;
-    // }
 
     try {
       const response = await axios.post(
@@ -100,6 +92,7 @@ export default function CreatePalettePage({ isLoggedIn }) {
           },
         }
       );
+      localStorage.clear();
     } catch (err) {
       console.log(err);
     }
@@ -136,7 +129,6 @@ export default function CreatePalettePage({ isLoggedIn }) {
     <>
       <Header isLoggedIn={isLoggedIn} />
       <CreatePaletteHero />
-      {/* <CreateColourPicker /> */}
       <CreateColourPicker2 setPickedColour={setPickedColour} />
 
       <CreateColourPalette
