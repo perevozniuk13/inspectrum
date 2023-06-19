@@ -8,10 +8,12 @@ import axios from "axios";
 import "../../pages/CreatePalettePage/CreatePalettePage.scss";
 import "../../components/ExplorePalette/ExplorePalette.scss";
 import Mockups from "../../components/Mockups/Mockups";
+import { useNavigate } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 
 export default function ImagePalettePage({ isLoggedIn }) {
   const [uploadedImage, setUploadedImage] = useState("");
-
+  const navigate = useNavigate();
   const [collectionsData, setCollectionsData] = useState(null);
   const authToken = sessionStorage.getItem("authToken");
 
@@ -71,6 +73,7 @@ export default function ImagePalettePage({ isLoggedIn }) {
         }
       );
       localStorage.clear();
+      setTimeout(() => navigate("/profile"), 1000);
     } catch (err) {
       console.log(err);
     }
@@ -95,6 +98,7 @@ export default function ImagePalettePage({ isLoggedIn }) {
         }
       );
       localStorage.clear();
+      setTimeout(() => navigate("/profile"), 1000);
     } catch (err) {
       console.log(err);
     }
@@ -142,7 +146,6 @@ export default function ImagePalettePage({ isLoggedIn }) {
           />
         )}
       </form>
-      {console.log(localStorage.getItem(placeholderImgURL))}
       {localStorage.getItem("placeholderImg") && (
         <Palette
           src={localStorage.getItem("placeholderImg")}
@@ -216,7 +219,7 @@ export default function ImagePalettePage({ isLoggedIn }) {
                     >
                       {collectionsData.map((col) => {
                         return (
-                          <option value={col.collection_name}>
+                          <option key={uuidv4()} value={col.collection_name}>
                             {col.collection_name}
                           </option>
                         );

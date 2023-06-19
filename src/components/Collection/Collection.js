@@ -92,7 +92,6 @@ export default function Collection({
           },
         }
       );
-      console.log(response);
       getCollectionsData();
       setModalState(false);
     } catch (error) {

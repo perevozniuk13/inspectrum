@@ -7,6 +7,7 @@ import "./CreatePalettePage.scss";
 import { useState, useEffect } from "react";
 import Header from "../../components/Header/Header";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function CreatePalettePage({ isLoggedIn }) {
   const [selectedCard, setSelectedCard] = useState("");
@@ -16,6 +17,7 @@ export default function CreatePalettePage({ isLoggedIn }) {
   const [colour3, setColour3] = useState("");
   const [colour4, setColour4] = useState("");
 
+  const navigate = useNavigate();
   const [collectionsData, setCollectionsData] = useState(null);
   const authToken = sessionStorage.getItem("authToken");
 
@@ -69,6 +71,7 @@ export default function CreatePalettePage({ isLoggedIn }) {
         }
       );
       localStorage.clear();
+      setTimeout(() => navigate("/profile"), 1000);
     } catch (err) {
       console.log(err);
     }
@@ -93,6 +96,7 @@ export default function CreatePalettePage({ isLoggedIn }) {
         }
       );
       localStorage.clear();
+      setTimeout(() => navigate("/profile"), 1000);
     } catch (err) {
       console.log(err);
     }
@@ -148,7 +152,6 @@ export default function CreatePalettePage({ isLoggedIn }) {
 
       <section className="create-palette-buttons">
         <button
-          // onClick={handleAddToFavourites}
           className="create-palette-buttons__button"
           onClick={handleAddToPalettes}
         >

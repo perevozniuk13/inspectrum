@@ -87,7 +87,6 @@ const App = () => {
             }
           />
           <Route path="/mockup1" element={<Mockup1 />} />
-          {console.log(palettesData)}
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
         <Footer />

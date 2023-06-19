@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Header from "../../components/Header/Header";
 import "./PaletteInfoPage.scss";
@@ -13,6 +13,7 @@ export default function PaletteInfoPage({ palettesData, isLoggedIn }) {
 
   const [collectionsData, setCollectionsData] = useState(null);
   const authToken = sessionStorage.getItem("authToken");
+  const navigate = useNavigate();
 
   const getCollectionsData = async () => {
     try {
@@ -43,7 +44,8 @@ export default function PaletteInfoPage({ palettesData, isLoggedIn }) {
           },
         }
       );
-      console.log(response);
+      localStorage.clear();
+      setTimeout(() => navigate("/profile"), 1000);
     } catch (err) {
       console.log(err);
     }
@@ -51,11 +53,6 @@ export default function PaletteInfoPage({ palettesData, isLoggedIn }) {
 
   const handleAddToCollection = async (e) => {
     e.preventDefault();
-    console.log(
-      collectionsData.find(
-        (c) => c.collection_name === e.target.collections.value
-      ).id
-    );
 
     try {
       const response = await axios.post(
@@ -73,6 +70,8 @@ export default function PaletteInfoPage({ palettesData, isLoggedIn }) {
           },
         }
       );
+      localStorage.clear();
+      setTimeout(() => navigate("/profile"), 1000);
     } catch (err) {
       console.log(err);
     }
@@ -98,9 +97,7 @@ export default function PaletteInfoPage({ palettesData, isLoggedIn }) {
             <div
               style={{ backgroundColor: palette.colour1 }}
               className="palette-info__colour-card"
-            >
-              {/* <p className="palette-info__colour">{palette.colour1}</p> */}
-            </div>
+            ></div>
             <div className="palette-info__copy-text-container">
               <p className="palette-info__colour">{palette.colour1}</p>
               <img
@@ -118,9 +115,7 @@ export default function PaletteInfoPage({ palettesData, isLoggedIn }) {
             <div
               style={{ backgroundColor: palette.colour2 }}
               className="palette-info__colour-card"
-            >
-              {/* <p className="palette-info__colour">{palette.colour2}</p> */}
-            </div>
+            ></div>
             <div className="palette-info__copy-text-container">
               <p className="palette-info__colour">{palette.colour2}</p>
               <img
@@ -138,9 +133,7 @@ export default function PaletteInfoPage({ palettesData, isLoggedIn }) {
             <div
               style={{ backgroundColor: palette.colour3 }}
               className="palette-info__colour-card"
-            >
-              {/* <p className="palette-info__colour">{palette.colour3}</p> */}
-            </div>
+            ></div>
             <div className="palette-info__copy-text-container">
               <p className="palette-info__colour">{palette.colour3}</p>
               <img
@@ -158,9 +151,7 @@ export default function PaletteInfoPage({ palettesData, isLoggedIn }) {
             <div
               style={{ backgroundColor: palette.colour4 }}
               className="palette-info__colour-card"
-            >
-              {/* <p className="palette-info__colour">{palette.colour4}</p> */}
-            </div>
+            ></div>
             <div className="palette-info__copy-text-container">
               <p className="palette-info__colour">{palette.colour4}</p>
               <img

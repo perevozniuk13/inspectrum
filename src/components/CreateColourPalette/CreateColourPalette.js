@@ -17,7 +17,6 @@ export default function CreateColourPalette({
   const navigate = useNavigate();
 
   const handleSavingColours = () => {
-    console.log(colour1, colour2, colour3, colour4);
     localStorage.setItem("colour1", colour1);
     localStorage.setItem("colour2", colour2);
     localStorage.setItem("colour3", colour3);
