@@ -16,15 +16,19 @@ import Mockup1 from "./components/Mockup1/Mockup1";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  // const [isMockup, setIsMockup] = useState(false);
   const [palettesData, setPalettesData] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(null);
 
   const getPalettesData = async () => {
     try {
       const receivedPalettesData = await axios.get(
-        `${process.env.REACT_APP_SERVER_URL}/palettes`
+        `${process.env.REACT_APP_SERVER_URL}/palettes?page=${currentPage}`
       );
-      setPalettesData(receivedPalettesData.data);
+      setPalettesData([...receivedPalettesData.data].slice(0, -1));
+      setTotalPages(
+        receivedPalettesData.data[receivedPalettesData.data.length - 1]
+      );
     } catch (error) {
       console.log(error);
     }
@@ -32,6 +36,9 @@ const App = () => {
 
   useEffect(() => {
     getPalettesData();
+  }, [currentPage]);
+
+  useEffect(() => {
     if (sessionStorage.getItem("authToken")) {
       setIsLoggedIn(true);
     }
@@ -52,6 +59,8 @@ const App = () => {
               <ExplorePage
                 isLoggedIn={isLoggedIn}
                 palettesData={palettesData}
+                totalPages={totalPages}
+                setCurrentPage={setCurrentPage}
               />
             }
           />
