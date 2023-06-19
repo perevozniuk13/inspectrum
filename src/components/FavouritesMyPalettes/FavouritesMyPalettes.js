@@ -50,9 +50,8 @@ export default function FavouritesMyPalettes({
       <section className="user-library__palettes">
         {data.map((palette) => {
           return (
-            <>
+            <div key={palette.id}>
               <ReducedPalette
-                key={palette.id}
                 colour1={palette.colour1}
                 colour2={palette.colour2}
                 colour3={palette.colour3}
@@ -64,7 +63,7 @@ export default function FavouritesMyPalettes({
                 alt="delete icon"
                 onClick={() => deleteFunction(palette.id)}
               />
-            </>
+            </div>
           );
         })}
       </section>
