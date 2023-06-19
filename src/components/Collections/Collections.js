@@ -41,11 +41,14 @@ export default function Collections() {
               key={collection.id}
               collectionId={collection.id}
               collectionName={collection.collection_name}
+              getCollectionsData={getCollectionsData}
             />
           );
         })}
       </section>
-      <button className="library-collections__button">New collection</button>
+      <button className="library-collections__add-button">
+        New collection
+      </button>
     </div>
   );
 }

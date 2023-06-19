@@ -12,7 +12,7 @@
     @include flexbox(column, null, null);
   }
 
-  &__button {
+  &__add-button {
     text-transform: uppercase;
     background-color: $primary-background;
     color: $secondary-text-color;
