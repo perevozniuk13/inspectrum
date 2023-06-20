@@ -10,6 +10,7 @@ import "../../components/ExplorePalette/ExplorePalette.scss";
 import Mockups from "../../components/Mockups/Mockups";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
+import convert from "color-convert";
 
 export default function ImagePalettePage({ isLoggedIn }) {
   const [uploadedImage, setUploadedImage] = useState("");
@@ -50,6 +51,10 @@ export default function ImagePalettePage({ isLoggedIn }) {
           colour2: colour2,
           colour3: colour3,
           colour4: colour4,
+          hue1: convert.hex.hsv(colour1)[0],
+          hue2: convert.hex.hsv(colour2)[0],
+          hue3: convert.hex.hsv(colour3)[0],
+          hue4: convert.hex.hsv(colour4)[0],
         },
         {
           headers: {
@@ -90,6 +95,10 @@ export default function ImagePalettePage({ isLoggedIn }) {
           colour2: colour2,
           colour3: colour3,
           colour4: colour4,
+          hue1: convert.hex.hsv(colour1)[0],
+          hue2: convert.hex.hsv(colour2)[0],
+          hue3: convert.hex.hsv(colour3)[0],
+          hue4: convert.hex.hsv(colour4)[0],
         },
         {
           headers: {

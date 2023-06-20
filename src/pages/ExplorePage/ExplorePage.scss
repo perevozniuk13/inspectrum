@@ -14,3 +14,19 @@
   font-weight: 700;
   margin: 1rem;
 }
+
+.colour-sort {
+  display: flex;
+  margin: 5rem;
+
+  &__colour {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    margin: 2rem;
+
+    &--selected {
+      border: 2px solid white;
+    }
+  }
+}

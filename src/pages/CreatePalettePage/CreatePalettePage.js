@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 import Header from "../../components/Header/Header";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import convert from "color-convert";
 
 export default function CreatePalettePage({ isLoggedIn }) {
   const [selectedCard, setSelectedCard] = useState("");
@@ -48,6 +49,10 @@ export default function CreatePalettePage({ isLoggedIn }) {
           colour2: colour2,
           colour3: colour3,
           colour4: colour4,
+          hue1: convert.hex.hsv(colour1)[0],
+          hue2: convert.hex.hsv(colour2)[0],
+          hue3: convert.hex.hsv(colour3)[0],
+          hue4: convert.hex.hsv(colour4)[0],
         },
         {
           headers: {
@@ -88,6 +93,10 @@ export default function CreatePalettePage({ isLoggedIn }) {
           colour2: colour2,
           colour3: colour3,
           colour4: colour4,
+          hue1: convert.hex.hsv(colour1)[0],
+          hue2: convert.hex.hsv(colour2)[0],
+          hue3: convert.hex.hsv(colour3)[0],
+          hue4: convert.hex.hsv(colour4)[0],
         },
         {
           headers: {
