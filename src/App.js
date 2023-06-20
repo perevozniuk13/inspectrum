@@ -17,10 +17,13 @@ import Mockup1 from "./components/Mockup1/Mockup1";
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [palettesData, setPalettesData] = useState(null);
+  const [userFavouritesData, setUserFavouritesData] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(null);
   const [sortMinHue, setSortMinHue] = useState(null);
   const [sortMaxHue, setSortMaxHue] = useState(null);
+
+  const authToken = sessionStorage.getItem("authToken");
 
   const getPalettesData = async () => {
     try {
@@ -36,6 +39,22 @@ const App = () => {
     }
   };
 
+  const getUserFavourites = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_SERVER_URL}/users/favourites`,
+        {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+        }
+      );
+      setUserFavouritesData(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
     getPalettesData();
   }, [currentPage, sortMinHue]);
@@ -44,6 +63,7 @@ const App = () => {
     if (sessionStorage.getItem("authToken")) {
       setIsLoggedIn(true);
     }
+    getUserFavourites();
   }, []);
 
   if (!palettesData) {
@@ -67,6 +87,9 @@ const App = () => {
                 sortMaxHue={sortMaxHue}
                 setSortMinHue={setSortMinHue}
                 setSortMaxHue={setSortMaxHue}
+                userFavouritesData={userFavouritesData}
+                getPalettesData={getPalettesData}
+                getUserFavourites={getUserFavourites}
               />
             }
           />
@@ -89,7 +112,13 @@ const App = () => {
           />
           <Route
             path="/profile"
-            element={<UserPage isLoggedIn={isLoggedIn} />}
+            element={
+              <UserPage
+                isLoggedIn={isLoggedIn}
+                userFavouritesData={userFavouritesData}
+                getUserFavourites={getUserFavourites}
+              />
+            }
           />
           <Route
             path="/signup"

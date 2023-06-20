@@ -7,10 +7,13 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import FavouritesMyPalettes from "../../components/FavouritesMyPalettes/FavouritesMyPalettes";
 
-export default function UserPage({ isLoggedIn }) {
+export default function UserPage({
+  isLoggedIn,
+  userFavouritesData,
+  getUserFavourites,
+}) {
   const [librarySection, setLibrarySection] = useState("collections");
   const [userPalettesData, setUserPalettesData] = useState(null);
-  const [userFavouritesData, setUserFavouritesData] = useState(null);
   const [collectionsData, setCollectionsData] = useState(null);
   const [userData, setUserData] = useState(null);
   const authToken = sessionStorage.getItem("authToken");
@@ -42,22 +45,6 @@ export default function UserPage({ isLoggedIn }) {
         }
       );
       setUserPalettesData(response.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  const getUserFavourites = async () => {
-    try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_SERVER_URL}/users/favourites`,
-        {
-          headers: {
-            Authorization: `Bearer ${authToken}`,
-          },
-        }
-      );
-      setUserFavouritesData(response.data);
     } catch (err) {
       console.log(err);
     }

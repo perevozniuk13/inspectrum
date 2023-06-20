@@ -36,12 +36,26 @@
     color: black;
     border: none;
     padding: 1rem 3rem;
-    margin: 1rem 4rem;
+    // margin: 1rem 4rem;
     border-radius: 1rem;
   }
 
   &__like-button {
     width: 4rem;
     align-self: flex-end;
+  }
+
+  &__likes-count {
+    font-size: 2rem;
+    margin: 0.5rem;
+  }
+
+  &__buttons-container {
+    @include flexbox(row-reverse, space-evenly, center);
+    width: 100%;
+  }
+
+  &__likes-container {
+    @include flexbox(row, space-evenly, center);
   }
 }

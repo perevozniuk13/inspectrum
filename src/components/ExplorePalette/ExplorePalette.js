@@ -1,8 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import "./ExplorePalette.scss";
-import likeIconURL from "../../assets/images/like-icon.png";
-import likedIconURL from "../../assets/images/liked-icon.png";
-import { useState } from "react";
+import likeIconURL from "../../assets/images/empty-heart.png";
+import likedIconURL from "../../assets/images/heart.png";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function ExplorePalette({
   colour1,
@@ -10,12 +11,57 @@ export default function ExplorePalette({
   colour3,
   colour4,
   id,
+  likes,
+  userFavouritesData,
+  getPalettesData,
+  getUserFavourites,
 }) {
   const navigate = useNavigate();
-  const [paletteLiked, setPaletteLiked] = useState(false);
+  const authToken = sessionStorage.getItem("authToken");
 
-  const handleLike = async () => {
-    return;
+  const handleAddToFavourites = async () => {
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_SERVER_URL}/users/favourites`,
+        { palette_id: id },
+        {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+        }
+      );
+      getPalettesData();
+      getUserFavourites();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleDeleteFavourite = async () => {
+    try {
+      await axios.delete(
+        `${process.env.REACT_APP_SERVER_URL}/users/favourites/${
+          userFavouritesData.find((f) => f.palette_id === id).id
+        }`,
+        {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+        }
+      );
+      getPalettesData();
+      getUserFavourites();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleLike = () => {
+    handleAddToFavourites();
+  };
+
+  const handleRemoveLike = () => {
+    handleDeleteFavourite();
   };
 
   return (
@@ -48,27 +94,35 @@ export default function ExplorePalette({
           </div>
         </div>
 
-        <button
-          onClick={() => navigate(`/palettes/${id}`, { state: "explore" })}
-          className="explore-palette__view-button"
-        >
-          View
-        </button>
+        <div className="explore-palette__buttons-container">
+          <button
+            onClick={() => navigate(`/palettes/${id}`, { state: "explore" })}
+            className="explore-palette__view-button"
+          >
+            View
+          </button>
+          <div className="explore-palette__likes-container">
+            <p className="explore-palette__likes-count">{likes}</p>
 
-        {/* {!paletteLiked ? (
-          <img
-            className="explore-palette__like-button"
-            src={likeIconURL}
-            alt="like icon"
-            onClick={handleLike}
-          />
-        ) : (
-          <img
-            className="explore-palette__like-button"
-            src={likedIconURL}
-            alt="liked icon"
-          />
-        )} */}
+            {!userFavouritesData.find(
+              (favourite) => favourite.palette_id === id
+            ) ? (
+              <img
+                className="explore-palette__like-button"
+                src={likeIconURL}
+                alt="like icon"
+                onClick={handleLike}
+              />
+            ) : (
+              <img
+                className="explore-palette__like-button"
+                src={likedIconURL}
+                alt="liked icon"
+                onClick={handleRemoveLike}
+              />
+            )}
+          </div>
+        </div>
       </section>
     </>
   );

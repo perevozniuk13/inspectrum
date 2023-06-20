@@ -14,6 +14,9 @@ export default function ExplorePage({
   setSortMaxHue,
   sortMinHue,
   sortMaxHue,
+  userFavouritesData,
+  getPalettesData,
+  getUserFavourites,
 }) {
   let pagesArray = [];
   for (let i = 1; i <= totalPages; i++) {
@@ -106,7 +109,14 @@ export default function ExplorePage({
           }}
         ></div>
       </section>
-      <ExplorePalettes palettesData={palettesData} />
+
+      <ExplorePalettes
+        palettesData={palettesData}
+        userFavouritesData={userFavouritesData}
+        getPalettesData={getPalettesData}
+        getUserFavourites={getUserFavourites}
+      />
+
       <div className="page-buttons">
         {pagesArray.map((page) => {
           return (
@@ -115,7 +125,7 @@ export default function ExplorePage({
               className="page-button"
               onClick={() => {
                 setCurrentPage(page);
-                window.scrollTo(0, 0);
+                window.scrollTo(0, 600);
               }}
             >
               {page}
