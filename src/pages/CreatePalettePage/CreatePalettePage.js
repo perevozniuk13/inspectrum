@@ -158,7 +158,6 @@ export default function CreatePalettePage({ isLoggedIn }) {
           add to my palettes
         </button>
         <form className="add" onSubmit={(e) => handleAddToCollection(e)}>
-          add to collection
           <select className="add-c" name="collections" id="collections">
             {collectionsData.map((col) => {
               return (
@@ -168,7 +167,7 @@ export default function CreatePalettePage({ isLoggedIn }) {
               );
             })}
           </select>
-          <button className="create-palette-buttons__button">
+          <button className="create-palette-buttons__add-collection-button">
             add to collection
           </button>
         </form>

@@ -2,23 +2,54 @@
 @use "../../styles/partials/variables" as *;
 
 .create-palette-buttons {
-  @include flexbox(row, flex-end, center);
+  @include flexbox(row, flex-end, flex-end);
+  margin: 10rem;
 
   &__button {
     text-transform: uppercase;
-    background-color: $primary-background;
+    background-color: black;
     color: $secondary-text-color;
-    border: none;
-    padding: 2rem 3rem;
-    margin: 1rem 2rem;
+    padding: 2rem;
     border-radius: 1rem;
+    margin-right: 2rem;
+    border: none;
+    box-shadow: 8px 13px 18px -3px rgba(0, 0, 0, 0.5);
+    font-size: 2rem;
+    color: white;
+    margin: 2rem 3rem;
+  }
+
+  &__add-collection-button {
+    text-transform: uppercase;
+    background-color: white;
+    color: black;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin-right: 2rem;
+    border: none;
+    box-shadow: 8px 13px 18px -3px rgba(0, 0, 0, 0.5);
+    font-size: 2rem;
+    margin: 2rem 0;
   }
 }
 
 .add {
-  width: 20rem;
+  // width: 20rem;
+  @include flexbox(column, null, null);
+  padding: 2rem;
+  background-color: black;
+  border-radius: 1rem;
 }
 
 .add-c {
-  width: 10rem;
+  font-size: 2rem;
+  text-transform: uppercase;
+  padding: 1rem;
+  border-radius: 1rem;
+  margin-right: 2rem;
+  border: none;
+  background-color: black;
+  box-shadow: 8px 13px 18px -3px rgba(0, 0, 0, 0.5);
+  font-size: 2rem;
+  color: white;
 }

@@ -1,35 +1,36 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
-
 .create-hero {
-    padding: 20rem 1.6rem 2rem;
+  padding: 20rem 5em 2rem;
 
+  &__title {
+    font-size: 4rem;
 
-    &__title {
-        font-size: 4rem;
-
-        @include media-tablet {
-            padding-top: 20rem;
-            width: 70%;
-            font-size: 6rem;
-        }
-
-        @include media-desktop {
-            padding-top: 10rem;
-            width: 50%;
-            font-size: 8rem;
-        }
-
+    @include media-tablet {
+      padding-top: 20rem;
+      width: 70%;
+      font-size: 6rem;
     }
 
-    &__image-palette-button {
-        text-transform: uppercase;
-        background-color: $primary-background;
-        color: $secondary-text-color;
-        border: none;
-        padding: 2rem;
-        margin: 1rem 0;
-        border-radius: 1rem;
+    @include media-desktop {
+      padding-top: 10rem;
+      width: 50%;
+      font-size: 6rem;
     }
+  }
+
+  &__image-palette-button {
+    text-transform: uppercase;
+    background-color: black;
+    color: $secondary-text-color;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin-right: 2rem;
+    border: none;
+    box-shadow: 8px 13px 18px -3px rgba(0, 0, 0, 0.5);
+    font-size: 2rem;
+    color: white;
+    margin: 2rem 0;
+  }
 }

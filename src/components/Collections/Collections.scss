@@ -7,19 +7,23 @@
   &__container {
     padding: 3rem;
     margin: 2rem;
-    border: 1px solid blue;
+    border: 1px solid white;
     border-radius: 4px;
     @include flexbox(column, null, null);
   }
 
   &__add-button {
     text-transform: uppercase;
-    background-color: $primary-background;
+    background-color: black;
     color: $secondary-text-color;
-    border: none;
     padding: 2rem;
-    margin: 1rem 3rem;
     border-radius: 1rem;
+    margin-right: 2rem;
+    border: none;
+    box-shadow: 8px 13px 18px -3px rgba(0, 0, 0, 0.5);
+    font-size: 2rem;
+    color: white;
+    margin: 2rem 4rem;
     align-self: flex-end;
   }
 }

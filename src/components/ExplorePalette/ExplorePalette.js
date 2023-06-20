@@ -55,7 +55,7 @@ export default function ExplorePalette({
           View
         </button>
 
-        {!paletteLiked ? (
+        {/* {!paletteLiked ? (
           <img
             className="explore-palette__like-button"
             src={likeIconURL}
@@ -68,7 +68,7 @@ export default function ExplorePalette({
             src={likedIconURL}
             alt="liked icon"
           />
-        )}
+        )} */}
       </section>
     </>
   );

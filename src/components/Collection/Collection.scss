@@ -2,6 +2,7 @@
 @use "../../styles/partials/variables" as *;
 
 .library-collection {
+  margin: 3rem 0;
   &__name {
     font-size: 3rem;
     font-weight: 600;
@@ -21,5 +22,10 @@
 
   &__delete-palette-button {
     width: 4rem;
+  }
+
+  &__icons-container {
+    @include flexbox(row, space-evenly, null);
+    width: 12rem;
   }
 }

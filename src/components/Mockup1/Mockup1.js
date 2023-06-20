@@ -21,11 +21,11 @@ export default function Mockup1() {
             <h1 className="mockup1-main__heading">
               Lorem ipsum dolor sit amet consectetur, adipisicing elit.
             </h1>
-            <img
+            {/* <img
               className="mockup1-main__hero-image"
               src="https://images.ctfassets.net/lh3zuq09vnm2/2gLKvsmUG0KvHHCNzyJnVy/55480b25e5e66b5a42e6231200bc0789/Website-tracking.png"
               alt=""
-            />
+            /> */}
           </section>
           <section className="mockup1-main__body">
             <h2>Title</h2>

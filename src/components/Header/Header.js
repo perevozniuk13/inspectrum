@@ -26,7 +26,7 @@ export default function Header({ isLoggedIn }) {
       {!isMenuClicked && (
         <nav className="nav">
           <Link to="/" className="nav__logo">
-            LOGO
+            Inspectrum
           </Link>
 
           <div className="nav__tablet-links-container">

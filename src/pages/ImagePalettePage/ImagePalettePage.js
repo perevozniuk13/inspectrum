@@ -211,7 +211,6 @@ export default function ImagePalettePage({ isLoggedIn }) {
                       )
                     }
                   >
-                    add to collection
                     <select
                       className="add-c"
                       name="collections"
@@ -225,7 +224,7 @@ export default function ImagePalettePage({ isLoggedIn }) {
                         );
                       })}
                     </select>
-                    <button className="create-palette-buttons__button">
+                    <button className="create-palette-buttons__add-collection-button">
                       add to collection
                     </button>
                   </form>

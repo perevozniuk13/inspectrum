@@ -2,17 +2,27 @@
 @use "../../styles/partials/variables" as *;
 
 .explore-palette {
-  @include flexbox(column, null, null);
+  @include flexbox(column, space-evenly, center);
+  width: 25rem;
+  height: 35rem;
+  background-color: rgba($color: #252222, $alpha: 5);
+  border: 1px solid #59585c;
+  // box-shadow: 10px 14px 24px 0px rgba(114, 111, 123, 0.5);
+  margin: 1rem;
+  border-radius: 1rem;
 
   &__colours-container {
-    @include flexbox(row, center, null);
-    border: 2px solid black;
+    @include flexbox(column, center, null);
+    width: 20rem;
+    height: 25rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    // box-shadow: 8px 13px 18px -3px rgba(0, 0, 0, 0.5)
   }
 
   &__colour-card {
-    width: 15rem;
-    height: 20rem;
-    border: 1px solid black;
+    width: 100%;
+    height: 25%;
     @include flexbox(row, center, center);
   }
 
@@ -22,13 +32,12 @@
 
   &__view-button {
     text-transform: uppercase;
-    background-color: $primary-background;
-    color: $secondary-text-color;
+    background-color: white;
+    color: black;
     border: none;
-    padding: 2rem 3rem;
+    padding: 1rem 3rem;
     margin: 1rem 4rem;
     border-radius: 1rem;
-    align-self: flex-end;
   }
 
   &__like-button {

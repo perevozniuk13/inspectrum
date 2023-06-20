@@ -4,9 +4,13 @@
 }
 
 .page-button {
-  color: white;
-  background-color: black;
+  color: black;
+  background-color: white;
+  border: none;
   width: 5rem;
   height: 5rem;
   border-radius: 4px;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 1rem;
 }

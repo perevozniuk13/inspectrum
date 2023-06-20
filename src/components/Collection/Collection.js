@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import ReducedPalette from "../ReducedPalette/ReducedPalette";
 import "./Collection.scss";
 import axios from "axios";
-import deleteIconURL from "../../assets/images/delete-icon.svg";
-import editIconURL from "../../assets/images/edit-icon.svg";
+import deleteIconURL from "../../assets/images/icons-delete.png";
+import editIconURL from "../../assets/images/icons-edit.png";
 import crossIconURL from "../../assets/images/cross-icon.png";
-import viewIconURL from "../../assets/images/view-icon.png";
+import viewIconURL from "../../assets/images/icons-view.png";
 import { useNavigate } from "react-router-dom";
 
 export default function Collection({
@@ -112,19 +112,21 @@ export default function Collection({
 
   return (
     <section className="library-collection">
-      <h3 className="library-collection__name">{collectionName}</h3>
-      <img
-        className="library-collection__edit-button"
-        src={editIconURL}
-        alt="edit icon"
-        onClick={handleModal}
-      />
-      <img
-        className="library-collection__delete-button"
-        src={deleteIconURL}
-        alt="delete icon"
-        onClick={handleDeleteCollection}
-      />
+      <div>
+        <h3 className="library-collection__name">{collectionName}</h3>
+        <img
+          className="library-collection__edit-button"
+          src={editIconURL}
+          alt="edit icon"
+          onClick={handleModal}
+        />
+        <img
+          className="library-collection__delete-button"
+          src={deleteIconURL}
+          alt="delete icon"
+          onClick={handleDeleteCollection}
+        />
+      </div>
       <div className="library-collection__palettes-container">
         {collectionPalettesData.map((palette) => {
           return (
@@ -135,20 +137,22 @@ export default function Collection({
                 colour3={palette.colour3}
                 colour4={palette.colour4}
               />
-              <img
-                className="library-collection__delete-palette-button"
-                src={deleteIconURL}
-                alt="delete icon"
-                onClick={() => handleDeleteCollectionPalette(palette.id)}
-              />
-              <img
-                className="library-collection__delete-palette-button"
-                src={viewIconURL}
-                alt="view icon"
-                onClick={() =>
-                  navigate(`/palettes/${palette.id}`, { state: "user" })
-                }
-              />
+              <div className="library-collection__icons-container">
+                <img
+                  className="library-collection__delete-palette-button"
+                  src={deleteIconURL}
+                  alt="delete icon"
+                  onClick={() => handleDeleteCollectionPalette(palette.id)}
+                />
+                <img
+                  className="library-collection__delete-palette-button"
+                  src={viewIconURL}
+                  alt="view icon"
+                  onClick={() =>
+                    navigate(`/palettes/${palette.id}`, { state: "user" })
+                  }
+                />
+              </div>
             </div>
           );
         })}

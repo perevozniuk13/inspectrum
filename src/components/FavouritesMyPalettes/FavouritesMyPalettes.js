@@ -1,6 +1,6 @@
 import ReducedPalette from "../ReducedPalette/ReducedPalette";
-import deleteIcon from "../../assets/images/delete-icon.svg";
-import viewIconURL from "../../assets/images/view-icon.png";
+import deleteIcon from "../../assets/images/icons-delete.png";
+import viewIconURL from "../../assets/images/icons-view.png";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 

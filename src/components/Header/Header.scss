@@ -2,82 +2,79 @@
 @use "../../styles/partials/variables" as *;
 
 .nav {
-    position: relative;
-    @include flexbox(row, space-between, center);
+  position: relative;
+  @include flexbox(row, space-between, center);
 
-    &__logo {
-        font-size: 5rem;
-        padding: 2rem 1rem;
-        text-decoration: none;
-        display: inline-block;
-        color: $secondary-text-color;
+  &__logo {
+    font-size: 7rem;
+    padding: 3rem 3rem;
+    text-decoration: none;
+    display: inline-block;
+    color: $secondary-text-color;
+  }
 
+  &__tablet-links-container {
+    display: none;
+
+    @include media-tablet {
+      display: flex;
     }
+  }
 
-    &__tablet-links-container {
-        display: none;
+  &__link {
+    text-decoration: none;
+    background-color: black;
+    color: $secondary-text-color;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin-right: 2rem;
+    box-shadow: 8px 13px 18px -3px rgba(0, 0, 0, 0.5);
+    font-size: 2rem;
+    color: white;
+  }
 
-        @include media-tablet {
-            display: flex;
-        }
+  &__menu-icon {
+    width: 5rem;
+    position: absolute;
+    top: 2.5rem;
+    right: 1rem;
 
+    @include media-tablet {
+      display: none;
     }
-
-    &__link {
-        text-decoration: none;
-        background-color: black;
-        color: $secondary-text-color;
-        padding: 2rem;
-        border-radius: 1rem;
-        margin-right: 2rem;
-    }
-
-    &__menu-icon {
-        width: 5rem;
-        position: absolute;
-        top: 2.5rem;
-        right: 1rem;
-
-        @include media-tablet {
-            display: none;
-        }
-
-    }
+  }
 }
 
 .menu-nav {
-    position: relative;
-    @include flexbox(column, null, null);
+  position: relative;
+  @include flexbox(column, null, null);
 
-    &__logo {
-        color: $secondary-text-color;
-        text-decoration: none;
-        padding: 2rem;
-        font-size: 5rem;
+  &__logo {
+    color: $secondary-text-color;
+    text-decoration: none;
+    padding: 2rem;
+    font-size: 5rem;
+  }
 
-    }
+  &__links-container {
+    @include flexbox(column, null, center);
+  }
 
-    &__links-container {
-        @include flexbox(column, null, center);
+  &__link {
+    text-decoration: none;
+    color: $secondary-text-color;
+    font-size: $font-size-mobile;
+    padding: 2rem;
+    background-color: black;
+    width: 15rem;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
 
-    }
-
-    &__link {
-        text-decoration: none;
-        color: $secondary-text-color;
-        font-size: $font-size-mobile;
-        padding: 2rem;
-        background-color: black;
-        width: 15rem;
-        text-align: center;
-        margin-bottom: 1rem;
-
-    }
-
-    &__menu-icon {
-        width: 5rem;
-        position: absolute;
-        top: 2.5rem;
-        right: 1rem;
-    }
+  &__menu-icon {
+    width: 5rem;
+    position: absolute;
+    top: 2.5rem;
+    right: 1rem;
+  }
 }

@@ -39,14 +39,10 @@ export default function CreateColourPalette({
     }
   }, []);
 
-  const addBorder1 =
-    selectedCard === "colour1" ? "2px solid red" : "1px solid black";
-  const addBorder2 =
-    selectedCard === "colour2" ? "2px solid red" : "1px solid black";
-  const addBorder3 =
-    selectedCard === "colour3" ? "2px solid red" : "1px solid black";
-  const addBorder4 =
-    selectedCard === "colour4" ? "2px solid red" : "1px solid black";
+  const addBorder1 = selectedCard === "colour1" ? "2px solid white" : "";
+  const addBorder2 = selectedCard === "colour2" ? "2px solid white" : "";
+  const addBorder3 = selectedCard === "colour3" ? "2px solid white" : "";
+  const addBorder4 = selectedCard === "colour4" ? "2px solid white" : "";
 
   return (
     <>

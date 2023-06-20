@@ -20,6 +20,18 @@ export default function Mockups() {
           fullscreen
         </button>
       </div>
+      <div className="mockups-section__mockup1-container">
+        <iframe
+          className="mockups-section__mockup1"
+          src="http://localhost:3000/mockup1"
+        ></iframe>
+        <button
+          onClick={() => navigate("/mockup1")}
+          className="mockups-section__button"
+        >
+          fullscreen
+        </button>
+      </div>
     </section>
   );
 }

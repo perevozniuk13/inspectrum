@@ -4,7 +4,7 @@
 .user-info {
   font-size: 2rem;
   padding: 2rem;
-  border: 1px solid blue;
+  border: 1px solid white;
   margin: 10rem 2rem;
 }
 
@@ -12,7 +12,7 @@
   margin: 10rem 2rem;
   padding: 2rem;
   font-size: 2rem;
-  border: 1px solid blue;
+  border: 1px solid white;
 
   &__nav {
     list-style: none;
@@ -24,8 +24,8 @@
     font-size: 4rem;
 
     &--selected {
-      background-color: blue;
-      color: white;
+      background-color: white;
+      color: black;
       border-radius: 4px;
     }
   }
