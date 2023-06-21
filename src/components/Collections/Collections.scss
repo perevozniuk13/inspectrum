@@ -26,6 +26,28 @@
     margin: 2rem 4rem;
     align-self: flex-end;
   }
+
+  &__searchbar-container {
+    width: 30%;
+    height: 8rem;
+    margin: 4rem 2rem;
+    position: relative;
+  }
+
+  &__searchbar {
+    padding: 2rem;
+    width: 100%;
+    height: 100%;
+    border-radius: 2rem;
+    font-size: 3rem;
+  }
+
+  &__searchbar-icon {
+    width: 5rem;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+  }
 }
 
 .modal {

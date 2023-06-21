@@ -15,6 +15,8 @@ export default function UserPage({
   const [librarySection, setLibrarySection] = useState("collections");
   const [userPalettesData, setUserPalettesData] = useState(null);
   const [collectionsData, setCollectionsData] = useState(null);
+  const [favouritesData, setFavouritesData] = useState(null);
+
   const [userData, setUserData] = useState(null);
   const authToken = sessionStorage.getItem("authToken");
 
@@ -29,6 +31,22 @@ export default function UserPage({
         }
       );
       setUserData(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const getFavourites = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_SERVER_URL}/users/favourites`,
+        {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+        }
+      );
+      setFavouritesData(response.data);
     } catch (err) {
       console.log(err);
     }
@@ -70,15 +88,10 @@ export default function UserPage({
     getUserData();
     getCollectionsData();
     getUserPalettes();
-    getUserFavourites();
+    getFavourites();
   }, []);
 
-  if (
-    !userPalettesData ||
-    !userFavouritesData ||
-    !collectionsData ||
-    !userData
-  ) {
+  if (!userPalettesData || !favouritesData || !collectionsData || !userData) {
     return <p>Loading...</p>;
   }
 
@@ -151,9 +164,9 @@ export default function UserPage({
         )}
         {librarySection === "favourites" && (
           <FavouritesMyPalettes
-            data={userFavouritesData}
+            data={favouritesData}
             librarySection={librarySection}
-            getData={getUserFavourites}
+            getData={getFavourites}
           />
         )}
       </section>

@@ -4,18 +4,40 @@ import "./Collections.scss";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import crossIconURL from "../../assets/images/cross-icon.png";
+import searchIconURL from "../../assets/images/icons8-search-32.png";
 
 export default function Collections({ collectionsData, getCollectionsData }) {
   const authToken = sessionStorage.getItem("authToken");
   const [modalState, setModalState] = useState(false);
-  const [createCollectionError, setCreateCollectionError] = useState("");
 
+  const [createCollectionError, setCreateCollectionError] = useState("");
+  const [data, setData] = useState([...collectionsData]);
+  console.log(collectionsData);
+  console.log(data);
   const handleModal = async (event) => {
     await setModalState(true);
   };
 
   const handleCancel = async (event) => {
     await setModalState(false);
+  };
+
+  const searchCollectionsData = async (e) => {
+    const searchBy = e.target.value;
+    console.log(searchBy);
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_SERVER_URL}/users/collections?search_by=${searchBy}`,
+        {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+        }
+      );
+      setData(response.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleAddNewCollection = async (e) => {
@@ -45,10 +67,29 @@ export default function Collections({ collectionsData, getCollectionsData }) {
     }
   };
 
+  useEffect(() => {
+    getCollectionsData();
+  }, []);
+
   return (
     <div className="library-collections">
+      <section className="library-collections__searchbar-container">
+        <input
+          type="text"
+          id="search"
+          name="search"
+          className="library-collections__searchbar"
+          placeholder="Search collections..."
+          onChange={(e) => searchCollectionsData(e)}
+        />
+        <img
+          className="library-collections__searchbar-icon"
+          src={searchIconURL}
+          alt="search icon"
+        />
+      </section>
       <section className="library-collections__container">
-        {collectionsData.map((collection) => {
+        {data.map((collection) => {
           return (
             <Collection
               handleModal={handleModal}
