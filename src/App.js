@@ -13,6 +13,7 @@ import "./App.scss";
 import axios from "axios";
 import Footer from "./components/Footer/Footer";
 import Mockup1 from "./components/Mockup1/Mockup1";
+import FavouritesMyPalettes from "./components/FavouritesMyPalettes/FavouritesMyPalettes";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -62,8 +63,8 @@ const App = () => {
   useEffect(() => {
     if (sessionStorage.getItem("authToken")) {
       setIsLoggedIn(true);
+      getUserFavourites();
     }
-    getUserFavourites();
   }, []);
 
   if (!palettesData) {

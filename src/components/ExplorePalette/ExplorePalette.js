@@ -104,22 +104,35 @@ export default function ExplorePalette({
           <div className="explore-palette__likes-container">
             <p className="explore-palette__likes-count">{likes}</p>
 
-            {!userFavouritesData.find(
-              (favourite) => favourite.palette_id === id
-            ) ? (
-              <img
-                className="explore-palette__like-button"
-                src={likeIconURL}
-                alt="like icon"
-                onClick={handleLike}
-              />
+            {sessionStorage.getItem("authToken") ? (
+              <section>
+                {!userFavouritesData.find(
+                  (favourite) => favourite.palette_id === id
+                ) ? (
+                  <img
+                    className="explore-palette__like-button"
+                    src={likeIconURL}
+                    alt="like icon"
+                    onClick={handleLike}
+                  />
+                ) : (
+                  <img
+                    className="explore-palette__like-button"
+                    src={likedIconURL}
+                    alt="liked icon"
+                    onClick={handleRemoveLike}
+                  />
+                )}{" "}
+              </section>
             ) : (
-              <img
-                className="explore-palette__like-button"
-                src={likedIconURL}
-                alt="liked icon"
-                onClick={handleRemoveLike}
-              />
+              <section>
+                <img
+                  className="explore-palette__like-button"
+                  src={likedIconURL}
+                  alt="liked icon"
+                  onClick={() => navigate("/login")}
+                />
+              </section>
             )}
           </div>
         </div>

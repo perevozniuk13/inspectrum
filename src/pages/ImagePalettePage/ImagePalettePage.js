@@ -43,6 +43,10 @@ export default function ImagePalettePage({ isLoggedIn }) {
   ) => {
     e.preventDefault();
 
+    if (!authToken) {
+      return navigate("/login");
+    }
+
     try {
       const addedPletteId = await axios.post(
         `${process.env.REACT_APP_SERVER_URL}/users/palettes/`,
@@ -85,7 +89,9 @@ export default function ImagePalettePage({ isLoggedIn }) {
   };
 
   const handleAddToPalettes = async (colour1, colour2, colour3, colour4) => {
-    const authToken = sessionStorage.getItem("authToken");
+    if (!authToken) {
+      return navigate("/login");
+    }
 
     try {
       const response = await axios.post(
@@ -114,8 +120,14 @@ export default function ImagePalettePage({ isLoggedIn }) {
   };
 
   useEffect(() => {
-    getCollectionsData();
+    if (authToken) {
+      getCollectionsData();
+    }
   }, []);
+
+  if (authToken && !collectionsData) {
+    return <p>Loading...</p>;
+  }
 
   const placeholderImgURL = localStorage.getItem("placeholderImg")
     ? localStorage.getItem("placeholderImg")
@@ -220,19 +232,21 @@ export default function ImagePalettePage({ isLoggedIn }) {
                       )
                     }
                   >
-                    <select
-                      className="add-c"
-                      name="collections"
-                      id="collections"
-                    >
-                      {collectionsData.map((col) => {
-                        return (
-                          <option key={uuidv4()} value={col.collection_name}>
-                            {col.collection_name}
-                          </option>
-                        );
-                      })}
-                    </select>
+                    {authToken && (
+                      <select
+                        className="add-c"
+                        name="collections"
+                        id="collections"
+                      >
+                        {collectionsData.map((col) => {
+                          return (
+                            <option key={uuidv4()} value={col.collection_name}>
+                              {col.collection_name}
+                            </option>
+                          );
+                        })}
+                      </select>
+                    )}
                     <button className="create-palette-buttons__add-collection-button">
                       add to collection
                     </button>

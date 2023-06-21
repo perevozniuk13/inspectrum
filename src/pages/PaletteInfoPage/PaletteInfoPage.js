@@ -36,7 +36,9 @@ export default function PaletteInfoPage({ palettesData, isLoggedIn }) {
   };
 
   const handleAddToFavourites = async () => {
-    const authToken = sessionStorage.getItem("authToken");
+    if (!authToken) {
+      return navigate("/login");
+    }
 
     try {
       const response = await axios.post(
@@ -57,6 +59,10 @@ export default function PaletteInfoPage({ palettesData, isLoggedIn }) {
 
   const handleAddToCollection = async (e) => {
     e.preventDefault();
+
+    if (!authToken) {
+      return navigate("/login");
+    }
 
     try {
       const response = await axios.post(
@@ -82,10 +88,12 @@ export default function PaletteInfoPage({ palettesData, isLoggedIn }) {
   };
 
   useEffect(() => {
-    getCollectionsData();
+    if (isLoggedIn) {
+      getCollectionsData();
+    }
   }, []);
 
-  if (!collectionsData) {
+  if (isLoggedIn && !collectionsData) {
     return <p>Loading...</p>;
   }
 
@@ -181,16 +189,17 @@ export default function PaletteInfoPage({ palettesData, isLoggedIn }) {
             add to favourites
           </button>
           <form className="add" onSubmit={(e) => handleAddToCollection(e)}>
-            add to collection
-            <select className="add-c" name="collections" id="collections">
-              {collectionsData.map((col) => {
-                return (
-                  <option value={col.collection_name}>
-                    {col.collection_name}
-                  </option>
-                );
-              })}
-            </select>
+            {isLoggedIn && (
+              <select className="add-c" name="collections" id="collections">
+                {collectionsData.map((col) => {
+                  return (
+                    <option value={col.collection_name}>
+                      {col.collection_name}
+                    </option>
+                  );
+                })}
+              </select>
+            )}
             <button className="palette-info-buttons__button">
               add to collection
             </button>

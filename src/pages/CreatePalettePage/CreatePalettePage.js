@@ -41,6 +41,10 @@ export default function CreatePalettePage({ isLoggedIn }) {
   const handleAddToCollection = async (e) => {
     e.preventDefault();
 
+    if (!authToken) {
+      return navigate("/login");
+    }
+
     try {
       const addedPletteId = await axios.post(
         `${process.env.REACT_APP_SERVER_URL}/users/palettes/`,
@@ -83,7 +87,9 @@ export default function CreatePalettePage({ isLoggedIn }) {
   };
 
   const handleAddToPalettes = async () => {
-    const authToken = sessionStorage.getItem("authToken");
+    if (!authToken) {
+      return navigate("/login");
+    }
 
     try {
       const response = await axios.post(
@@ -127,14 +133,16 @@ export default function CreatePalettePage({ isLoggedIn }) {
   };
 
   useEffect(() => {
-    getCollectionsData();
+    if (authToken) {
+      getCollectionsData();
+    }
   }, []);
 
   useEffect(() => {
     setColourToCard();
   }, [pickedColour]);
 
-  if (!collectionsData) {
+  if (authToken && !collectionsData) {
     return <p>Loading...</p>;
   }
 
@@ -167,15 +175,17 @@ export default function CreatePalettePage({ isLoggedIn }) {
           add to my palettes
         </button>
         <form className="add" onSubmit={(e) => handleAddToCollection(e)}>
-          <select className="add-c" name="collections" id="collections">
-            {collectionsData.map((col) => {
-              return (
-                <option key={col.id} value={col.collection_name}>
-                  {col.collection_name}
-                </option>
-              );
-            })}
-          </select>
+          {authToken && (
+            <select className="add-c" name="collections" id="collections">
+              {collectionsData.map((col) => {
+                return (
+                  <option key={col.id} value={col.collection_name}>
+                    {col.collection_name}
+                  </option>
+                );
+              })}
+            </select>
+          )}
           <button className="create-palette-buttons__add-collection-button">
             add to collection
           </button>
