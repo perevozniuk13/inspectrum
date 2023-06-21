@@ -23,13 +23,16 @@ const App = () => {
   const [totalPages, setTotalPages] = useState(null);
   const [sortMinHue, setSortMinHue] = useState(null);
   const [sortMaxHue, setSortMaxHue] = useState(null);
+  const [sortBy, setSortBy] = useState({ sort_by: null, order_by: null });
 
   const authToken = sessionStorage.getItem("authToken");
+  console.log("sortby", sortBy);
 
   const getPalettesData = async () => {
+    console.log("get");
     try {
       const receivedPalettesData = await axios.get(
-        `${process.env.REACT_APP_SERVER_URL}/palettes?page=${currentPage}&&min_hue=${sortMinHue}&&max_hue=${sortMaxHue}`
+        `${process.env.REACT_APP_SERVER_URL}/palettes?page=${currentPage}&&min_hue=${sortMinHue}&&max_hue=${sortMaxHue}&&sort_by=${sortBy.sort_by}&&order_by=${sortBy.order_by}`
       );
       setPalettesData([...receivedPalettesData.data].slice(0, -1));
       setTotalPages(
@@ -58,7 +61,7 @@ const App = () => {
 
   useEffect(() => {
     getPalettesData();
-  }, [currentPage, sortMinHue]);
+  }, [currentPage, sortMinHue, sortBy]);
 
   useEffect(() => {
     if (sessionStorage.getItem("authToken")) {
@@ -86,6 +89,7 @@ const App = () => {
                 setCurrentPage={setCurrentPage}
                 sortMinHue={sortMinHue}
                 sortMaxHue={sortMaxHue}
+                setSortBy={setSortBy}
                 setSortMinHue={setSortMinHue}
                 setSortMaxHue={setSortMaxHue}
                 userFavouritesData={userFavouritesData}

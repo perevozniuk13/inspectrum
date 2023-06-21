@@ -14,6 +14,7 @@ export default function ExplorePage({
   setSortMaxHue,
   sortMinHue,
   sortMaxHue,
+  setSortBy,
   userFavouritesData,
   getPalettesData,
   getUserFavourites,
@@ -109,6 +110,24 @@ export default function ExplorePage({
           }}
         ></div>
       </section>
+
+      <select
+        className="select-sort"
+        name="sort"
+        id="sort"
+        onChange={async (e) => {
+          await setSortBy({
+            sort_by: e.target.value.split("-")[0],
+            order_by: e.target.value.split("-")[1],
+          });
+        }}
+      >
+        <option value={""}>-- Sort By --</option>
+        <option value="likes-asc">Likes --ascending</option>
+        <option value="likes-desc">Likes --descending</option>
+        <option value="created_at-desc">Date added --most recent</option>
+        <option value="created_at-asc">Date added --least recent</option>
+      </select>
 
       <ExplorePalettes
         palettesData={palettesData}
