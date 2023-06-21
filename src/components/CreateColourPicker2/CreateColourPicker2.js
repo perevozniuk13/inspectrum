@@ -6,6 +6,7 @@ import convert from "color-convert";
 export default function CreateColourPicker2({ setPickedColour }) {
   const ref = React.useRef();
   const [color, setColor] = useState("#ff0000");
+  const [inputHex, setInputHex] = useState("");
 
   const arr = ["#8B0000", "#1E90FF", "#FF8C00", "#800080"];
 
@@ -15,6 +16,7 @@ export default function CreateColourPicker2({ setPickedColour }) {
 
   const onColorChange = (event) => {
     setColor(event.target.value);
+    setInputHex(event.target.value);
   };
 
   useLayoutEffect(() => {
@@ -22,17 +24,29 @@ export default function CreateColourPicker2({ setPickedColour }) {
   }, [ref]);
 
   const handleAddColour = async () => {
-    console.log("color", color);
+    setInputHex("");
     await setPickedColour(color);
   };
 
   return (
     <section>
       <div className="App">
-        <slider-color-picker
-          ref={ref}
-          onChange={onColorChange}
-        ></slider-color-picker>
+        <section className="left-container">
+          <slider-color-picker
+            ref={ref}
+            onChange={onColorChange}
+          ></slider-color-picker>
+          <div className="input-hex">
+            Or paste your colour:
+            <input
+              className="input-hex__input"
+              type="text"
+              placeholder="#ffffff"
+              onChange={onColorChange}
+              value={inputHex}
+            />
+          </div>
+        </section>
         <div className="container">
           <div className="preview" style={{ background: color }}></div>
           <button onClick={handleAddColour} className="button">
