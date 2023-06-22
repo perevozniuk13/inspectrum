@@ -8,16 +8,14 @@ import { useState, useEffect } from "react";
 
 export default function PaletteInfoPage({ palettesData, isLoggedIn }) {
   const { paletteId } = useParams();
-  const palette = palettesData.find((p) => p.id == paletteId);
-  localStorage.setItem("colour1", palette.colour1);
-  localStorage.setItem("colour2", palette.colour2);
-  localStorage.setItem("colour3", palette.colour3);
-  localStorage.setItem("colour4", palette.colour4);
+  const [data, setData] = useState(null);
 
   const [collectionsData, setCollectionsData] = useState(null);
   const authToken = sessionStorage.getItem("authToken");
   const navigate = useNavigate();
   const location = useLocation();
+
+  console.log(location.state);
 
   const getCollectionsData = async () => {
     try {
@@ -32,6 +30,23 @@ export default function PaletteInfoPage({ palettesData, isLoggedIn }) {
       setCollectionsData(response.data);
     } catch (error) {
       console.log(error);
+    }
+  };
+
+  const getUserPalettes = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_SERVER_URL}/users/palettes`,
+        {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+        }
+      );
+      console.log(response.data, "resp");
+      setData(response.data);
+    } catch (err) {
+      console.log(err);
     }
   };
 
@@ -88,14 +103,30 @@ export default function PaletteInfoPage({ palettesData, isLoggedIn }) {
   };
 
   useEffect(() => {
-    if (isLoggedIn) {
+    if (isLoggedIn && location.state === "explore") {
+      setData(palettesData);
       getCollectionsData();
+    } else if (location.state == "user") {
+      console.log("get");
+      getUserPalettes();
+    } else {
+      setData(palettesData);
     }
   }, []);
 
-  if (isLoggedIn && !collectionsData) {
+  if (!data) {
     return <p>Loading...</p>;
   }
+
+  if (isLoggedIn && !collectionsData && location.state === "explore") {
+    return <p>Loading...</p>;
+  }
+
+  const palette = data.find((p) => p.id == paletteId);
+  localStorage.setItem("colour1", palette.colour1);
+  localStorage.setItem("colour2", palette.colour2);
+  localStorage.setItem("colour3", palette.colour3);
+  localStorage.setItem("colour4", palette.colour4);
 
   return (
     <>

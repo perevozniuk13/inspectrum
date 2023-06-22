@@ -11,6 +11,7 @@ export default function FavouritesMyPalettes({
 }) {
   const navigate = useNavigate();
   const authToken = sessionStorage.getItem("authToken");
+  console.log("data", data);
 
   const handleDeletePalette = async (favouriteId) => {
     try {
@@ -79,7 +80,7 @@ export default function FavouritesMyPalettes({
                         }`,
                         { state: "user" }
                       )
-                    : navigate(`/palettes/${palette.id}`);
+                    : navigate(`/palettes/${palette.id}`, { state: "user" });
                 }}
               />
             </div>

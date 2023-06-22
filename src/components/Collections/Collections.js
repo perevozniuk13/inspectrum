@@ -9,11 +9,9 @@ import searchIconURL from "../../assets/images/icons8-search-32.png";
 export default function Collections({ collectionsData, getCollectionsData }) {
   const authToken = sessionStorage.getItem("authToken");
   const [modalState, setModalState] = useState(false);
-
   const [createCollectionError, setCreateCollectionError] = useState("");
   const [data, setData] = useState([...collectionsData]);
-  console.log(collectionsData);
-  console.log(data);
+  console.log("data", data);
   const handleModal = async (event) => {
     await setModalState(true);
   };
@@ -60,7 +58,8 @@ export default function Collections({ collectionsData, getCollectionsData }) {
           },
         }
       );
-      getCollectionsData();
+
+      await getCollectionsData();
       setModalState(false);
     } catch (error) {
       console.log(error);

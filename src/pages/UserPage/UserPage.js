@@ -152,6 +152,7 @@ export default function UserPage({
         {librarySection === "collections" && (
           <Collections
             collectionsData={collectionsData}
+            setCollectionsData={setCollectionsData}
             getCollectionsData={getCollectionsData}
           />
         )}
