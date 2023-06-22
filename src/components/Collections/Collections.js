@@ -88,6 +88,9 @@ export default function Collections({
         />
       </section>
       <section className="library-collections__container">
+        {!collectionsData.length && (
+          <p>You don't have any collections yet...</p>
+        )}
         {collectionsData.map((collection) => {
           return (
             <Collection

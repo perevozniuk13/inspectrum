@@ -36,17 +36,16 @@ export default function PaletteInfoPage({
     }
   };
 
-  const getUserPalettes = async () => {
+  const getPalettes = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_SERVER_URL}/users/palettes`,
+        `${process.env.REACT_APP_SERVER_URL}/palettes/all`,
         {
           headers: {
             Authorization: `Bearer ${authToken}`,
           },
         }
       );
-      console.log(response.data, "resp");
       setData(response.data);
     } catch (err) {
       console.log(err);
@@ -110,18 +109,18 @@ export default function PaletteInfoPage({
       setData(palettesData);
       getCollectionsData();
     } else if (location.state == "user") {
-      console.log("get");
-      getUserPalettes();
+      getPalettes();
+      getCollectionsData();
     } else {
       setData(palettesData);
     }
   }, []);
 
-  if (!data) {
+  if (location.state === "user" && !data) {
     return <p>Loading...</p>;
   }
 
-  if (isLoggedIn && !collectionsData && location.state === "explore") {
+  if (isLoggedIn && !collectionsData) {
     return <p>Loading...</p>;
   }
 
@@ -233,15 +232,35 @@ export default function PaletteInfoPage({
           <form className="add" onSubmit={(e) => handleAddToCollection(e)}>
             {isLoggedIn && (
               <select className="add-c" name="collections" id="collections">
+                <option value="">-- Select collection --</option>
                 {collectionsData.map((col) => {
                   return (
-                    <option value={col.collection_name}>
+                    <option key={col.id} value={col.collection_name}>
                       {col.collection_name}
                     </option>
                   );
                 })}
               </select>
             )}
+            <button className="palette-info-buttons__button">
+              add to collection
+            </button>
+          </form>
+        </section>
+      )}
+      {location.state === "user" && (
+        <section className="palette-info-buttons">
+          <form className="add" onSubmit={(e) => handleAddToCollection(e)}>
+            <select className="add-c" name="collections" id="collections">
+              <option value="">-- Select collection --</option>
+              {collectionsData.map((col) => {
+                return (
+                  <option key={col.id} value={col.collection_name}>
+                    {col.collection_name}
+                  </option>
+                );
+              })}
+            </select>
             <button className="palette-info-buttons__button">
               add to collection
             </button>

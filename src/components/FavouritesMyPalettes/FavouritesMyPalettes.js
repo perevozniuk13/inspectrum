@@ -49,8 +49,8 @@ export default function FavouritesMyPalettes({
 
   return (
     <>
-      {" "}
       <section className="user-library__palettes">
+        {!data.length && <p>You don't have any {librarySection} yet...</p>}
         {data.map((palette) => {
           return (
             <div key={palette.id}>
@@ -72,13 +72,9 @@ export default function FavouritesMyPalettes({
                 alt="view icon"
                 onClick={() => {
                   librarySection === "favourites"
-                    ? navigate(
-                        `/palettes/${
-                          data.find((favourite) => favourite.id === palette.id)
-                            .palette_id
-                        }`,
-                        { state: "user" }
-                      )
+                    ? navigate(`/palettes/${palette.palette_id}`, {
+                        state: "user",
+                      })
                     : navigate(`/palettes/${palette.id}`, { state: "user" });
                 }}
               />
