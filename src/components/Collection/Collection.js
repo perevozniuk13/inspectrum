@@ -12,6 +12,7 @@ export default function Collection({
   collectionId,
   collectionName,
   getCollectionsData,
+  search,
 }) {
   const [collectionPalettesData, setCollectionPalettesData] = useState(null);
   const authToken = sessionStorage.getItem("authToken");
@@ -95,6 +96,7 @@ export default function Collection({
           },
         }
       );
+
       getCollectionsData();
       setModalState(false);
     } catch (error) {

@@ -6,12 +6,14 @@ import { useParams } from "react-router-dom";
 import crossIconURL from "../../assets/images/cross-icon.png";
 import searchIconURL from "../../assets/images/icons8-search-32.png";
 
-export default function Collections({ collectionsData, getCollectionsData }) {
+export default function Collections({
+  collectionsData,
+  getCollectionsData,
+  setCollectionsData,
+}) {
   const authToken = sessionStorage.getItem("authToken");
   const [modalState, setModalState] = useState(false);
   const [createCollectionError, setCreateCollectionError] = useState("");
-  const [data, setData] = useState([...collectionsData]);
-  console.log("data", data);
   const handleModal = async (event) => {
     await setModalState(true);
   };
@@ -20,19 +22,17 @@ export default function Collections({ collectionsData, getCollectionsData }) {
     await setModalState(false);
   };
 
-  const searchCollectionsData = async (e) => {
-    const searchBy = e.target.value;
-    console.log(searchBy);
+  const searchCollectionsData = async (search_by) => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_SERVER_URL}/users/collections?search_by=${searchBy}`,
+        `${process.env.REACT_APP_SERVER_URL}/users/collections?search_by=${search_by}`,
         {
           headers: {
             Authorization: `Bearer ${authToken}`,
           },
         }
       );
-      setData(response.data);
+      setCollectionsData(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -79,7 +79,7 @@ export default function Collections({ collectionsData, getCollectionsData }) {
           name="search"
           className="library-collections__searchbar"
           placeholder="Search collections..."
-          onChange={(e) => searchCollectionsData(e)}
+          onChange={(e) => searchCollectionsData(e.target.value)}
         />
         <img
           className="library-collections__searchbar-icon"
@@ -88,7 +88,7 @@ export default function Collections({ collectionsData, getCollectionsData }) {
         />
       </section>
       <section className="library-collections__container">
-        {data.map((collection) => {
+        {collectionsData.map((collection) => {
           return (
             <Collection
               handleModal={handleModal}
