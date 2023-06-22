@@ -79,7 +79,6 @@ export default function Collection({
 
   const handleEditCollectionPalette = async (e) => {
     e.preventDefault();
-    // const newCollectionName = e.target.collectionName.value;
     if (!newCollectionName || newCollectionName.length < 3) {
       setEditCollectionError(
         "Collection name must be at least 3 characters long!"

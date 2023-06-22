@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import "./CreateColourPalette.scss";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function CreateColourPalette({
   colour1,
@@ -14,9 +14,13 @@ export default function CreateColourPalette({
   setSelectedCard,
   selectedCard,
 }) {
-  const navigate = useNavigate();
+  const [coloursError, setColoursError] = useState("");
 
   const handleSavingColours = () => {
+    if (!colour1 || !colour2 || !colour3 || !colour4) {
+      setColoursError("Please, provide all 4 colours to the palette!");
+      return;
+    }
     localStorage.setItem("colour1", colour1);
     localStorage.setItem("colour2", colour2);
     localStorage.setItem("colour3", colour3);
@@ -77,9 +81,8 @@ export default function CreateColourPalette({
             <p className="create-palette__colour">{colour4}</p>
           </div>
         </div>
-
+        {coloursError && <p className="colours-error">{coloursError}</p>}
         <button
-          //   onClick={() => navigate("/palettes/:paletteId")}
           onClick={handleSavingColours}
           className="create-palette__view-button"
         >
