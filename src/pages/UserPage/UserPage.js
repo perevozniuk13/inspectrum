@@ -19,7 +19,6 @@ export default function UserPage({
   const [favouritesData, setFavouritesData] = useState(null);
 
   const authToken = sessionStorage.getItem("authToken");
-
   const getFavourites = async () => {
     try {
       const response = await axios.get(
@@ -74,17 +73,13 @@ export default function UserPage({
     getFavourites();
   }, []);
 
-  console.log("u", userPalettesData);
-  console.log("f", favouritesData);
-  console.log("c", collectionsData);
-
   if (!userPalettesData || !favouritesData || !collectionsData) {
     return <p>Loading...</p>;
   }
 
   return (
     <>
-      <Header isLoggedIn={isLoggedIn} />
+      <Header isLoggedIn={isLoggedIn} userData={userData} />
 
       <section className="user-info">
         <p className="user-info__username">User: {userData.username}</p>

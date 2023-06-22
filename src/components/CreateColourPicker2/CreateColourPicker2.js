@@ -1,18 +1,15 @@
 import React, { useState, useLayoutEffect } from "react";
 import "slider-color-picker";
 import "./CreateColourPicker2.scss";
-import convert from "color-convert";
 
-export default function CreateColourPicker2({ setPickedColour }) {
+export default function CreateColourPicker2({
+  setPickedColour,
+  setSelectedCard,
+  selectedCard,
+}) {
   const ref = React.useRef();
   const [color, setColor] = useState("#ff0000");
   const [inputHex, setInputHex] = useState("");
-
-  const arr = ["#8B0000", "#1E90FF", "#FF8C00", "#800080"];
-
-  arr.forEach((col) => {
-    console.log(convert.hex.hsv(col)[0]);
-  });
 
   const onColorChange = (event) => {
     setColor(event.target.value);
@@ -26,6 +23,14 @@ export default function CreateColourPicker2({ setPickedColour }) {
   const handleAddColour = async () => {
     setInputHex("");
     await setPickedColour(color);
+    localStorage.setItem(selectedCard, color);
+    for (let i = 1; i <= 4; i++) {
+      if (!localStorage.getItem(`colour${i}`)) {
+        console.log(`colour${i}`);
+        setSelectedCard(`colour${i}`);
+        break;
+      }
+    }
   };
 
   return (

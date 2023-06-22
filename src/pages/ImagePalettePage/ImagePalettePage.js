@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import convert from "color-convert";
 
-export default function ImagePalettePage({ isLoggedIn }) {
+export default function ImagePalettePage({ isLoggedIn, userData }) {
   const [uploadedImage, setUploadedImage] = useState("");
   const navigate = useNavigate();
   const [collectionsData, setCollectionsData] = useState(null);
@@ -135,7 +135,7 @@ export default function ImagePalettePage({ isLoggedIn }) {
 
   return (
     <>
-      <Header isLoggedIn={isLoggedIn} />
+      <Header isLoggedIn={isLoggedIn} userData={userData} />
       <form className="image-palette-form">
         <label className="image-palette-form__label" htmlFor="paletteImage">
           Upload your image to get a palette

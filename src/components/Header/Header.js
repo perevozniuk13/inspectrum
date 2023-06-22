@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import menuIconURL from "../../assets/images/menu.svg";
 import { useState } from "react";
 
-export default function Header({ isLoggedIn }) {
+export default function Header({ isLoggedIn, userData }) {
   const [isMenuClicked, setIsMenuClicked] = useState(false);
   const navigate = useNavigate();
 
@@ -59,7 +59,7 @@ export default function Header({ isLoggedIn }) {
                   onClick={(e) => handleLink(e, "/profile")}
                   className="nav__link"
                 >
-                  Profile
+                  {`${userData.first_name}'s Profile`}
                 </a>
                 <a
                   onClick={() => {

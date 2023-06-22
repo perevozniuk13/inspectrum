@@ -11,7 +11,6 @@ export default function FavouritesMyPalettes({
 }) {
   const navigate = useNavigate();
   const authToken = sessionStorage.getItem("authToken");
-  console.log("data", data);
 
   const handleDeletePalette = async (favouriteId) => {
     try {

@@ -9,7 +9,6 @@ export default function ExplorePalettes({
   getPalettesData,
   getUserFavourites,
 }) {
-  // axios call to get palettes list data
   return (
     <>
       <section className="explore-palettes">

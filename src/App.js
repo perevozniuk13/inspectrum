@@ -111,12 +111,16 @@ const App = () => {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<HomePage isLoggedIn={isLoggedIn} />} />
+          <Route
+            path="/"
+            element={<HomePage isLoggedIn={isLoggedIn} userData={userData} />}
+          />
           <Route
             path="/explore"
             element={
               <ExplorePage
                 isLoggedIn={isLoggedIn}
+                userData={userData}
                 palettesData={palettesData}
                 totalPages={totalPages}
                 setCurrentPage={setCurrentPage}
@@ -138,16 +142,21 @@ const App = () => {
                 isLoggedIn={isLoggedIn}
                 palettesData={palettesData}
                 allUsers={allUsers}
+                userData={userData}
               />
             }
           />
           <Route
             path="/create"
-            element={<CreatePalettePage isLoggedIn={isLoggedIn} />}
+            element={
+              <CreatePalettePage isLoggedIn={isLoggedIn} userData={userData} />
+            }
           />
           <Route
             path="/imagePalette"
-            element={<ImagePalettePage isLoggedIn={isLoggedIn} />}
+            element={
+              <ImagePalettePage isLoggedIn={isLoggedIn} userData={userData} />
+            }
           />
           <Route
             path="/profile"

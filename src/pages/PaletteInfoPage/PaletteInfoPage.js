@@ -10,6 +10,7 @@ export default function PaletteInfoPage({
   palettesData,
   isLoggedIn,
   allUsers,
+  userData,
 }) {
   const { paletteId } = useParams();
   const [data, setData] = useState(null);
@@ -133,7 +134,7 @@ export default function PaletteInfoPage({
 
   return (
     <>
-      <Header isLoggedIn={isLoggedIn} />
+      <Header isLoggedIn={isLoggedIn} userData={userData} />
 
       <section className="palette-info">
         <div className="palette-info__colours-container">

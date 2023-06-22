@@ -10,8 +10,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import convert from "color-convert";
 
-export default function CreatePalettePage({ isLoggedIn }) {
-  const [selectedCard, setSelectedCard] = useState("");
+export default function CreatePalettePage({ isLoggedIn, userData }) {
+  const [selectedCard, setSelectedCard] = useState("colour1");
   const [pickedColour, setPickedColour] = useState("");
   const [colour1, setColour1] = useState("");
   const [colour2, setColour2] = useState("");
@@ -148,9 +148,13 @@ export default function CreatePalettePage({ isLoggedIn }) {
 
   return (
     <>
-      <Header isLoggedIn={isLoggedIn} />
+      <Header isLoggedIn={isLoggedIn} userData={userData} />
       <CreatePaletteHero />
-      <CreateColourPicker2 setPickedColour={setPickedColour} />
+      <CreateColourPicker2
+        setPickedColour={setPickedColour}
+        setSelectedCard={setSelectedCard}
+        selectedCard={selectedCard}
+      />
 
       <CreateColourPalette
         colour1={colour1}
