@@ -12,13 +12,14 @@ export default function Collection({
   collectionId,
   collectionName,
   getCollectionsData,
-  search,
+  collectionsData,
 }) {
   const [collectionPalettesData, setCollectionPalettesData] = useState(null);
   const authToken = sessionStorage.getItem("authToken");
   const [editCollectionError, setEditCollectionError] = useState("");
   const [modalState, setModalState] = useState(false);
   const navigate = useNavigate();
+  const [newCollectionName, setNewCollectionName] = useState(collectionName);
 
   const handleModal = async (event) => {
     await setModalState(true);
@@ -78,10 +79,23 @@ export default function Collection({
 
   const handleEditCollectionPalette = async (e) => {
     e.preventDefault();
-    const newCollectionName = e.target.collectionName.value;
+    // const newCollectionName = e.target.collectionName.value;
     if (!newCollectionName || newCollectionName.length < 3) {
       setEditCollectionError(
         "Collection name must be at least 3 characters long!"
+      );
+      return;
+    }
+
+    if (
+      collectionsData.find((collection) => {
+        if (collection.collection_name !== collectionName) {
+          return collection.collection_name === newCollectionName;
+        }
+      })
+    ) {
+      setEditCollectionError(
+        `Collection named ${newCollectionName} already exists!`
       );
       return;
     }
@@ -96,7 +110,8 @@ export default function Collection({
           },
         }
       );
-
+      setEditCollectionError("");
+      e.target.reset();
       getCollectionsData();
       setModalState(false);
     } catch (error) {
@@ -176,9 +191,13 @@ export default function Collection({
             type="text"
             name="collectionName"
             id="collectionName"
-            placeholder={collectionName}
+            placeholder="New Collection Name"
+            value={newCollectionName}
+            onChange={(e) => setNewCollectionName(e.target.value)}
           />
-          {editCollectionError && <p>{editCollectionError}</p>}
+          {editCollectionError && (
+            <p className="modal-error">{editCollectionError}</p>
+          )}
           <button className="modal__form-btn">Save Changes</button>
         </form>
       </div>

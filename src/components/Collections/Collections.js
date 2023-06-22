@@ -48,6 +48,17 @@ export default function Collections({
       return;
     }
 
+    if (
+      collectionsData.find(
+        (collection) => collection.collection_name === collectionName
+      )
+    ) {
+      setCreateCollectionError(
+        `Collection named ${collectionName} already exists!`
+      );
+      return;
+    }
+
     try {
       await axios.post(
         `${process.env.REACT_APP_SERVER_URL}/users/collections`,
@@ -60,6 +71,8 @@ export default function Collections({
       );
 
       await getCollectionsData();
+      e.target.reset();
+      setCreateCollectionError("");
       setModalState(false);
     } catch (error) {
       console.log(error);
@@ -102,6 +115,7 @@ export default function Collections({
               collectionId={collection.id}
               collectionName={collection.collection_name}
               getCollectionsData={getCollectionsData}
+              collectionsData={collectionsData}
             />
           );
         })}
@@ -129,7 +143,9 @@ export default function Collections({
             id="collectionName"
             placeholder="Collection Name"
           />
-          {createCollectionError && <p>{createCollectionError}</p>}
+          {createCollectionError && (
+            <p className="modal-error">{createCollectionError}</p>
+          )}
           <button className="modal__form-btn">Add</button>
         </form>
       </div>
