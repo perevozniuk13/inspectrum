@@ -2,68 +2,70 @@
 @use "../../styles/partials/variables" as *;
 
 .signup {
-    color: $secondary-text-color;
-    padding: 2rem;
-    margin: 3rem 10vw;
-    background-color: $primary-background;
-    text-align: center;
-    border-radius: 1rem;
+  color: $secondary-text-color;
+  padding: 2rem;
+  margin: 3rem 10vw;
+  background-color: $primary-background;
+  text-align: center;
+  border-radius: 1rem;
+
+  @include media-tablet {
+    margin: 3rem 15vw;
+  }
+
+  &__title {
+    margin: 1rem;
+    font-size: 4rem;
 
     @include media-tablet {
-        margin: 3rem 15vw;
+      margin: 3rem 15vw;
     }
-
-    &__title {
-        margin: 1rem;
-        font-size: 4rem;
-        
-        @include media-tablet {
-            margin: 3rem 15vw;
-        }
-
-    }
+  }
 }
 
 .signup-form {
-    font-size: $font-size-mobile;
+  font-size: $font-size-mobile;
+
+  @include media-tablet {
+    @include flexbox(column, null, center);
+  }
+
+  &__label-input-container {
+    @include flexbox(column, null, center);
 
     @include media-tablet {
-        @include flexbox(column, null, center);
+      @include flexbox(row, null, null);
     }
-    
-    &__label-input-container {
-        @include flexbox(column, null, center);
+  }
 
-        @include media-tablet {
-            @include flexbox(row, null, null);
+  &__label {
+    margin-bottom: 1rem;
+    width: 20rem;
+  }
 
-        }
+  &__input {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    width: 70%;
+
+    @include media-tablet {
+      width: 30rem;
     }
+  }
 
-    &__label {
-        margin-bottom: 1rem;
-        width: 20rem;
+  &__button {
+    padding: 1rem 2rem;
+    margin: 1rem;
 
-
+    @include media-tablet {
+      width: 10rem;
+      align-self: flex-end;
     }
+  }
+}
 
-    &__input {
-        padding: 1rem;
-        margin-bottom: 1rem;
-        width: 70%;
-
-        @include media-tablet {
-            width: 30rem;
-        }
-    }
-
-    &__button {
-        padding: 1rem 2rem;
-        margin: 1rem;
-
-        @include media-tablet {
-            width: 10rem;
-            align-self: flex-end;
-        }
-    }
+.signup-error {
+  color: red;
+  margin: 1rem;
+  font-size: 2rem;
 }

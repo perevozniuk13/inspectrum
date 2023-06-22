@@ -1,30 +1,76 @@
 import { useState } from "react";
 import "./SignupForm.scss";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function SignupForm() {
   const [signupError, setSignupError] = useState("");
   const [isSignupSuccessfull, setIsSignupSuccessfull] = useState(false);
+  const navigate = useNavigate();
 
   const handleSignup = async (e) => {
     e.preventDefault();
     const first_name = e.target.signupFirstName.value;
-    const last_name =  e.target.signupLastName.value;
+    const last_name = e.target.signupLastName.value;
     const username = e.target.signupUsername.value;
     const email = e.target.signupEmail.value;
     const password = e.target.signupPassword.value;
     const confirmPassword = e.target.confirmPassword.value;
 
-    if (!first_name || !last_name || !username || !email || !password || !confirmPassword) {
-      setSignupError("Please provide required fields!")
-      return
+    if (
+      !first_name ||
+      !last_name ||
+      !username ||
+      !email ||
+      !password ||
+      !confirmPassword
+    ) {
+      setSignupError("Please provide required fields!");
+      return;
+    }
+
+    if (first_name.length < 3 || last_name.length < 3) {
+      setSignupError(
+        "First name, last name and username must be at least 3 characters long!"
+      );
+      return;
+    }
+
+    if (
+      !/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
+        email
+      )
+    ) {
+      setSignupError("Please provide valid email address!");
+      return;
+    }
+
+    if (password.length < 8) {
+      console.log("1");
+    }
+    if (/[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(password) === false) {
+      console.log("2");
+    }
+    if (!/\d/.test(password)) {
+      console.log("3");
+    }
+
+    if (
+      password.length < 8 ||
+      !/[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(password) ||
+      !/\d/.test(password)
+    ) {
+      setSignupError(
+        "Password must be at least 8 charachters long and contain at least 1 special character and at least one number!"
+      );
+      return;
     }
 
     if (password !== confirmPassword) {
-      setSignupError("Passwords must match!")
-      return
+      setSignupError("Passwords must match!");
+      return;
     }
-    
 
     try {
       await axios.post(`${process.env.REACT_APP_SERVER_URL}/users/signup`, {
@@ -32,11 +78,11 @@ export default function SignupForm() {
         last_name,
         username,
         email,
-        password
+        password,
       });
-
+      setSignupError("");
       setIsSignupSuccessfull(true);
-
+      setTimeout(() => navigate("/login"), 1000);
     } catch (error) {
       setSignupError("Sign up failed");
     }
@@ -113,8 +159,12 @@ export default function SignupForm() {
               id="confirmPassword"
             />
           </div>
+          <p>
+            Do you already have an account? Please{" "}
+            <Link to="/login">Log In</Link>
+          </p>
           <button className="signup-form__button">signup</button>
-          {signupError && <p>{signupError}</p>}
+          {signupError && <p className="signup-error">{signupError}</p>}
           {isSignupSuccessfull && <p>Success! Please login</p>}
         </form>
       </section>

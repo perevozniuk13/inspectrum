@@ -2,7 +2,7 @@ import "./LoginForm.scss";
 
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function LoginForm({ setIsLoggedIn }) {
   const [loginError, setLoginError] = useState("");
@@ -29,6 +29,7 @@ export default function LoginForm({ setIsLoggedIn }) {
       );
 
       sessionStorage.setItem("authToken", response.data.authToken);
+      setLoginError("");
       setIsLoggedIn(true);
       navigate("/profile");
       window.location.reload();
@@ -65,8 +66,11 @@ export default function LoginForm({ setIsLoggedIn }) {
               id="loginPassword"
             />
           </div>
+          <p>
+            Don't have an account yet? Please <Link to="/signup">Sign Up</Link>
+          </p>
           <button className="login-form__button">Login</button>
-          {/* {loginError && <p>{loginError}</p>} */}
+          {loginError && <p className="login-error">{loginError}</p>}
         </form>
       </section>
     </>
