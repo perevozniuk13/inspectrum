@@ -4,6 +4,7 @@ import likeIconURL from "../../assets/images/empty-heart.png";
 import likedIconURL from "../../assets/images/heart.png";
 import { useEffect, useState } from "react";
 import axios from "axios";
+// import moment from "moment";
 
 export default function ExplorePalette({
   colour1,
@@ -12,12 +13,18 @@ export default function ExplorePalette({
   colour4,
   id,
   likes,
+  createdAt,
   userFavouritesData,
   getPalettesData,
   getUserFavourites,
 }) {
   const navigate = useNavigate();
   const authToken = sessionStorage.getItem("authToken");
+  const date = new Date(createdAt);
+  console.log(
+    "date",
+    `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}   ${date.getHours()}:${date.getMinutes()}`
+  );
 
   const handleAddToFavourites = async () => {
     try {
@@ -135,6 +142,8 @@ export default function ExplorePalette({
               </section>
             )}
           </div>
+
+          <p className="date">{`${date.getDate()}/${date.getMonth()}/${date.getFullYear()}   ${date.getHours()}:${date.getMinutes()}`}</p>
         </div>
       </section>
     </>

@@ -24,6 +24,7 @@ export default function ExplorePalettes({
               colour3={palette.colour3}
               colour4={palette.colour4}
               likes={palette.likes}
+              createdAt={palette.created_at}
               getPalettesData={getPalettesData}
               getUserFavourites={getUserFavourites}
             />
