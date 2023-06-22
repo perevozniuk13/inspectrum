@@ -26,6 +26,7 @@ const App = () => {
   const [sortBy, setSortBy] = useState({ sort_by: null, order_by: null });
 
   const [userData, setUserData] = useState(null);
+  const [allUsers, setAllUsers] = useState(null);
   const authToken = sessionStorage.getItem("authToken");
 
   const getUserData = async () => {
@@ -39,6 +40,17 @@ const App = () => {
         }
       );
       setUserData(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const getAllUsers = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_SERVER_URL}/users`
+      );
+      setAllUsers(response.data);
     } catch (err) {
       console.log(err);
     }
@@ -76,6 +88,7 @@ const App = () => {
 
   useEffect(() => {
     getPalettesData();
+    getAllUsers();
   }, [currentPage, sortMinHue, sortBy]);
 
   useEffect(() => {
@@ -86,11 +99,11 @@ const App = () => {
     }
   }, []);
 
-  if (!palettesData) {
+  if (!palettesData || !allUsers) {
     return <p>Loading...</p>;
   }
 
-  if (isLoggedIn && !userData) {
+  if (sessionStorage.getItem("authToken") && !userData) {
     return <p>Loading...</p>;
   }
 
@@ -124,7 +137,7 @@ const App = () => {
               <PaletteInfoPage
                 isLoggedIn={isLoggedIn}
                 palettesData={palettesData}
-                username={userData.username}
+                allUsers={allUsers}
               />
             }
           />

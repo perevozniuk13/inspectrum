@@ -9,7 +9,7 @@ import { useState, useEffect } from "react";
 export default function PaletteInfoPage({
   palettesData,
   isLoggedIn,
-  username,
+  allUsers,
 }) {
   const { paletteId } = useParams();
   const [data, setData] = useState(null);
@@ -212,7 +212,9 @@ export default function PaletteInfoPage({
       </section>
 
       <h1>Palette Info</h1>
-      <h2>By: {username}</h2>
+      <h2>
+        By: {allUsers.find((user) => user.id === palette.user_id).username}
+      </h2>
       <h2>
         {`Date and time created: ${date.getDate()}/${date.getMonth()}/${date.getFullYear()}   ${date.getHours()}:${date.getMinutes()}`}
       </h2>

@@ -74,6 +74,10 @@ export default function UserPage({
     getFavourites();
   }, []);
 
+  console.log("u", userPalettesData);
+  console.log("f", favouritesData);
+  console.log("c", collectionsData);
+
   if (!userPalettesData || !favouritesData || !collectionsData) {
     return <p>Loading...</p>;
   }

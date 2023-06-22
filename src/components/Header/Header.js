@@ -61,6 +61,16 @@ export default function Header({ isLoggedIn }) {
                 >
                   Profile
                 </a>
+                <a
+                  onClick={() => {
+                    sessionStorage.clear();
+                    navigate("/");
+                    window.location.reload();
+                  }}
+                  className="nav__link"
+                >
+                  Log Out
+                </a>
               </>
             )}
           </div>

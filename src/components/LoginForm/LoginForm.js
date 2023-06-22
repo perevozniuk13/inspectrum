@@ -2,34 +2,40 @@ import "./LoginForm.scss";
 
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-export default function LoginForm({setIsLoggedIn}) {
+export default function LoginForm({ setIsLoggedIn }) {
   const [loginError, setLoginError] = useState("");
+  const navigate = useNavigate();
 
-  const handleLogin = async(e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
     const username = e.target.loginUsername.value;
     const password = e.target.loginPassword.value;
 
     if (!username || !password) {
-      setLoginError("Please provide required fields!")
-      return
+      setLoginError("Please provide required fields!");
+      return;
     }
 
     try {
-      const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/users/login`, {
-        username, password
-      });
+      const response = await axios.post(
+        `${process.env.REACT_APP_SERVER_URL}/users/login`,
+        {
+          username,
+          password,
+        }
+      );
 
       sessionStorage.setItem("authToken", response.data.authToken);
       setIsLoggedIn(true);
+      navigate("/profile");
+      window.location.reload();
+    } catch (error) {
+      setLoginError("Log in failed!");
     }
-    catch (error) {
-      setLoginError("Log in failed!")
-    }
-
-  }
+  };
 
   return (
     <>
@@ -38,12 +44,26 @@ export default function LoginForm({setIsLoggedIn}) {
 
         <form className="login-form" onSubmit={handleLogin}>
           <div className="login-form__label-input-container">
-            <label className="login-form__label" htmlFor="loginUsername">Username</label>
-            <input className="login-form__input" type="text" name="loginUsername" id="loginUsername" />
+            <label className="login-form__label" htmlFor="loginUsername">
+              Username
+            </label>
+            <input
+              className="login-form__input"
+              type="text"
+              name="loginUsername"
+              id="loginUsername"
+            />
           </div>
           <div className="login-form__label-input-container">
-            <label className="login-form__label" htmlFor="loginPassword">Password</label>
-            <input className="login-form__input" type="password" name="loginPassword" id="loginPassword" />
+            <label className="login-form__label" htmlFor="loginPassword">
+              Password
+            </label>
+            <input
+              className="login-form__input"
+              type="password"
+              name="loginPassword"
+              id="loginPassword"
+            />
           </div>
           <button className="login-form__button">Login</button>
           {/* {loginError && <p>{loginError}</p>} */}
