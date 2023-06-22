@@ -6,7 +6,11 @@ import copyIconURL from "../../assets/images/copy-icon.svg";
 import Mockups from "../../components/Mockups/Mockups";
 import { useState, useEffect } from "react";
 
-export default function PaletteInfoPage({ palettesData, isLoggedIn }) {
+export default function PaletteInfoPage({
+  palettesData,
+  isLoggedIn,
+  username,
+}) {
   const { paletteId } = useParams();
   const [data, setData] = useState(null);
 
@@ -14,8 +18,6 @@ export default function PaletteInfoPage({ palettesData, isLoggedIn }) {
   const authToken = sessionStorage.getItem("authToken");
   const navigate = useNavigate();
   const location = useLocation();
-
-  console.log(location.state);
 
   const getCollectionsData = async () => {
     try {
@@ -123,6 +125,7 @@ export default function PaletteInfoPage({ palettesData, isLoggedIn }) {
   }
 
   const palette = data.find((p) => p.id == paletteId);
+  const date = new Date(palette.created_at);
   localStorage.setItem("colour1", palette.colour1);
   localStorage.setItem("colour2", palette.colour2);
   localStorage.setItem("colour3", palette.colour3);
@@ -133,8 +136,6 @@ export default function PaletteInfoPage({ palettesData, isLoggedIn }) {
       <Header isLoggedIn={isLoggedIn} />
 
       <section className="palette-info">
-        <h1>Palette Info</h1>
-        <h2>By: {palette.user_id}</h2>
         <div className="palette-info__colours-container">
           <section className="palette-info__card-container">
             <div
@@ -209,6 +210,13 @@ export default function PaletteInfoPage({ palettesData, isLoggedIn }) {
           </section>
         </div>
       </section>
+
+      <h1>Palette Info</h1>
+      <h2>By: {username}</h2>
+      <h2>
+        {`Date and time created: ${date.getDate()}/${date.getMonth()}/${date.getFullYear()}   ${date.getHours()}:${date.getMinutes()}`}
+      </h2>
+      <h2>Likes: {palette.likes}</h2>
 
       <Mockups />
       {location.state === "explore" && (

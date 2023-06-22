@@ -25,11 +25,26 @@ const App = () => {
   const [sortMaxHue, setSortMaxHue] = useState(null);
   const [sortBy, setSortBy] = useState({ sort_by: null, order_by: null });
 
+  const [userData, setUserData] = useState(null);
   const authToken = sessionStorage.getItem("authToken");
-  console.log("sortby", sortBy);
+
+  const getUserData = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_SERVER_URL}/users/user`,
+        {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+        }
+      );
+      setUserData(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const getPalettesData = async () => {
-    console.log("get");
     try {
       const receivedPalettesData = await axios.get(
         `${process.env.REACT_APP_SERVER_URL}/palettes?page=${currentPage}&&min_hue=${sortMinHue}&&max_hue=${sortMaxHue}&&sort_by=${sortBy.sort_by}&&order_by=${sortBy.order_by}`
@@ -67,10 +82,15 @@ const App = () => {
     if (sessionStorage.getItem("authToken")) {
       setIsLoggedIn(true);
       getUserFavourites();
+      getUserData();
     }
   }, []);
 
   if (!palettesData) {
+    return <p>Loading...</p>;
+  }
+
+  if (isLoggedIn && !userData) {
     return <p>Loading...</p>;
   }
 
@@ -104,6 +124,7 @@ const App = () => {
               <PaletteInfoPage
                 isLoggedIn={isLoggedIn}
                 palettesData={palettesData}
+                username={userData.username}
               />
             }
           />
@@ -122,6 +143,7 @@ const App = () => {
                 isLoggedIn={isLoggedIn}
                 userFavouritesData={userFavouritesData}
                 getUserFavourites={getUserFavourites}
+                userData={userData}
               />
             }
           />

@@ -11,30 +11,14 @@ export default function UserPage({
   isLoggedIn,
   userFavouritesData,
   getUserFavourites,
+  userData,
 }) {
   const [librarySection, setLibrarySection] = useState("collections");
   const [userPalettesData, setUserPalettesData] = useState(null);
   const [collectionsData, setCollectionsData] = useState(null);
   const [favouritesData, setFavouritesData] = useState(null);
 
-  const [userData, setUserData] = useState(null);
   const authToken = sessionStorage.getItem("authToken");
-
-  const getUserData = async () => {
-    try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_SERVER_URL}/users/user`,
-        {
-          headers: {
-            Authorization: `Bearer ${authToken}`,
-          },
-        }
-      );
-      setUserData(response.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
 
   const getFavourites = async () => {
     try {
@@ -85,13 +69,12 @@ export default function UserPage({
   };
 
   useEffect(() => {
-    getUserData();
     getCollectionsData();
     getUserPalettes();
     getFavourites();
   }, []);
 
-  if (!userPalettesData || !favouritesData || !collectionsData || !userData) {
+  if (!userPalettesData || !favouritesData || !collectionsData) {
     return <p>Loading...</p>;
   }
 

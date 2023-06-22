@@ -4,7 +4,6 @@ import likeIconURL from "../../assets/images/empty-heart.png";
 import likedIconURL from "../../assets/images/heart.png";
 import { useEffect, useState } from "react";
 import axios from "axios";
-// import moment from "moment";
 
 export default function ExplorePalette({
   colour1,
