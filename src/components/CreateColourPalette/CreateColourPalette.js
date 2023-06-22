@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "./CreateColourPalette.scss";
 import { useEffect, useState } from "react";
+import tinycolor from "tinycolor2";
 
 export default function CreateColourPalette({
   colour1,
@@ -57,28 +58,56 @@ export default function CreateColourPalette({
             style={{ backgroundColor: colour1, border: addBorder1 }}
             className="create-palette__colour-card"
           >
-            <p className="create-palette__colour">{colour1}</p>
+            <p
+              style={{
+                color: tinycolor(colour1).isLight() ? "black" : "white",
+              }}
+              className="create-palette__colour"
+            >
+              {colour1}
+            </p>
           </div>
           <div
             onClick={() => setSelectedCard("colour2")}
             style={{ backgroundColor: colour2, border: addBorder2 }}
             className="create-palette__colour-card"
           >
-            <p className="create-palette__colour">{colour2}</p>
+            <p
+              style={{
+                color: tinycolor(colour2).isLight() ? "black" : "white",
+              }}
+              className="create-palette__colour"
+            >
+              {colour2}
+            </p>
           </div>
           <div
             onClick={() => setSelectedCard("colour3")}
             style={{ backgroundColor: colour3, border: addBorder3 }}
             className="create-palette__colour-card"
           >
-            <p className="create-palette__colour">{colour3}</p>
+            <p
+              style={{
+                color: tinycolor(colour3).isLight() ? "black" : "white",
+              }}
+              className="create-palette__colour"
+            >
+              {colour3}
+            </p>
           </div>
           <div
             onClick={() => setSelectedCard("colour4")}
             style={{ backgroundColor: colour4, border: addBorder4 }}
             className="create-palette__colour-card"
           >
-            <p className="create-palette__colour">{colour4}</p>
+            <p
+              style={{
+                color: tinycolor(colour4).isLight() ? "black" : "white",
+              }}
+              className="create-palette__colour"
+            >
+              {colour4}
+            </p>
           </div>
         </div>
         {coloursError && <p className="colours-error">{coloursError}</p>}

@@ -21,7 +21,6 @@ export default function CreatePalettePage({ isLoggedIn, userData }) {
   const navigate = useNavigate();
   const [collectionsData, setCollectionsData] = useState(null);
   const authToken = sessionStorage.getItem("authToken");
-
   const getCollectionsData = async () => {
     try {
       const response = await axios.get(
