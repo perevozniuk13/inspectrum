@@ -29,6 +29,11 @@ const App = () => {
   const [allUsers, setAllUsers] = useState(null);
   const authToken = sessionStorage.getItem("authToken");
 
+  const [iframe, setIframe] = useState({
+    iframe_key: 0,
+    iframe_url: "http://localhost:3000/mockup1/000000", //Your URL here
+  });
+
   const getUserData = async () => {
     try {
       const response = await axios.get(
@@ -149,7 +154,12 @@ const App = () => {
           <Route
             path="/create"
             element={
-              <CreatePalettePage isLoggedIn={isLoggedIn} userData={userData} />
+              <CreatePalettePage
+                isLoggedIn={isLoggedIn}
+                userData={userData}
+                iframe={iframe}
+                setIframe={setIframe}
+              />
             }
           />
           <Route
@@ -179,7 +189,7 @@ const App = () => {
               <LoginSignUpPage page="login" setIsLoggedIn={setIsLoggedIn} />
             }
           />
-          <Route path="/mockup1" element={<Mockup1 />} />
+          <Route path="/mockup1/:color" element={<Mockup1 iframe={iframe} />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
         <Footer />

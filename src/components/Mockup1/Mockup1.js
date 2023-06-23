@@ -1,16 +1,19 @@
+import { useParams } from "react-router-dom";
 import "./Mockup1.scss";
 
-export default function Mockup1() {
+export default function Mockup1({ iframe }) {
+  const { color } = useParams();
+  console.log("color", color);
   return (
     <>
       <div
         className="mockup1"
-        style={{ backgroundColor: localStorage.getItem("colour1") }}
+        style={{ backgroundColor: color && `#${color}` }}
       >
         <nav className="mockup1-nav">
           <p className="mackoup1-nav__logo">LOGO</p>
           <div className="mackoup1-nav__links">
-            <p className="mackoup1-nav__link">About</p>
+            <p className="mackoup1-nav__link">{iframe && iframe.iframe_key}</p>
             <p className="mackoup1-nav__link">Contact us</p>
             <p className="mackoup1-nav__link">Profile</p>
           </div>

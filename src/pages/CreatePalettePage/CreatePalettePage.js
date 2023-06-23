@@ -10,7 +10,12 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import convert from "color-convert";
 
-export default function CreatePalettePage({ isLoggedIn, userData }) {
+export default function CreatePalettePage({
+  isLoggedIn,
+  userData,
+  iframe,
+  setIframe,
+}) {
   const [selectedCard, setSelectedCard] = useState("colour1");
   const [pickedColour, setPickedColour] = useState("");
   const [colour1, setColour1] = useState("");
@@ -129,6 +134,7 @@ export default function CreatePalettePage({ isLoggedIn, userData }) {
     if (selectedCard === "colour4") {
       await setColour4(pickedColour);
     }
+    console.log("col1", colour1);
   };
 
   useEffect(() => {
@@ -166,9 +172,11 @@ export default function CreatePalettePage({ isLoggedIn, userData }) {
         setColour4={setColour4}
         setSelectedCard={setSelectedCard}
         selectedCard={selectedCard}
+        setIframe={setIframe}
+        iframe={iframe}
       />
 
-      <Mockups />
+      <Mockups iframe={iframe} />
 
       <section className="create-palette-buttons">
         <button

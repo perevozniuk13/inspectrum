@@ -14,19 +14,27 @@ export default function CreateColourPalette({
   setColour4,
   setSelectedCard,
   selectedCard,
+  setIframe,
+  iframe,
 }) {
   const [coloursError, setColoursError] = useState("");
+  const navigate = useNavigate();
 
   const handleSavingColours = () => {
     if (!colour1 || !colour2 || !colour3 || !colour4) {
       setColoursError("Please, provide all 4 colours to the palette!");
       return;
     }
+    console.log(colour1, colour2, colour3, colour4);
     localStorage.setItem("colour1", colour1);
     localStorage.setItem("colour2", colour2);
     localStorage.setItem("colour3", colour3);
     localStorage.setItem("colour4", colour4);
-    window.location.reload();
+    // setSelectedCard("colour4");
+    setIframe({
+      iframe_url: `http://localhost:3000/mockup1/${colour2.substring(1)}`,
+      iframe_key: iframe.iframe_key + 1,
+    });
   };
 
   useEffect(() => {
@@ -54,7 +62,7 @@ export default function CreateColourPalette({
       <section className="create-palette">
         <div className="create-palette__colours-container">
           <div
-            onClick={async () => await setSelectedCard("colour1")}
+            onClick={async () => setSelectedCard("colour1")}
             style={{ backgroundColor: colour1, border: addBorder1 }}
             className="create-palette__colour-card"
           >
