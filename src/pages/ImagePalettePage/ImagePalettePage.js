@@ -13,7 +13,12 @@ import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import convert from "color-convert";
 
-export default function ImagePalettePage({ isLoggedIn, userData }) {
+export default function ImagePalettePage({
+  isLoggedIn,
+  userData,
+  iframe,
+  setIframe,
+}) {
   const [uploadedImage, setUploadedImage] = useState("");
   const navigate = useNavigate();
   const [collectionsData, setCollectionsData] = useState(null);
@@ -177,6 +182,14 @@ export default function ImagePalettePage({ isLoggedIn, userData }) {
         >
           {({ data, loading }) => {
             if (loading) return <p>Loading...</p>;
+            if (!localStorage.getItem("col1-1")) {
+              for (let i = 1; i <= 4; i++) {
+                localStorage.setItem(`col1-${i}`, data[0]);
+                localStorage.setItem(`col2-${i}`, data[1]);
+                localStorage.setItem(`col3-${i}`, data[2]);
+                localStorage.setItem(`col4-${i}`, data[3]);
+              }
+            }
             return (
               <div>
                 <section>
@@ -211,7 +224,14 @@ export default function ImagePalettePage({ isLoggedIn, userData }) {
                 {localStorage.setItem("colour2", data[1])}
                 {localStorage.setItem("colour3", data[2])}
                 {localStorage.setItem("colour4", data[3])}
-                <Mockups />
+                <Mockups
+                  iframe={iframe}
+                  setIframe={setIframe}
+                  colour1={data[0]}
+                  colour2={data[1]}
+                  colour3={data[2]}
+                  colour4={data[3]}
+                />
                 <section className="create-palette-buttons">
                   <button
                     className="create-palette-buttons__button"

@@ -36,12 +36,12 @@ const App = () => {
     iframe_url: null, //Your URL here
   });
 
-  const [changedColours, setChangedColours] = useState({
-    col1: 1,
-    col2: 2,
-    col3: 3,
-    col4: 4,
-  });
+  // const [changedColours, setChangedColours] = useState({
+  //   col1: 1,
+  //   col2: 2,
+  //   col3: 3,
+  //   col4: 4,
+  // });
 
   const getUserData = async () => {
     try {
@@ -157,6 +157,8 @@ const App = () => {
                 palettesData={palettesData}
                 allUsers={allUsers}
                 userData={userData}
+                iframe={iframe}
+                setIframe={setIframe}
               />
             }
           />
@@ -168,15 +170,20 @@ const App = () => {
                 userData={userData}
                 iframe={iframe}
                 setIframe={setIframe}
-                setChangedColours={setChangedColours}
-                changedColours={changedColours}
+                // setChangedColours={setChangedColours}
+                // changedColours={changedColours}
               />
             }
           />
           <Route
             path="/imagePalette"
             element={
-              <ImagePalettePage isLoggedIn={isLoggedIn} userData={userData} />
+              <ImagePalettePage
+                isLoggedIn={isLoggedIn}
+                userData={userData}
+                iframe={iframe}
+                setIframe={setIframe}
+              />
             }
           />
           <Route
@@ -203,21 +210,12 @@ const App = () => {
           <Route
             path="/mockup1/:query"
             element={
-              <Mockup1 iframe={iframe} changedColours={changedColours} />
+              <Mockup1 iframe={iframe} />
+              // <Mockup1 iframe={iframe} changedColours={changedColours} />
             }
           />
-          <Route
-            path="/mockup2/:query"
-            element={
-              <Mockup2 iframe={iframe} changedColours={changedColours} />
-            }
-          />
-          <Route
-            path="/mockup3/:query"
-            element={
-              <Mockup3 iframe={iframe} changedColours={changedColours} />
-            }
-          />
+          <Route path="/mockup2/:query" element={<Mockup2 iframe={iframe} />} />
+          <Route path="/mockup3/:query" element={<Mockup3 iframe={iframe} />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>

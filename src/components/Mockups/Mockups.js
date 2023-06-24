@@ -14,8 +14,6 @@ export default function Mockups({
   colour4,
 }) {
   const navigate = useNavigate();
-  // const colours = iframe.iframe_url.split("-");
-  // console.log("aaa", colours);
   let key;
   if (iframe) {
     key = iframe.iframe_key;
@@ -31,6 +29,7 @@ export default function Mockups({
       localStorage.setItem(`col2-${mockup}`, colour2);
       localStorage.setItem(`col3-${mockup}`, colour3);
       localStorage.setItem(`col4-${mockup}`, colour4);
+      console.log("11", mockup);
       // console.log("1");
     } else if (localStorage.getItem(`update${mockup}`) == 1) {
       localStorage.setItem(
@@ -41,6 +40,7 @@ export default function Mockups({
       localStorage.setItem(`col2-${mockup}`, colour4);
       localStorage.setItem(`col3-${mockup}`, colour1);
       localStorage.setItem(`col4-${mockup}`, colour2);
+      console.log("22", mockup);
       // await setChangedColours({ col1: 3, col2: 4, col3: 1, col4: 2 });
     } else if (localStorage.getItem(`update${mockup}`) == 2) {
       localStorage.setItem(
@@ -51,6 +51,7 @@ export default function Mockups({
       localStorage.setItem(`col2-${mockup}`, colour1);
       localStorage.setItem(`col3-${mockup}`, colour2);
       localStorage.setItem(`col4-${mockup}`, colour3);
+      console.log("33", mockup);
       // await setChangedColours({ col1: 4, col2: 1, col3: 2, col4: 3 });
     } else {
       localStorage.setItem(`update${mockup}`, 1);
@@ -59,7 +60,7 @@ export default function Mockups({
       localStorage.setItem(`col2-${mockup}`, colour3);
       localStorage.setItem(`col3-${mockup}`, colour4);
       localStorage.setItem(`col4-${mockup}`, colour1);
-      console.log("3");
+      console.log("44", mockup);
     }
 
     setIframe({

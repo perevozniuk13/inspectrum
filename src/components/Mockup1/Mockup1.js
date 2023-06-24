@@ -4,8 +4,6 @@ import tinycolor from "tinycolor2";
 import { useEffect } from "react";
 
 export default function Mockup1({ iframe }) {
-  const colors = window.location.href.substring(30).split["&&"];
-
   // const color1 = "#" + colors[0];
   // const color2 = "#" + colors[1];
   // const color3 = "#" + colors[2];

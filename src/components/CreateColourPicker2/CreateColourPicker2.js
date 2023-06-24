@@ -8,7 +8,7 @@ export default function CreateColourPicker2({
   selectedCard,
 }) {
   const ref = React.useRef();
-  const [color, setColor] = useState("#ffffff");
+  const [color, setColor] = useState("");
   const [inputHex, setInputHex] = useState("");
 
   const onColorChange = (event) => {

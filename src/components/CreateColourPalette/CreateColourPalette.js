@@ -74,8 +74,11 @@ export default function CreateColourPalette({
       <section className="create-palette">
         <div className="create-palette__colours-container">
           <div
-            onClick={async () => setSelectedCard("colour1")}
-            style={{ backgroundColor: colour1, border: addBorder1 }}
+            onClick={() => setSelectedCard("colour1")}
+            style={{
+              backgroundColor: colour1,
+              border: addBorder1,
+            }}
             className="create-palette__colour-card"
           >
             <p

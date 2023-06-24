@@ -12,9 +12,12 @@ export default function PaletteInfoPage({
   isLoggedIn,
   allUsers,
   userData,
+  iframe,
+  setIframe,
 }) {
   const { paletteId } = useParams();
   const [data, setData] = useState(null);
+  const [palette, setPalette] = useState(null);
 
   const [collectionsData, setCollectionsData] = useState(null);
   const authToken = sessionStorage.getItem("authToken");
@@ -47,7 +50,8 @@ export default function PaletteInfoPage({
           },
         }
       );
-      setData(response.data);
+      // setData(response.data);
+      setPalette(response.data.find((p) => p.id == paletteId));
     } catch (err) {
       console.log(err);
     }
@@ -107,17 +111,37 @@ export default function PaletteInfoPage({
 
   useEffect(() => {
     if (isLoggedIn && location.state === "explore") {
-      setData(palettesData);
+      // setData(palettesData);
+      setPalette(palettesData.find((p) => p.id == paletteId));
       getCollectionsData();
     } else if (location.state == "user") {
       getPalettes();
       getCollectionsData();
     } else {
-      setData(palettesData);
+      // setData(palettesData);
+      setPalette(palettesData.find((p) => p.id == paletteId));
     }
+    // setPalette(data.find((p) => p.id == paletteId));
   }, []);
 
-  if (!data) {
+  useEffect(() => {
+    if (palette) {
+      // console.log("sad", data);
+      // setPalette(data.find((p) => p.id == paletteId));
+      console.log("pal", palette);
+      // date = new Date(palette.created_at);
+      for (let i = 1; i <= 4; i++) {
+        localStorage.setItem(`col1-${i}`, palette.colour1);
+        localStorage.setItem(`col2-${i}`, palette.colour2);
+        localStorage.setItem(`col3-${i}`, palette.colour3);
+        localStorage.setItem(`col4-${i}`, palette.colour4);
+      }
+    }
+  }, [palette]);
+
+  if (!palette) {
+    console.log("p", palette);
+    console.log("dvkskl");
     return <p>Loading...</p>;
   }
 
@@ -125,12 +149,13 @@ export default function PaletteInfoPage({
     return <p>Loading...</p>;
   }
 
-  const palette = data.find((p) => p.id == paletteId);
+  // const palette = data.find((p) => p.id == paletteId);
   const date = new Date(palette.created_at);
-  localStorage.setItem("colour1", palette.colour1);
-  localStorage.setItem("colour2", palette.colour2);
-  localStorage.setItem("colour3", palette.colour3);
-  localStorage.setItem("colour4", palette.colour4);
+
+  // localStorage.setItem("colour1", palette.colour1);
+  // localStorage.setItem("colour2", palette.colour2);
+  // localStorage.setItem("colour3", palette.colour3);
+  // localStorage.setItem("colour4", palette.colour4);
 
   return (
     <>
@@ -221,7 +246,14 @@ export default function PaletteInfoPage({
       </h2>
       <h2>Likes: {palette.likes}</h2>
 
-      <Mockups />
+      <Mockups
+        iframe={iframe}
+        setIframe={setIframe}
+        colour1={palette.colour1}
+        colour2={palette.colour2}
+        colour3={palette.colour3}
+        colour4={palette.colour4}
+      />
       {location.state === "explore" && (
         <section className="palette-info-buttons">
           <button
