@@ -19,6 +19,7 @@ export default function CreateColourPalette({
 }) {
   const [coloursError, setColoursError] = useState("");
   const navigate = useNavigate();
+  let clicked;
 
   const handleSavingColours = () => {
     if (!colour1 || !colour2 || !colour3 || !colour4) {
@@ -30,9 +31,14 @@ export default function CreateColourPalette({
     localStorage.setItem("colour2", colour2);
     localStorage.setItem("colour3", colour3);
     localStorage.setItem("colour4", colour4);
+
     // setSelectedCard("colour4");
     setIframe({
-      iframe_url: `http://localhost:3000/mockup1/${colour2.substring(1)}`,
+      iframe_url: `http://localhost:3000/mockup?-${colour1.substring(
+        1
+      )}-${colour2.substring(1)}-${colour3.substring(1)}-${colour4.substring(
+        1
+      )}`,
       iframe_key: iframe.iframe_key + 1,
     });
   };
@@ -123,7 +129,7 @@ export default function CreateColourPalette({
           onClick={handleSavingColours}
           className="create-palette__view-button"
         >
-          Save changes
+          Update mockups
         </button>
       </section>
     </>

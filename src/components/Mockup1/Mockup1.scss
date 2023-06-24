@@ -14,18 +14,21 @@
 }
 
 .mockup1 {
-  background-color: $mockup1-background1;
-  color: $mockup1-color1;
+  // background-color: $mockup1-colour1;
+  // color: black;
   text-align: center;
   font-family: Plex Sans;
 }
 
 .mockup1-nav {
   padding: 6rem;
-  background-color: $mockup1-background1;
+  // color: white;
   @include flexbox(row, space-between, center);
   &__logo {
     font-size: 6rem;
+    padding: 2rem;
+    // background-color: $mockup1-colour3;
+    border-radius: 2rem;
   }
 
   &__list {
@@ -43,6 +46,7 @@
 
 .mockup1-hero {
   @include flexbox(column, center, flex-end);
+  // color: white;
   text-align: right;
   padding: 2rem 6rem;
 
@@ -60,19 +64,20 @@
 
   &__button {
     width: 25%;
-    background-color: $mockup1-color1;
-    color: $mockup1-background1;
+    // background-color: $mockup1-colour3;
+    // color: white;
     text-transform: uppercase;
     font-size: 3rem;
     letter-spacing: 1rem;
     padding: 1.5rem 2rem;
     margin: 8rem 0;
     border-radius: 2rem;
+    border: none;
   }
 }
 
 .mockup1-banner {
-  background-color: $mockup1-background2;
+  // background-color: $mockup1-colour2;
   padding: 10rem 5rem 5rem;
   text-align: center;
   @include flexbox(column, null, null);
@@ -82,14 +87,15 @@
 
   &__button {
     width: 20%;
-    background-color: $mockup1-color1;
-    color: $mockup1-background1;
+    // background-color: $mockup1-colour3;
+    // color: white;
     text-transform: uppercase;
     font-size: 2rem;
     letter-spacing: 1rem;
     padding: 1.5rem 2rem;
     margin: 3rem 0;
     border-radius: 2rem;
+    border: none;
   }
 }
 
@@ -97,6 +103,7 @@
   font-size: 6rem;
   font-weight: 700;
   margin-top: 10rem;
+  // color: white;
 }
 
 .mockup1-cards {
@@ -104,7 +111,7 @@
   padding: 5rem;
 
   &__card {
-    background-color: $mockup1-background2;
+    // background-color: $mockup1-colour2;
     width: 30%;
     height: 30rem;
     margin: 1rem;
@@ -120,7 +127,7 @@
   }
 
   &__circle {
-    background-color: $mockup1-color1;
+    // background-color: $mockup1-colour3;
     width: 10rem;
     height: 10rem;
     border-radius: 50%;

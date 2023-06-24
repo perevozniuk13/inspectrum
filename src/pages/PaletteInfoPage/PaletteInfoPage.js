@@ -117,7 +117,7 @@ export default function PaletteInfoPage({
     }
   }, []);
 
-  if (location.state === "user" && !data) {
+  if (!data) {
     return <p>Loading...</p>;
   }
 

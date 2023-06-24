@@ -1,12 +1,24 @@
 import { useParams } from "react-router-dom";
 import "./Mockup3.scss";
+import tinycolor from "tinycolor2";
 
 export default function Mockup3({ iframe }) {
   const { color } = useParams();
+
+  const color1 = localStorage.getItem("colour1");
+  const color2 = localStorage.getItem("colour2");
+  const color3 = localStorage.getItem("colour3");
+  const color4 = localStorage.getItem("colour4");
   console.log("color", color);
   return (
     <>
-      <div className="mockup3">
+      <div
+        className="mockup3"
+        style={{
+          backgroundColor: color3,
+          color: tinycolor(color3).isDark() ? "white" : "black",
+        }}
+      >
         {/* // style={{ backgroundColor: color && `#${color}` }}></> */}
 
         <nav className="mockup3-nav">
@@ -22,16 +34,37 @@ export default function Mockup3({ iframe }) {
         </nav>
 
         <section className="mockup3-hero">
-          <h1 className="mockup3-hero__title">Lorem ipsum dolor</h1>
+          <h1
+            className="mockup3-hero__title"
+            style={{
+              color: color1,
+            }}
+          >
+            Lorem ipsum dolor
+          </h1>
           <p className="mockup3-hero__subtitle">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque
             corrupti veniam ad culpa ducimus.
           </p>
-          <button className="mockup3-hero__button">button</button>
+          <button
+            style={{
+              backgroundColor: color1,
+              color: tinycolor(color1).isDark() ? "white" : "black",
+            }}
+            className="mockup3-hero__button"
+          >
+            button
+          </button>
         </section>
 
         <section className="mockup3-main">
-          <div className="mockup3-main__card mockup3-main__card--coloured">
+          <div
+            className="mockup3-main__card mockup3-main__card--coloured"
+            style={{
+              backgroundColor: color2,
+              color: tinycolor(color2).isDark() ? "white" : "black",
+            }}
+          >
             <h2 className="mockup3-main__card-title">Lorem</h2>
           </div>
 
@@ -55,11 +88,23 @@ export default function Mockup3({ iframe }) {
             </p>
           </div>
 
-          <div className="mockup3-main__card mockup3-main__card--coloured">
+          <div
+            className="mockup3-main__card mockup3-main__card--coloured"
+            style={{
+              backgroundColor: color2,
+              color: tinycolor(color2).isDark() ? "white" : "black",
+            }}
+          >
             <h2 className="mockup3-main__card-title">Lorem</h2>
           </div>
 
-          <div className="mockup3-main__card mockup3-main__card--coloured">
+          <div
+            className="mockup3-main__card mockup3-main__card--coloured"
+            style={{
+              backgroundColor: color2,
+              color: tinycolor(color2).isDark() ? "white" : "black",
+            }}
+          >
             <h2 className="mockup3-main__card-title">Lorem</h2>
           </div>
 

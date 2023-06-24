@@ -177,7 +177,7 @@ export default function CreatePalettePage({
         iframe={iframe}
       />
 
-      <Mockups iframe={iframe} />
+      {localStorage.getItem("colour4") && <Mockups iframe={iframe} />}
 
       <section className="create-palette-buttons">
         <button

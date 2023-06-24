@@ -33,7 +33,7 @@ const App = () => {
 
   const [iframe, setIframe] = useState({
     iframe_key: 0,
-    iframe_url: "http://localhost:3000/mockup1/000000", //Your URL here
+    iframe_url: null, //Your URL here
   });
 
   const getUserData = async () => {
@@ -95,7 +95,6 @@ const App = () => {
 
   useEffect(() => {
     getPalettesData();
-    getAllUsers();
   }, [currentPage, sortMinHue, sortBy]);
 
   useEffect(() => {
@@ -104,6 +103,7 @@ const App = () => {
       getUserFavourites();
       getUserData();
     }
+    getAllUsers();
   }, []);
 
   if (!palettesData || !allUsers) {
@@ -191,9 +191,9 @@ const App = () => {
               <LoginSignUpPage page="login" setIsLoggedIn={setIsLoggedIn} />
             }
           />
-          <Route path="/mockup1/:color" element={<Mockup1 iframe={iframe} />} />
-          <Route path="/mockup2/:color" element={<Mockup2 iframe={iframe} />} />
-          <Route path="/mockup3/:color" element={<Mockup3 iframe={iframe} />} />
+          <Route path="/mockup1" element={<Mockup1 iframe={iframe} />} />
+          <Route path="/mockup2" element={<Mockup2 iframe={iframe} />} />
+          <Route path="/mockup3" element={<Mockup3 iframe={iframe} />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>

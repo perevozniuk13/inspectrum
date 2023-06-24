@@ -66,17 +66,18 @@
     padding: 1.5rem 2rem;
     margin: 8rem 0;
     border-radius: 2rem;
+    border: none;
   }
 }
 
 .mockup3-main {
   @include flexbox(row, center, null);
   flex-wrap: wrap;
-  padding: 6rem;
+  padding: 4rem;
   font-size: 2rem;
 
   &__card {
-    width: 60rem;
+    width: 40%;
     height: 30rem;
     padding: 10rem;
     @include flexbox(column, center, center);
@@ -88,8 +89,10 @@
   &__card-title {
     margin: 1rem;
     font-size: 3rem;
+    width: 70%;
   }
 
   &__card-subtitle {
+    font-size: 1.6rem;
   }
 }
