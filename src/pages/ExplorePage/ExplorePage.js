@@ -4,6 +4,7 @@ import Header from "../../components/Header/Header";
 import crossIconURL from "../../assets/images/cross-icon.png";
 import "./ExplorePage.scss";
 import { v4 as uuidv4 } from "uuid";
+import Footer from "../../components/Footer/Footer";
 
 export default function ExplorePage({
   isLoggedIn,
@@ -153,6 +154,8 @@ export default function ExplorePage({
           );
         })}
       </div>
+
+      <Footer />
     </>
   );
 }

@@ -9,6 +9,7 @@ import Header from "../../components/Header/Header";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import convert from "color-convert";
+import Footer from "../../components/Footer/Footer";
 
 export default function CreatePalettePage({
   isLoggedIn,
@@ -202,6 +203,8 @@ export default function CreatePalettePage({
           </button>
         </form>
       </section>
+
+      <Footer />
     </>
   );
 }

@@ -6,6 +6,7 @@ import ReducedPalette from "../../components/ReducedPalette/ReducedPalette";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import FavouritesMyPalettes from "../../components/FavouritesMyPalettes/FavouritesMyPalettes";
+import Footer from "../../components/Footer/Footer";
 
 export default function UserPage({
   isLoggedIn,
@@ -153,6 +154,8 @@ export default function UserPage({
           />
         )}
       </section>
+
+      <Footer />
     </>
   );
 }

@@ -5,6 +5,7 @@ import "./PaletteInfoPage.scss";
 import copyIconURL from "../../assets/images/copy-icon.svg";
 import Mockups from "../../components/Mockups/Mockups";
 import { useState, useEffect } from "react";
+import Footer from "../../components/Footer/Footer";
 
 export default function PaletteInfoPage({
   palettesData,
@@ -267,6 +268,8 @@ export default function PaletteInfoPage({
           </form>
         </section>
       )}
+
+      <Footer />
     </>
   );
 }

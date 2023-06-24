@@ -192,7 +192,6 @@ const App = () => {
           <Route path="/mockup1/:color" element={<Mockup1 iframe={iframe} />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
-        <Footer />
       </BrowserRouter>
     </>
   );
