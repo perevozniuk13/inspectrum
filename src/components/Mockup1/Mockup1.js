@@ -3,55 +3,79 @@ import "./Mockup1.scss";
 
 export default function Mockup1({ iframe }) {
   const { color } = useParams();
-  console.log("color", color);
+
   return (
     <>
       <div
         className="mockup1"
-        style={{ backgroundColor: color && `#${color}` }}
+        // style={{ backgroundColor: color && `#${color}` }}
       >
         <nav className="mockup1-nav">
-          <p className="mackoup1-nav__logo">LOGO</p>
-          <div className="mackoup1-nav__links">
-            <p className="mackoup1-nav__link">{iframe && iframe.iframe_key}</p>
-            <p className="mackoup1-nav__link">Contact us</p>
-            <p className="mackoup1-nav__link">Profile</p>
-          </div>
+          <p className="mockup1-nav__logo">LOGO</p>
+
+          <ul className="mockup1-nav__list">
+            <li className="mockup1-nav__link">PRODUCT</li>
+            <li className="mockup1-nav__link">ABOUT</li>
+            <li className="mockup1-nav__link">PORTFOLIO</li>
+            <li className="mockup1-nav__link">TEAM</li>
+            <li className="mockup1-nav__link">CONTACT</li>
+          </ul>
         </nav>
 
-        <main className="mockup1-main">
-          <section className="mockup1-main__hero">
-            <h1 className="mockup1-main__heading">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-            </h1>
-            {/* <img
-              className="mockup1-main__hero-image"
-              src="https://images.ctfassets.net/lh3zuq09vnm2/2gLKvsmUG0KvHHCNzyJnVy/55480b25e5e66b5a42e6231200bc0789/Website-tracking.png"
-              alt=""
-            /> */}
-          </section>
-          <section className="mockup1-main__body">
-            <h2>Title</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa
-              quod quae consectetur neque quo maxime dolorem, tempore aperiam
-              nihil temporibus deserunt. Iste nostrum nisi cupiditate explicabo
-              ipsam libero consequatur molestiae. Fugit optio nesciunt quae,
-              perspiciatis accusamus aliquid eligendi odio consequatur, pariatur
-              voluptas illo commodi iusto harum itaque! Ducimus repudiandae
-              fugit accusantium! Expedita.
-            </p>
-          </section>
-        </main>
+        <section className="mockup1-hero">
+          <h1 className="mockup1-hero__title">Lorem ipsum dolor</h1>
+          <p className="mockup1-hero__subtitle">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque
+            corrupti veniam ad culpa ducimus.
+          </p>
+          <button className="mockup1-hero__button">button</button>
+        </section>
 
-        <footer>
-          <h2>Contact us</h2>
-          <ul>
-            <li>Email: test@gmail.com</li>
-            <li>Phone: 07364562553</li>
-            <li>Address: London, UK</li>
-          </ul>
-        </footer>
+        <section className="mockup1-banner">
+          <p className="mockup1-banner__text">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia
+            ducimus saepe sequi soluta pariatur blanditiis optio minima cumque
+            ad iusto, accusamus quae repellat, qui repudiandae beatae officia
+            molestiae provident dicta.
+          </p>
+          <button className="mockup1-banner__button">button</button>
+        </section>
+
+        <h2 className="mockup1-title">Lorem ipsum dolor</h2>
+
+        <section className="mockup1-cards">
+          <div className="mockup1-cards__card">
+            <div className="mockup1-cards__circle"></div>
+            <h3 className="mockup1-cards__title">Lorem ipsum</h3>
+            <p className="mockup1-cards__text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit
+              suscipit mollitia hic quas obcaecati ratione magnam, ipsa, nemo
+              blanditiis cumque in! Ipsa expedita pariatur sed hic repudiandae
+              numquam, et quod?
+            </p>
+          </div>
+
+          <div className="mockup1-cards__card mockup1-cards__card--center">
+            <div className="mockup1-cards__circle"></div>
+            <h3 className="mockup1-cards__title">Lorem ipsum</h3>
+            <p className="mockup1-cards__text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit
+              suscipit mollitia hic quas obcaecati ratione magnam, ipsa, nemo
+              blanditiis cumque in! Ipsa expedita pariatur sed hic repudiandae
+              numquam, et quod?
+            </p>
+          </div>
+          <div className="mockup1-cards__card">
+            <div className="mockup1-cards__circle"></div>
+            <h3 className="mockup1-cards__title">Lorem ipsum</h3>
+            <p className="mockup1-cards__text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit
+              suscipit mollitia hic quas obcaecati ratione magnam, ipsa, nemo
+              blanditiis cumque in! Ipsa expedita pariatur sed hic repudiandae
+              numquam, et quod?
+            </p>
+          </div>
+        </section>
       </div>
     </>
   );

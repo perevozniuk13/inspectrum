@@ -1,17 +1,138 @@
-.mockup1 {
-  border: 1pz solid blue;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+@font-face {
+  font-family: Plex Sans;
+  src: url("../../assets/fonts/IBM_Plex_Sans/IBMPlexSans-Bold.ttf");
+  font-weight: 700;
 }
 
-.mockup1-main {
-  &__hero {
-    margin-bottom: 5rem;
+@font-face {
+  font-family: Plex Sans;
+  src: url("../../assets/fonts/AvenirNextLTPro-Regular.otf");
+  font-weight: 400;
+}
+
+.mockup1 {
+  background-color: $mockup1-background1;
+  color: $mockup1-color1;
+  text-align: center;
+  font-family: Plex Sans;
+}
+
+.mockup1-nav {
+  padding: 6rem;
+  background-color: $mockup1-background1;
+  @include flexbox(row, space-between, center);
+  &__logo {
+    font-size: 6rem;
   }
 
-  &__heading {
-    margin: 2rem;
+  &__list {
+    list-style: none;
+    @include flexbox(row, null, center);
   }
 
-  &__body {
-    margin-bottom: 3rem;
+  &__link {
+    padding: 1rem;
+    margin: 1rem;
+    font-size: 3rem;
+    font-weight: 700;
+  }
+}
+
+.mockup1-hero {
+  @include flexbox(column, center, flex-end);
+  text-align: right;
+  padding: 2rem 6rem;
+
+  &__title {
+    font-size: 7rem;
+    font-weight: 700;
+    // width: 40%;
+    margin: 6rem 0 3rem;
+  }
+
+  &__subtitle {
+    font-size: 3rem;
+    width: 60%;
+  }
+
+  &__button {
+    width: 25%;
+    background-color: $mockup1-color1;
+    color: $mockup1-background1;
+    text-transform: uppercase;
+    font-size: 3rem;
+    letter-spacing: 1rem;
+    padding: 1.5rem 2rem;
+    margin: 8rem 0;
+    border-radius: 2rem;
+  }
+}
+
+.mockup1-banner {
+  background-color: $mockup1-background2;
+  padding: 10rem 5rem 5rem;
+  text-align: center;
+  @include flexbox(column, null, null);
+  &__text {
+    font-size: 3rem;
+  }
+
+  &__button {
+    width: 20%;
+    background-color: $mockup1-color1;
+    color: $mockup1-background1;
+    text-transform: uppercase;
+    font-size: 2rem;
+    letter-spacing: 1rem;
+    padding: 1.5rem 2rem;
+    margin: 3rem 0;
+    border-radius: 2rem;
+  }
+}
+
+.mockup1-title {
+  font-size: 6rem;
+  font-weight: 700;
+  margin-top: 10rem;
+}
+
+.mockup1-cards {
+  @include flexbox(row, center, center);
+  padding: 5rem;
+
+  &__card {
+    background-color: $mockup1-background2;
+    width: 30%;
+    height: 30rem;
+    margin: 1rem;
+    border-radius: 2rem;
+    @include flexbox(column, center, flex-start);
+    padding: 2rem;
+    text-align: left;
+
+    &--center {
+      height: 35rem;
+      width: 35%;
+    }
+  }
+
+  &__circle {
+    background-color: $mockup1-color1;
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    margin-bottom: 2rem;
+  }
+
+  &__title {
+    font-size: 2rem;
+    margin: 1rem 0;
+  }
+
+  &__text {
+    font-size: 1.6rem;
   }
 }
