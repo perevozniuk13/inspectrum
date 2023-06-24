@@ -11,7 +11,7 @@ export default function Mockup2({ iframe }) {
         // style={{ backgroundColor: color && `#${color}` }}
       >
         <nav className="mockup2-nav">
-          <p className="mockup2-nav__logo">ACME</p>
+          <p className="mockup2-nav__logo">LOGO</p>
 
           <ul className="mockup2-nav__list">
             <li className="mockup2-nav__link">PRODUCT</li>
