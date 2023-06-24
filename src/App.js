@@ -13,6 +13,8 @@ import "./App.scss";
 import axios from "axios";
 import Footer from "./components/Footer/Footer";
 import Mockup1 from "./components/Mockup1/Mockup1";
+import Mockup2 from "./components/Mockup2/Mockup2";
+import Mockup3 from "./components/Mockup3/Mockup3";
 import FavouritesMyPalettes from "./components/FavouritesMyPalettes/FavouritesMyPalettes";
 
 const App = () => {
@@ -190,6 +192,8 @@ const App = () => {
             }
           />
           <Route path="/mockup1/:color" element={<Mockup1 iframe={iframe} />} />
+          <Route path="/mockup2/:color" element={<Mockup2 iframe={iframe} />} />
+          <Route path="/mockup3/:color" element={<Mockup3 iframe={iframe} />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>

@@ -1,9 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import Mockup1 from "../Mockup1/Mockup1";
 import "./Mockups.scss";
-import { useEffect } from "react";
-import ReactDOMServer from "react-dom/server";
-import CustomIframe from "../../CustomIframe";
 
 export default function Mockups({ iframe }) {
   const navigate = useNavigate();
@@ -13,9 +9,9 @@ export default function Mockups({ iframe }) {
   // console.log(coloursChanged);
   return (
     <section className="mockups-section">
-      <div className="mockups-section__mockup1-container">
+      <div className="mockups-section__mockup-container">
         <iframe
-          className="mockups-section__mockup1"
+          className="mockups-section__mockup"
           src={iframe.iframe_url}
         ></iframe>
         <button
@@ -25,13 +21,25 @@ export default function Mockups({ iframe }) {
           fullscreen
         </button>
       </div>
-      <div className="mockups-section__mockup1-container">
+      <div className="mockups-section__mockup-container">
         <iframe
-          className="mockups-section__mockup1"
+          className="mockups-section__mockup"
           src={iframe.iframe_url}
         ></iframe>
         <button
-          onClick={() => navigate("/mockup1")}
+          onClick={() => navigate(`${mockup_url}`)}
+          className="mockups-section__button"
+        >
+          fullscreen
+        </button>
+      </div>
+      <div className="mockups-section__mockup-container">
+        <iframe
+          className="mockups-section__mockup"
+          src={iframe.iframe_url}
+        ></iframe>
+        <button
+          onClick={() => navigate(`${mockup_url}`)}
           className="mockups-section__button"
         >
           fullscreen

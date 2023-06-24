@@ -1,0 +1,133 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+@font-face {
+  font-family: Plex Sans;
+  src: url("../../assets/fonts/IBM_Plex_Sans/IBMPlexSans-Bold.ttf");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: Plex Sans;
+  src: url("../../assets/fonts/AvenirNextLTPro-Regular.otf");
+  font-weight: 400;
+}
+
+.mockup2 {
+  background-color: $mockup2-background1;
+  color: $mockup2-color1;
+  text-align: center;
+  font-family: Plex Sans;
+}
+
+.mockup2-nav {
+  padding: 6rem;
+  background-color: $mockup2-background2;
+  @include flexbox(row, space-between, center);
+  &__logo {
+    font-size: 6rem;
+  }
+
+  &__list {
+    list-style: none;
+    @include flexbox(row, null, center);
+  }
+
+  &__link {
+    padding: 1rem;
+    margin: 1rem;
+    font-size: 3rem;
+    font-weight: 700;
+  }
+}
+
+.mockup2-hero {
+  background-color: $mockup2-background2;
+  @include flexbox(column, null, null);
+  padding: 2rem 6rem;
+  text-align: left;
+  &__title {
+    font-size: 7rem;
+    font-weight: 700;
+    width: 40%;
+    margin: 6rem 0 3rem;
+  }
+
+  &__subtitle {
+    font-size: 4rem;
+    width: 40%;
+  }
+
+  &__button {
+    width: 25%;
+    background-color: $mockup2-color1;
+    color: $mockup2-background1;
+    text-transform: uppercase;
+    font-size: 3rem;
+    letter-spacing: 1rem;
+    padding: 1.5rem 2rem;
+    margin: 4rem 0;
+  }
+}
+
+.mockup2-title {
+  font-size: 6rem;
+  font-weight: 700;
+  margin: 4rem auto;
+}
+
+.mockup2-squares {
+  padding: 0 6rem 10rem;
+  @include flexbox(row, space-around, center);
+  &__square-container {
+    @include flexbox(column, center, null);
+    text-align: left;
+    width: 25rem;
+  }
+
+  &__square {
+    background-color: $mockup2-background2;
+    width: 25rem;
+    height: 35rem;
+  }
+
+  &__square-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin: 2rem 0;
+  }
+
+  &__square-description {
+    font-size: 2.7rem;
+    margin: 1rem 0;
+  }
+}
+
+.mockup2-circles {
+  padding: 10rem 6rem;
+
+  @include flexbox(row, space-around, center);
+  &__circle-container {
+    @include flexbox(column, center, center);
+    text-align: center;
+  }
+
+  &__circle {
+    background-color: $mockup2-background3;
+    width: 20rem;
+    height: 20rem;
+    border-radius: 50%;
+  }
+
+  &__circle-title {
+    font-size: 4rem;
+    font-weight: 700;
+    margin: 2rem;
+  }
+
+  &__circle-description {
+    font-size: 3rem;
+    margin: 1rem;
+    width: 70%;
+  }
+}
