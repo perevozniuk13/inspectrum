@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import "./Mockup1.scss";
 import tinycolor from "tinycolor2";
+import { useEffect } from "react";
 
 export default function Mockup1({ iframe }) {
   const colors = window.location.href.substring(30).split["&&"];
@@ -9,11 +10,37 @@ export default function Mockup1({ iframe }) {
   // const color2 = "#" + colors[1];
   // const color3 = "#" + colors[2];
   // const color4 = "#" + colors[3];
+  let color1;
+  let color2;
+  let color3;
+  let color4;
+  color1 = localStorage.getItem("col1-1");
+  color2 = localStorage.getItem("col2-1");
+  color3 = localStorage.getItem("col3-1");
+  color4 = localStorage.getItem("col4-1");
 
-  const color1 = localStorage.getItem("colour1");
-  const color2 = localStorage.getItem("colour2");
-  const color3 = localStorage.getItem("colour3");
-  const color4 = localStorage.getItem("colour4");
+  // useEffect(() => {
+  //   color1 = localStorage.getItem(`colour${changedColours.col1}`);
+  //   color2 = localStorage.getItem(`colour${changedColours.col2}`);
+  //   color3 = localStorage.getItem(`colour${changedColours.col3}`);
+  //   color4 = localStorage.getItem(`colour${changedColours.col4}`);
+  // }, [changedColours]);
+
+  // const colours = ["colour1", "colour2", "colour3", "colour4"];
+
+  // if (localStorage.getItem("updateMockup") == 1) {
+  //   color1 = localStorage.getItem("colour2");
+  //   color2 = localStorage.getItem("colour1");
+  //   color3 = localStorage.getItem("colour4");
+  // } else if (localStorage.getItem("updateMockup") == 2) {
+  //   color1 = localStorage.getItem("colour4");
+  //   color2 = localStorage.getItem("colour3");
+  //   color3 = localStorage.getItem("colour1");
+  // } else if (localStorage.getItem("updateMockup") == 3) {
+  //   color1 = localStorage.getItem("colour3");
+  //   color2 = localStorage.getItem("colour4");
+  //   color3 = localStorage.getItem("colour2");
+  // }
 
   return (
     <>
@@ -124,7 +151,7 @@ export default function Mockup1({ iframe }) {
                 backgroundColor: color2,
                 color: tinycolor(color2).isDark() ? "white" : "black",
               }}
-              className="mockup1-cards__circle"
+              className="mockup1-cards__circle mockup1-cards__circle--center"
             ></div>
             <h3 className="mockup1-cards__title">Lorem ipsum</h3>
             <p className="mockup1-cards__text">

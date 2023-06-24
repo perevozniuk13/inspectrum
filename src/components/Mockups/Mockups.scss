@@ -39,4 +39,14 @@
     font-size: 2rem;
     color: white;
   }
+
+  &__refresh-icon {
+    position: absolute;
+    bottom: 9rem;
+    bottom: 2rem;
+    right: 18rem;
+    width: 6rem;
+    border-radius: 1rem;
+    box-shadow: 8px 13px 18px -3px rgba(0, 0, 0, 0.5);
+  }
 }

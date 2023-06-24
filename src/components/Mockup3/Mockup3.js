@@ -5,11 +5,18 @@ import tinycolor from "tinycolor2";
 export default function Mockup3({ iframe }) {
   const { color } = useParams();
 
-  const color1 = localStorage.getItem("colour1");
-  const color2 = localStorage.getItem("colour2");
-  const color3 = localStorage.getItem("colour3");
-  const color4 = localStorage.getItem("colour4");
-  console.log("color", color);
+  // const color1 = localStorage.getItem("colour1");
+  // const color2 = localStorage.getItem("colour2");
+  // const color3 = localStorage.getItem("colour3");
+  // const color4 = localStorage.getItem("colour4");
+  let color1;
+  let color2;
+  let color3;
+  let color4;
+  color1 = localStorage.getItem("col1-3");
+  color2 = localStorage.getItem("col2-3");
+  color3 = localStorage.getItem("col3-3");
+  color4 = localStorage.getItem("col4-3");
   return (
     <>
       <div

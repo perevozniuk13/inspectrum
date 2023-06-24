@@ -31,6 +31,12 @@ export default function CreateColourPalette({
     localStorage.setItem("colour2", colour2);
     localStorage.setItem("colour3", colour3);
     localStorage.setItem("colour4", colour4);
+    for (let i = 1; i <= 4; i++) {
+      localStorage.setItem(`col1-${i}`, colour1);
+      localStorage.setItem(`col2-${i}`, colour2);
+      localStorage.setItem(`col3-${i}`, colour3);
+      localStorage.setItem(`col4-${i}`, colour4);
+    }
 
     // setSelectedCard("colour4");
     setIframe({
@@ -129,7 +135,7 @@ export default function CreateColourPalette({
           onClick={handleSavingColours}
           className="create-palette__view-button"
         >
-          Update mockups
+          Show mockups
         </button>
       </section>
     </>

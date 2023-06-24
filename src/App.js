@@ -36,6 +36,13 @@ const App = () => {
     iframe_url: null, //Your URL here
   });
 
+  const [changedColours, setChangedColours] = useState({
+    col1: 1,
+    col2: 2,
+    col3: 3,
+    col4: 4,
+  });
+
   const getUserData = async () => {
     try {
       const response = await axios.get(
@@ -161,6 +168,8 @@ const App = () => {
                 userData={userData}
                 iframe={iframe}
                 setIframe={setIframe}
+                setChangedColours={setChangedColours}
+                changedColours={changedColours}
               />
             }
           />
@@ -191,9 +200,24 @@ const App = () => {
               <LoginSignUpPage page="login" setIsLoggedIn={setIsLoggedIn} />
             }
           />
-          <Route path="/mockup1" element={<Mockup1 iframe={iframe} />} />
-          <Route path="/mockup2" element={<Mockup2 iframe={iframe} />} />
-          <Route path="/mockup3" element={<Mockup3 iframe={iframe} />} />
+          <Route
+            path="/mockup1/:query"
+            element={
+              <Mockup1 iframe={iframe} changedColours={changedColours} />
+            }
+          />
+          <Route
+            path="/mockup2/:query"
+            element={
+              <Mockup2 iframe={iframe} changedColours={changedColours} />
+            }
+          />
+          <Route
+            path="/mockup3/:query"
+            element={
+              <Mockup3 iframe={iframe} changedColours={changedColours} />
+            }
+          />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
