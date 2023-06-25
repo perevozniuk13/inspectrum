@@ -5,6 +5,7 @@ import crossIconURL from "../../assets/images/cross-icon.png";
 import "./ExplorePage.scss";
 import { v4 as uuidv4 } from "uuid";
 import Footer from "../../components/Footer/Footer";
+import { useEffect } from "react";
 
 export default function ExplorePage({
   isLoggedIn,
@@ -21,11 +22,17 @@ export default function ExplorePage({
   getUserFavourites,
   userData,
   setIsLoggedIn,
+  setPalettesData,
 }) {
   let pagesArray = [];
   for (let i = 1; i <= totalPages; i++) {
     pagesArray.push(i);
   }
+
+  useEffect(() => {
+    getPalettesData();
+    getUserFavourites();
+  }, []);
 
   return (
     <>

@@ -84,7 +84,7 @@ export default function SignupForm() {
       setIsSignupSuccessfull(true);
       setTimeout(() => navigate("/login"), 1000);
     } catch (error) {
-      setSignupError("Sign up failed");
+      setSignupError(error.response.data);
     }
   };
 

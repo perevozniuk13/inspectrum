@@ -153,6 +153,7 @@ const App = () => {
                 userFavouritesData={userFavouritesData}
                 getPalettesData={getPalettesData}
                 getUserFavourites={getUserFavourites}
+                setPalettesData={setPalettesData}
               />
             }
           />
