@@ -1,15 +1,25 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
+.user-main {
+  @include flexbox(row, null, null);
+  margin: 10rem 20rem;
+  border-radius: 2rem;
+  border: 1px solid white;
+  overflow: hidden;
+}
+
 .user-info {
   font-size: 2rem;
   padding: 2rem;
   border: 1px solid white;
-  margin: 10rem 2rem;
+  width: 25%;
+  // margin: 10rem 20rem;
 }
 
 .user-library {
-  margin: 10rem 2rem;
+  // margin: 10rem 20rem;
+  width: 75%;
   padding: 2rem;
   font-size: 2rem;
   border: 1px solid white;
@@ -20,8 +30,8 @@
   }
 
   &__nav-link {
-    padding: 2rem;
-    font-size: 4rem;
+    padding: 1rem;
+    font-size: 3rem;
 
     &--selected {
       background-color: white;

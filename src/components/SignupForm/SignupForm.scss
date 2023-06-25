@@ -2,7 +2,7 @@
 @use "../../styles/partials/variables" as *;
 
 .signup {
-  color: $secondary-text-color;
+  color: white;
   padding: 2rem;
   margin: 3rem 10vw;
   background-color: $primary-background;
@@ -24,7 +24,7 @@
 }
 
 .signup-form {
-  font-size: $font-size-mobile;
+  font-size: 1.6rem;
 
   @include media-tablet {
     @include flexbox(column, null, center);
@@ -45,12 +45,19 @@
 
   &__input {
     padding: 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     width: 70%;
+    border-radius: 2rem;
 
     @include media-tablet {
       width: 30rem;
     }
+  }
+
+  &__login-text {
+    font-size: 1.6rem;
+    margin: 3rem 0;
+    color: rgb(229, 230, 231);
   }
 
   &__button {
@@ -58,7 +65,17 @@
     margin: 1rem;
 
     @include media-tablet {
-      width: 10rem;
+      text-transform: uppercase;
+      background-color: rgb(48, 46, 46);
+      color: $secondary-text-color;
+      padding: 2rem;
+      border-radius: 1rem;
+      margin-right: 2rem;
+      border: none;
+      box-shadow: 8px 13px 18px -3px rgba(0, 0, 0, 0.5);
+      font-size: 2rem;
+      color: white;
+      margin: 2rem 0;
       align-self: flex-end;
     }
   }

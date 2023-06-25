@@ -65,11 +65,11 @@ export default function LoginForm({ setIsLoggedIn }) {
               id="loginPassword"
             />
           </div>
-          <p>
+          <p className="login-form__login-text">
             Don't have an account yet? Please <Link to="/signup">Sign Up</Link>
           </p>
-          <button className="login-form__button">Login</button>
           {loginError && <p className="login-error">{loginError}</p>}
+          <button className="login-form__button">Login</button>
         </form>
       </section>
     </>

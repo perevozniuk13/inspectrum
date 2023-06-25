@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "./ExplorePalette.scss";
-import likeIconURL from "../../assets/images/empty-heart.png";
-import likedIconURL from "../../assets/images/heart.png";
+import likeIconURL from "../../assets/images/like-icon.png";
+import likedIconURL from "../../assets/images/liked-icon.png";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -69,7 +69,10 @@ export default function ExplorePalette({
   return (
     <>
       <section className="explore-palette">
-        <div className="explore-palette__colours-container">
+        <div
+          onClick={() => navigate(`/palettes/${id}`, { state: "explore" })}
+          className="explore-palette__colours-container"
+        >
           <div
             style={{ backgroundColor: colour1 }}
             className="explore-palette__colour-card"
@@ -97,12 +100,12 @@ export default function ExplorePalette({
         </div>
 
         <div className="explore-palette__buttons-container">
-          <button
+          {/* <button
             onClick={() => navigate(`/palettes/${id}`, { state: "explore" })}
             className="explore-palette__view-button"
           >
             View
-          </button>
+          </button> */}
           <div className="explore-palette__likes-container">
             <p className="explore-palette__likes-count">{likes}</p>
 
@@ -138,7 +141,7 @@ export default function ExplorePalette({
             )}
           </div>
 
-          <p className="date">{`${date.getDate()}/${date.getMonth()}/${date.getFullYear()}   ${date.getHours()}:${date.getMinutes()}`}</p>
+          <p className="date">{`${date.getDate()}/${date.getMonth()}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`}</p>
         </div>
       </section>
     </>

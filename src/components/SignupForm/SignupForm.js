@@ -31,9 +31,7 @@ export default function SignupForm() {
     }
 
     if (first_name.length < 3 || last_name.length < 3) {
-      setSignupError(
-        "First name, last name and username must be at least 3 characters long!"
-      );
+      setSignupError("Fields must be at least 3 characters long!");
       return;
     }
 
@@ -159,13 +157,13 @@ export default function SignupForm() {
               id="confirmPassword"
             />
           </div>
-          <p>
+          <p className="signup-form__login-text">
             Do you already have an account? Please{" "}
             <Link to="/login">Log In</Link>
           </p>
-          <button className="signup-form__button">signup</button>
           {signupError && <p className="signup-error">{signupError}</p>}
           {isSignupSuccessfull && <p>Success! Please login</p>}
+          <button className="signup-form__button">signup</button>
         </form>
       </section>
     </>

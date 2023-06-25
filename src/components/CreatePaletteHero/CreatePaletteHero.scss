@@ -2,8 +2,8 @@
 @use "../../styles/partials/variables" as *;
 
 .create-hero {
-  padding: 20rem 5em 2rem;
-
+  padding: 10rem 5em;
+  @include flexbox(column, center, center);
   &__title {
     font-size: 4rem;
 
@@ -22,7 +22,7 @@
 
   &__image-palette-button {
     text-transform: uppercase;
-    background-color: black;
+    background-color: rgb(48, 46, 46);
     color: $secondary-text-color;
     padding: 2rem;
     border-radius: 1rem;

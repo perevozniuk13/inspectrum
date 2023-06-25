@@ -142,6 +142,7 @@ export default function Collections({
             name="collectionName"
             id="collectionName"
             placeholder="Collection Name"
+            className="modal__input"
           />
           {createCollectionError && (
             <p className="modal-error">{createCollectionError}</p>

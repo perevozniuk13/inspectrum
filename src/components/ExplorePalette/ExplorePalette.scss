@@ -2,20 +2,25 @@
 @use "../../styles/partials/variables" as *;
 
 .explore-palette {
-  @include flexbox(column, space-evenly, center);
-  width: 25rem;
-  height: 35rem;
-  background-color: rgba($color: #252222, $alpha: 5);
+  @include flexbox(column, space-between, center);
+  width: 20rem;
+  height: 25rem;
+  overflow: hidden;
+  background-color: rgba($color: #ffffff, $alpha: 5);
   border: 1px solid #59585c;
   // box-shadow: 10px 14px 24px 0px rgba(114, 111, 123, 0.5);
-  margin: 1rem;
+  margin: 2rem;
   border-radius: 1rem;
+
+  &:hover {
+    border: 2px solid white;
+  }
 
   &__colours-container {
     @include flexbox(column, center, null);
-    width: 20rem;
+    width: 100%;
     height: 25rem;
-    border-radius: 1rem;
+    // border-radius: 1rem;
     overflow: hidden;
     // box-shadow: 8px 13px 18px -3px rgba(0, 0, 0, 0.5)
   }
@@ -28,6 +33,7 @@
 
   &__colour {
     color: white;
+    display: none;
   }
 
   &__view-button {
@@ -48,14 +54,19 @@
   &__likes-count {
     font-size: 2rem;
     margin: 0.5rem;
+    color: black;
   }
 
   &__buttons-container {
-    @include flexbox(row-reverse, space-evenly, center);
+    @include flexbox(row-reverse, space-around, center);
     width: 100%;
   }
 
   &__likes-container {
     @include flexbox(row, space-evenly, center);
   }
+}
+
+.date {
+  color: black;
 }

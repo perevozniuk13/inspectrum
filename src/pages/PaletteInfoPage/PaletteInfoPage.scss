@@ -1,23 +1,59 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
+.palette-info-page {
+  position: relative;
+}
+
+.palette-about {
+  // background-color: rgb(48, 46, 46);
+  margin: 5rem 29% 2rem;
+  padding: 5rem;
+  border-radius: 1rem;
+  font-size: 2rem;
+  font-weight: 300;
+  position: absolute;
+  right: -30rem;
+  top: 32rem;
+  font-weight: 300;
+
+  &__title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+  }
+
+  &__text {
+    margin: 1rem 0;
+  }
+}
+
 .palette-info {
   @include flexbox(column, null, null);
 
   &__colours-container {
     @include flexbox(row, center, null);
-    border: 2px solid black;
+    // border: 2px solid rgb(255, 255, 255);
     padding: 4rem;
+    margin: 20rem 0 5rem;
   }
 
   &__card-container {
   }
 
   &__colour-card {
+    border-top: 0.5px solid rgb(94, 94, 94);
+    border-bottom: 0.5px solid rgb(94, 94, 94);
     width: 15rem;
     height: 20rem;
-    border: 1px solid black;
     @include flexbox(row, center, center);
+
+    &--left {
+      border-left: 0.5px solid rgb(94, 94, 94);
+    }
+    &--right {
+      border-right: 0.5px solid rgb(94, 94, 94);
+    }
   }
 
   &__copy-text-container {
@@ -51,15 +87,54 @@
 }
 
 .palette-info-buttons {
-  @include flexbox(row, flex-end, center);
+  @include flexbox(column, flex-end, flex-end);
+  margin: 5rem 10rem 5rem;
 
   &__button {
     text-transform: uppercase;
-    background-color: $primary-background;
+    background-color: rgb(48, 46, 46);
     color: $secondary-text-color;
-    border: none;
-    padding: 2rem 3rem;
-    margin: 1rem 2rem;
+    padding: 2rem;
     border-radius: 1rem;
+    margin-right: 2rem;
+    border: none;
+    box-shadow: 8px 13px 18px -3px rgba(0, 0, 0, 0.5);
+    font-size: 2rem;
+    color: white;
+    margin: 2rem 0;
   }
+
+  &__add-collection-button {
+    text-transform: uppercase;
+    background-color: white;
+    color: black;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin-right: 2rem;
+    border: none;
+    box-shadow: 8px 13px 18px -3px rgba(0, 0, 0, 0.5);
+    font-size: 2rem;
+    margin: 1rem 0;
+  }
+}
+
+.add-button {
+  // width: 20rem;
+  @include flexbox(column, null, null);
+  padding: 2rem;
+  background-color: rgb(48, 46, 46);
+  border-radius: 1rem;
+}
+
+.add-collection {
+  font-size: 2rem;
+  text-transform: uppercase;
+  padding: 1rem;
+  border-radius: 1rem;
+  margin-right: 2rem;
+  border: none;
+  background-color: rgb(48, 46, 46);
+  // box-shadow: 8px 13px 18px -3px rgba(0, 0, 0, 0.5);
+  font-size: 2rem;
+  color: white;
 }

@@ -16,7 +16,7 @@
     padding: 2rem 10rem;
 
     @include media-tablet {
-      @include flexbox(row, space-around, null);
+      @include flexbox(row, center, center);
       flex-wrap: wrap;
     }
   }
@@ -24,7 +24,8 @@
 
 .feature {
   text-align: center;
-  padding-bottom: 3rem;
+  margin: 5rem;
+  // padding-bottom: 3rem;
 
   @include media-tablet {
     width: 30%;
@@ -36,6 +37,6 @@
   }
 
   &__description {
-    font-size: $font-size-mobile;
+    font-size: 1.6rem;
   }
 }

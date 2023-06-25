@@ -27,6 +27,16 @@ input[type="number"] {
   width: 20rem;
   height: 20rem;
   border-radius: 50%;
+  background: linear-gradient(
+    to bottom,
+    rgb(206, 9, 9),
+    rgb(241, 157, 2),
+    rgb(242, 242, 4),
+    rgb(10, 234, 10),
+    rgb(28, 224, 224),
+    rgb(24, 24, 183),
+    rgb(158, 5, 158)
+  );
 }
 
 .container {
@@ -35,14 +45,14 @@ input[type="number"] {
 
 .button {
   text-transform: uppercase;
-  background-color: black;
+  background-color: rgb(48, 46, 46);
   color: $secondary-text-color;
   padding: 2rem;
   border-radius: 1rem;
   margin-right: 2rem;
   border: none;
   box-shadow: 8px 13px 18px -3px rgba(0, 0, 0, 0.5);
-  font-size: 2rem;
+  font-size: 1.6rem;
   color: white;
   margin: 2rem 0;
 }
@@ -52,7 +62,7 @@ input[type="number"] {
 }
 
 .input-hex {
-  background-color: black;
+  background-color: rgb(48, 46, 46);
   color: $secondary-text-color;
   padding: 2rem;
   border-radius: 1rem;
@@ -60,7 +70,7 @@ input[type="number"] {
   box-shadow: 8px 13px 18px -3px rgba(0, 0, 0, 0.5);
   font-size: 2rem;
   color: white;
-  margin: 5rem 0;
+  margin-top: 7rem;
 
   &__input {
     margin-left: 2rem;

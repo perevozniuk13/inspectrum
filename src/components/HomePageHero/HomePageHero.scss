@@ -3,7 +3,7 @@
 
 .homepage-hero {
   // @include flexbox(column, space-between, null);
-  padding: 20rem 5rem 2rem;
+  padding: 20rem 10rem 2rem;
 
   &__title {
     font-size: 3rem;
@@ -24,7 +24,7 @@
 
   &__get-started-button {
     text-transform: uppercase;
-    background-color: black;
+    background-color: rgb(48, 46, 46);
     color: $secondary-text-color;
     padding: 2rem;
     border-radius: 1rem;

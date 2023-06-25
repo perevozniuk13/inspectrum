@@ -5,8 +5,9 @@ import axios from "axios";
 import deleteIconURL from "../../assets/images/icons-delete.png";
 import editIconURL from "../../assets/images/icons-edit.png";
 import crossIconURL from "../../assets/images/cross-icon.png";
-import viewIconURL from "../../assets/images/icons-view.png";
+import viewIconURL from "../../assets/images/eye.png";
 import { useNavigate } from "react-router-dom";
+import darkDelete from "../../assets/images/delete-30.png";
 
 export default function Collection({
   collectionId,
@@ -128,7 +129,7 @@ export default function Collection({
 
   return (
     <section className="library-collection">
-      <div>
+      <div className="library-collection__edit-delete-container">
         <h3 className="library-collection__name">{collectionName}</h3>
         <img
           className="library-collection__edit-button"
@@ -146,7 +147,10 @@ export default function Collection({
       <div className="library-collection__palettes-container">
         {collectionPalettesData.map((palette) => {
           return (
-            <div key={palette.id}>
+            <div
+              className="library-collection__reduced-palette-container"
+              key={palette.id}
+            >
               <ReducedPalette
                 colour1={palette.colour1}
                 colour2={palette.colour2}
@@ -156,7 +160,7 @@ export default function Collection({
               <div className="library-collection__icons-container">
                 <img
                   className="library-collection__delete-palette-button"
-                  src={deleteIconURL}
+                  src={darkDelete}
                   alt="delete icon"
                   onClick={() => handleDeleteCollectionPalette(palette.id)}
                 />
@@ -191,6 +195,7 @@ export default function Collection({
             name="collectionName"
             id="collectionName"
             placeholder="New Collection Name"
+            className="modal__input"
             value={newCollectionName}
             onChange={(e) => setNewCollectionName(e.target.value)}
           />

@@ -1,3 +1,28 @@
 .user-library__delete-button {
   width: 3rem;
 }
+
+.user-library {
+  &__palettes {
+    // display: flex;
+    // flex-direction: row;
+    // flex-wrap: wrap;
+    // justify-content: center;
+  }
+
+  &__palette-container {
+    background-color: white;
+    width: 15rem;
+    border-radius: 1rem;
+    // overflow: hidden;
+    margin: 1.2rem;
+    overflow: hidden;
+  }
+
+  &__icon-container {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    padding: 1rem;
+  }
+}

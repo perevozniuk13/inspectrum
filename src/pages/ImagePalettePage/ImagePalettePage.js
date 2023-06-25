@@ -12,6 +12,7 @@ import Mockups from "../../components/Mockups/Mockups";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import convert from "color-convert";
+import copyIconURL from "../../assets/images/icons8-copy-30.png";
 
 export default function ImagePalettePage({
   isLoggedIn,
@@ -149,7 +150,7 @@ export default function ImagePalettePage({
       />
       <form className="image-palette-form">
         <label className="image-palette-form__label" htmlFor="paletteImage">
-          Upload your image to get a palette
+          Upload your favorite images to generate beautiful color palettes.
         </label>
         <input
           className="image-palette-form__input"
@@ -164,17 +165,11 @@ export default function ImagePalettePage({
             );
           }}
         />
-        {uploadedImage ? (
+        {uploadedImage && (
           <img
             className="image-palette-form__image"
             src={URL.createObjectURL(uploadedImage)}
             alt="upload image"
-          />
-        ) : (
-          <img
-            className="image-palette-form__image"
-            src={placeholderImgURL}
-            alt="placeholder image"
           />
         )}
       </form>
@@ -197,32 +192,79 @@ export default function ImagePalettePage({
             }
             return (
               <div>
-                <section>
-                  <div className="explore-palette__colours-container">
-                    <div
-                      style={{ backgroundColor: data[0] }}
-                      className="explore-palette__colour-card"
-                    >
-                      <p className="explore-palette__colour">{data[0]}</p>
-                    </div>
-                    <div
-                      style={{ backgroundColor: data[1] }}
-                      className="explore-palette__colour-card"
-                    >
-                      <p className="explore-palette__colour">{data[1]}</p>
-                    </div>
-                    <div
-                      style={{ backgroundColor: data[2] }}
-                      className="explore-palette__colour-card"
-                    >
-                      <p className="explore-palette__colour">{data[2]}</p>
-                    </div>
-                    <div
-                      style={{ backgroundColor: data[3] }}
-                      className="explore-palette__colour-card"
-                    >
-                      <p className="explore-palette__colour">{data[3]}</p>
-                    </div>
+                <section className="image-palette">
+                  <div className="image-palette__colours-container">
+                    <section className="image-palette__card-container">
+                      <div
+                        style={{ backgroundColor: data[0] }}
+                        className="image-palette__colour-card image-palette__colour-card--left"
+                      ></div>
+                      <div className="image-palette__copy-text-container">
+                        <p className="image-palette__colour">{data[0]}</p>
+                        <img
+                          className="image-palette__copy-icon"
+                          onClick={() => {
+                            navigator.clipboard.writeText(data[0]);
+                          }}
+                          src={copyIconURL}
+                          alt=""
+                        />
+                      </div>
+                    </section>
+
+                    <section className="image-palette__card-container">
+                      <div
+                        style={{ backgroundColor: data[1] }}
+                        className="image-palette__colour-card"
+                      ></div>
+                      <div className="image-palette__copy-text-container">
+                        <p className="image-palette__colour">{data[1]}</p>
+                        <img
+                          className="image-palette__copy-icon"
+                          onClick={() => {
+                            navigator.clipboard.writeText(data[1]);
+                          }}
+                          src={copyIconURL}
+                          alt=""
+                        />
+                      </div>
+                    </section>
+
+                    <section className="image-palette__card-container">
+                      <div
+                        style={{ backgroundColor: data[2] }}
+                        className="image-palette__colour-card"
+                      ></div>
+                      <div className="image-palette__copy-text-container">
+                        <p className="image-palette__colour">{data[2]}</p>
+                        <img
+                          className="image-palette__copy-icon"
+                          onClick={() => {
+                            navigator.clipboard.writeText(data[2]);
+                          }}
+                          src={copyIconURL}
+                          alt=""
+                        />
+                      </div>
+                    </section>
+
+                    <section className="image-palette__card-container">
+                      <div
+                        style={{ backgroundColor: data[3] }}
+                        className="image-palette__colour-card  image-palette__colour-card--right"
+                      ></div>
+                      <div className="image-palette__copy-text-container">
+                        <p className="image-palette__colour">{data[3]}</p>
+                        <img
+                          className="image-palette__copy-icon"
+                          onClick={() => {
+                            navigator.clipboard.writeText(data[3]);
+                          }}
+                          src={copyIconURL}
+                          alt=""
+                        />
+                      </div>
+                    </section>
                   </div>
                 </section>
                 {localStorage.setItem("colour1", data[0])}

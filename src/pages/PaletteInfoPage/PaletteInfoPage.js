@@ -2,7 +2,7 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Header from "../../components/Header/Header";
 import "./PaletteInfoPage.scss";
-import copyIconURL from "../../assets/images/copy-icon.svg";
+import copyIconURL from "../../assets/images/icons8-copy-30.png";
 import Mockups from "../../components/Mockups/Mockups";
 import { useState, useEffect } from "react";
 import Footer from "../../components/Footer/Footer";
@@ -159,7 +159,7 @@ export default function PaletteInfoPage({
   // localStorage.setItem("colour4", palette.colour4);
 
   return (
-    <>
+    <section className="palette-info-page">
       <Header
         isLoggedIn={isLoggedIn}
         userData={userData}
@@ -171,7 +171,7 @@ export default function PaletteInfoPage({
           <section className="palette-info__card-container">
             <div
               style={{ backgroundColor: palette.colour1 }}
-              className="palette-info__colour-card"
+              className="palette-info__colour-card palette-info__colour-card--left"
             ></div>
             <div className="palette-info__copy-text-container">
               <p className="palette-info__colour">{palette.colour1}</p>
@@ -225,7 +225,7 @@ export default function PaletteInfoPage({
           <section className="palette-info__card-container">
             <div
               style={{ backgroundColor: palette.colour4 }}
-              className="palette-info__colour-card"
+              className="palette-info__colour-card  palette-info__colour-card--right"
             ></div>
             <div className="palette-info__copy-text-container">
               <p className="palette-info__colour">{palette.colour4}</p>
@@ -242,14 +242,20 @@ export default function PaletteInfoPage({
         </div>
       </section>
 
-      <h1>Palette Info</h1>
-      <h2>
-        By: {allUsers.find((user) => user.id === palette.user_id).username}
-      </h2>
-      <h2>
-        {`Date and time created: ${date.getDate()}/${date.getMonth()}/${date.getFullYear()}   ${date.getHours()}:${date.getMinutes()}`}
-      </h2>
-      <h2>Likes: {palette.likes}</h2>
+      <section className="palette-about">
+        <h1 className="palette-about__title"> Palette Info</h1>
+        <p className="palette-about__text">
+          <b>By: </b>{" "}
+          {allUsers.find((user) => user.id === palette.user_id).username}
+        </p>
+        <p className="palette-about__text">
+          <b>Created:</b>{" "}
+          {`${date.getDate()}/${date.getMonth()}/${date.getFullYear()}   ${date.getHours()}:${date.getMinutes()}`}
+        </p>
+        <p className="palette-about__text">
+          <b>Likes: </b> {palette.likes}
+        </p>
+      </section>
 
       <Mockups
         iframe={iframe}
@@ -280,7 +286,7 @@ export default function PaletteInfoPage({
                 })}
               </select>
             )}
-            <button className="palette-info-buttons__button">
+            <button className="palette-info-buttons__add-collection-button">
               add to collection
             </button>
           </form>
@@ -288,8 +294,15 @@ export default function PaletteInfoPage({
       )}
       {location.state === "user" && (
         <section className="palette-info-buttons">
-          <form className="add" onSubmit={(e) => handleAddToCollection(e)}>
-            <select className="add-c" name="collections" id="collections">
+          <form
+            className="add-button"
+            onSubmit={(e) => handleAddToCollection(e)}
+          >
+            <select
+              className="add-collection"
+              name="collections"
+              id="collections"
+            >
               <option value="">-- Select collection --</option>
               {collectionsData.map((col) => {
                 return (
@@ -299,7 +312,7 @@ export default function PaletteInfoPage({
                 );
               })}
             </select>
-            <button className="palette-info-buttons__button">
+            <button className="palette-info-buttons__add-collection-button">
               add to collection
             </button>
           </form>
@@ -307,6 +320,6 @@ export default function PaletteInfoPage({
       )}
 
       <Footer />
-    </>
+    </section>
   );
 }

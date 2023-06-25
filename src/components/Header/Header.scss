@@ -1,16 +1,43 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
+@keyframes rotate {
+  to {
+    --angle: 360deg;
+  }
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
 .nav {
   position: relative;
   @include flexbox(row, space-between, center);
+  padding: 3rem 3rem 3rem 10rem;
 
   &__logo {
-    font-size: 7rem;
-    padding: 3rem 3rem;
-    text-decoration: none;
-    display: inline-block;
-    color: $secondary-text-color;
+    // font-size: 5rem;
+    // // padding: 3rem;
+    // text-decoration: none;
+    // display: inline-block;
+    // color: $secondary-text-color;
+    background: linear-gradient(
+      to right,
+      rgb(206, 9, 9),
+      rgb(241, 157, 2),
+      rgb(242, 242, 4),
+      rgb(10, 234, 10),
+      rgb(28, 224, 224),
+      rgb(24, 24, 183),
+      rgb(158, 5, 158)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 70px;
+    // line-height: 60px;
   }
 
   &__tablet-links-container {
@@ -26,11 +53,35 @@
     background-color: black;
     color: $secondary-text-color;
     padding: 2rem;
-    border-radius: 1rem;
+    // border: 1px solid hsl(0, 0%, 0%);
+    border-image: conic-gradient(from var(--angle), rgb(3, 3, 3)) 1;
+    border-radius: 4rem;
     margin-right: 2rem;
     box-shadow: 8px 13px 18px -3px rgba(0, 0, 0, 0.5);
-    font-size: 2rem;
+    font-size: 1.6rem;
     color: white;
+    overflow: hidden;
+
+    &:hover {
+      --angle: 0deg;
+      border: 1px solid;
+      border-image: conic-gradient(
+          from var(--angle),
+          red,
+          yellow,
+          lime,
+          aqua,
+          blue,
+          magenta,
+          red
+        )
+        1;
+      overflow: hidden;
+      border-radius: 2rem;
+      animation: 3s rotate linear infinite;
+      // -webkit-background-clip: text;
+      // -webkit-text-fill-color: transparent;
+    }
   }
 
   &__menu-icon {

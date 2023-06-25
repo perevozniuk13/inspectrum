@@ -2,68 +2,86 @@
 @use "../../styles/partials/variables" as *;
 
 .login {
-    color: $secondary-text-color;
-    padding: 2rem;
-    margin: 3rem 10vw;
-    background-color: $primary-background;
-    text-align: center;
-    border-radius: 1rem;
+  color: white;
+  padding: 2rem;
+  margin: 3rem 10vw;
+  background-color: $primary-background;
+  text-align: center;
+  border-radius: 1rem;
+
+  @include media-tablet {
+    margin: 3rem 15vw;
+  }
+
+  &__title {
+    margin: 1rem;
+    font-size: 4rem;
 
     @include media-tablet {
-        margin: 3rem 15vw;
+      margin: 3rem 15vw;
     }
-
-    &__title {
-        margin: 1rem;
-        font-size: 4rem;
-        
-        @include media-tablet {
-            margin: 3rem 15vw;
-        }
-
-    }
+  }
 }
 
 .login-form {
-    font-size: $font-size-mobile;
+  font-size: 1.6rem;
+
+  @include media-tablet {
+    @include flexbox(column, null, center);
+  }
+
+  &__label-input-container {
+    @include flexbox(column, null, center);
 
     @include media-tablet {
-        @include flexbox(column, null, center);
+      @include flexbox(row, null, null);
     }
-    
-    &__label-input-container {
-        @include flexbox(column, null, center);
+  }
 
-        @include media-tablet {
-            @include flexbox(row, null, null);
+  &__label {
+    margin-bottom: 1rem;
+    width: 20rem;
+  }
 
-        }
+  &__input {
+    padding: 1rem;
+    margin-bottom: 2rem;
+    width: 70%;
+    border-radius: 2rem;
+
+    @include media-tablet {
+      width: 30rem;
     }
+  }
+  &__login-text {
+    font-size: 1.6rem;
+    margin: 3rem 0;
+    color: rgb(229, 230, 231);
+  }
 
-    &__label {
-        margin-bottom: 1rem;
-        width: 20rem;
+  &__button {
+    padding: 1rem 2rem;
+    margin: 1rem;
 
-
+    @include media-tablet {
+      text-transform: uppercase;
+      background-color: rgb(48, 46, 46);
+      color: $secondary-text-color;
+      padding: 2rem;
+      border-radius: 1rem;
+      margin-right: 2rem;
+      border: none;
+      box-shadow: 8px 13px 18px -3px rgba(0, 0, 0, 0.5);
+      font-size: 2rem;
+      color: white;
+      margin: 2rem 0;
+      align-self: flex-end;
     }
+  }
+}
 
-    &__input {
-        padding: 1rem;
-        margin-bottom: 1rem;
-        width: 70%;
-
-        @include media-tablet {
-            width: 30rem;
-        }
-    }
-
-    &__button {
-        padding: 1rem 2rem;
-        margin: 1rem;
-
-        @include media-tablet {
-            width: 10rem;
-            align-self: flex-end;
-        }
-    }
+.login-error {
+  color: red;
+  margin: 1rem;
+  font-size: 2rem;
 }

@@ -2,12 +2,12 @@
 @use "../../styles/partials/variables" as *;
 
 .create-palette-buttons {
-  @include flexbox(row, flex-end, flex-end);
+  @include flexbox(column, flex-end, flex-end);
   margin: 10rem;
 
   &__button {
     text-transform: uppercase;
-    background-color: black;
+    background-color: rgb(48, 46, 46);
     color: $secondary-text-color;
     padding: 2rem;
     border-radius: 1rem;
@@ -29,7 +29,7 @@
     border: none;
     box-shadow: 8px 13px 18px -3px rgba(0, 0, 0, 0.5);
     font-size: 2rem;
-    margin: 2rem 0;
+    margin: 1rem 0;
   }
 }
 
@@ -37,7 +37,7 @@
   // width: 20rem;
   @include flexbox(column, null, null);
   padding: 2rem;
-  background-color: black;
+  background-color: rgb(48, 46, 46);
   border-radius: 1rem;
 }
 
@@ -48,8 +48,8 @@
   border-radius: 1rem;
   margin-right: 2rem;
   border: none;
-  background-color: black;
-  box-shadow: 8px 13px 18px -3px rgba(0, 0, 0, 0.5);
+  background-color: rgb(48, 46, 46);
+  // box-shadow: 8px 13px 18px -3px rgba(0, 0, 0, 0.5);
   font-size: 2rem;
   color: white;
 }

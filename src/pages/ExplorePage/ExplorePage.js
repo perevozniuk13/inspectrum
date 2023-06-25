@@ -35,7 +35,7 @@ export default function ExplorePage({
   }, []);
 
   return (
-    <>
+    <section className="explore">
       <Header
         isLoggedIn={isLoggedIn}
         userData={userData}
@@ -137,8 +137,8 @@ export default function ExplorePage({
         }}
       >
         <option value={""}>-- Sort By --</option>
-        <option value="likes-asc">Likes --ascending</option>
-        <option value="likes-desc">Likes --descending</option>
+        <option value="likes-asc">Likes --least popular</option>
+        <option value="likes-desc">Likes --most popular</option>
         <option value="created_at-desc">Date added --most recent</option>
         <option value="created_at-asc">Date added --least recent</option>
       </select>
@@ -168,6 +168,6 @@ export default function ExplorePage({
       </div>
 
       <Footer />
-    </>
+    </section>
   );
 }

@@ -209,6 +209,7 @@ export default function CreatePalettePage({
         <form className="add" onSubmit={(e) => handleAddToCollection(e)}>
           {authToken && (
             <select className="add-c" name="collections" id="collections">
+              <option value="">-- Select collection --</option>
               {collectionsData.map((col) => {
                 return (
                   <option key={col.id} value={col.collection_name}>

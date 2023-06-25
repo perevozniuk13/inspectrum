@@ -1,8 +1,9 @@
 import ReducedPalette from "../ReducedPalette/ReducedPalette";
-import deleteIcon from "../../assets/images/icons-delete.png";
-import viewIconURL from "../../assets/images/icons-view.png";
+import deleteIcon from "../../assets/images/delete-30.png";
+import viewIconURL from "../../assets/images/eye.png";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "./FavouritesMyPalettes.scss";
 
 export default function FavouritesMyPalettes({
   data,
@@ -53,31 +54,33 @@ export default function FavouritesMyPalettes({
         {!data.length && <p>You don't have any {librarySection} yet...</p>}
         {data.map((palette) => {
           return (
-            <div key={palette.id}>
+            <div className="user-library__palette-container" key={palette.id}>
               <ReducedPalette
                 colour1={palette.colour1}
                 colour2={palette.colour2}
                 colour3={palette.colour3}
                 colour4={palette.colour4}
               />
-              <img
-                className="user-library__delete-button"
-                src={deleteIcon}
-                alt="delete icon"
-                onClick={() => deleteFunction(palette.id)}
-              />
-              <img
-                className="library-collection__delete-button"
-                src={viewIconURL}
-                alt="view icon"
-                onClick={() => {
-                  librarySection === "favourites"
-                    ? navigate(`/palettes/${palette.palette_id}`, {
-                        state: "user",
-                      })
-                    : navigate(`/palettes/${palette.id}`, { state: "user" });
-                }}
-              />
+              <div className="user-library__icon-container">
+                <img
+                  className="user-library__delete-button"
+                  src={deleteIcon}
+                  alt="delete icon"
+                  onClick={() => deleteFunction(palette.id)}
+                />
+                <img
+                  className="library-collection__delete-button"
+                  src={viewIconURL}
+                  alt="view icon"
+                  onClick={() => {
+                    librarySection === "favourites"
+                      ? navigate(`/palettes/${palette.palette_id}`, {
+                          state: "user",
+                        })
+                      : navigate(`/palettes/${palette.id}`, { state: "user" });
+                  }}
+                />
+              </div>
             </div>
           );
         })}

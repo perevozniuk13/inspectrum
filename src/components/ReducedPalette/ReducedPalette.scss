@@ -3,11 +3,11 @@
 
 .reduced-palette {
   @include flexbox(column, null, null);
-  height: 12rem;
-  width: 10rem;
-  border-radius: 4px;
-  margin: 2rem;
-  overflow: hidden;
+  height: 15rem;
+  width: 100%;
+  // border-radius: 4px;
+  // margin: 2rem;
+  // overflow: hidden;
 
   &__colour {
     height: 25%;
