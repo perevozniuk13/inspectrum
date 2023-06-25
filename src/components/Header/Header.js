@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import menuIconURL from "../../assets/images/menu.svg";
 import { useState } from "react";
 
-export default function Header({ isLoggedIn, userData }) {
+export default function Header({ isLoggedIn, userData, setIsLoggedIn }) {
   const [isMenuClicked, setIsMenuClicked] = useState(false);
   const navigate = useNavigate();
 
@@ -63,9 +63,9 @@ export default function Header({ isLoggedIn, userData }) {
                 </a>
                 <a
                   onClick={() => {
+                    setIsLoggedIn(false);
                     sessionStorage.clear();
                     navigate("/");
-                    window.location.reload();
                   }}
                   className="nav__link"
                 >

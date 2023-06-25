@@ -18,6 +18,7 @@ export default function ImagePalettePage({
   userData,
   iframe,
   setIframe,
+  setIsLoggedIn,
 }) {
   const [uploadedImage, setUploadedImage] = useState("");
   const navigate = useNavigate();
@@ -141,7 +142,11 @@ export default function ImagePalettePage({
 
   return (
     <>
-      <Header isLoggedIn={isLoggedIn} userData={userData} />
+      <Header
+        isLoggedIn={isLoggedIn}
+        userData={userData}
+        setIsLoggedIn={setIsLoggedIn}
+      />
       <form className="image-palette-form">
         <label className="image-palette-form__label" htmlFor="paletteImage">
           Upload your image to get a palette

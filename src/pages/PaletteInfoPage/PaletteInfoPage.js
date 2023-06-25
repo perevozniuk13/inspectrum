@@ -14,6 +14,7 @@ export default function PaletteInfoPage({
   userData,
   iframe,
   setIframe,
+  setIsLoggedIn,
 }) {
   const { paletteId } = useParams();
   const [data, setData] = useState(null);
@@ -159,7 +160,11 @@ export default function PaletteInfoPage({
 
   return (
     <>
-      <Header isLoggedIn={isLoggedIn} userData={userData} />
+      <Header
+        isLoggedIn={isLoggedIn}
+        userData={userData}
+        setIsLoggedIn={setIsLoggedIn}
+      />
 
       <section className="palette-info">
         <div className="palette-info__colours-container">

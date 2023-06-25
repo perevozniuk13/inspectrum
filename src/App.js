@@ -127,13 +127,20 @@ const App = () => {
         <Routes>
           <Route
             path="/"
-            element={<HomePage isLoggedIn={isLoggedIn} userData={userData} />}
+            element={
+              <HomePage
+                isLoggedIn={isLoggedIn}
+                userData={userData}
+                setIsLoggedIn={setIsLoggedIn}
+              />
+            }
           />
           <Route
             path="/explore"
             element={
               <ExplorePage
                 isLoggedIn={isLoggedIn}
+                setIsLoggedIn={setIsLoggedIn}
                 userData={userData}
                 palettesData={palettesData}
                 totalPages={totalPages}
@@ -154,6 +161,7 @@ const App = () => {
             element={
               <PaletteInfoPage
                 isLoggedIn={isLoggedIn}
+                setIsLoggedIn={setIsLoggedIn}
                 palettesData={palettesData}
                 allUsers={allUsers}
                 userData={userData}
@@ -167,6 +175,7 @@ const App = () => {
             element={
               <CreatePalettePage
                 isLoggedIn={isLoggedIn}
+                setIsLoggedIn={setIsLoggedIn}
                 userData={userData}
                 iframe={iframe}
                 setIframe={setIframe}
@@ -180,6 +189,7 @@ const App = () => {
             element={
               <ImagePalettePage
                 isLoggedIn={isLoggedIn}
+                setIsLoggedIn={setIsLoggedIn}
                 userData={userData}
                 iframe={iframe}
                 setIframe={setIframe}
@@ -191,6 +201,7 @@ const App = () => {
             element={
               <UserPage
                 isLoggedIn={isLoggedIn}
+                setIsLoggedIn={setIsLoggedIn}
                 userFavouritesData={userFavouritesData}
                 getUserFavourites={getUserFavourites}
                 userData={userData}

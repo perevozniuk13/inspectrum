@@ -32,7 +32,6 @@ export default function LoginForm({ setIsLoggedIn }) {
       setLoginError("");
       setIsLoggedIn(true);
       navigate("/profile");
-      window.location.reload();
     } catch (error) {
       setLoginError("Log in failed!");
     }

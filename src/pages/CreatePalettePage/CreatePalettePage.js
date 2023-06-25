@@ -16,6 +16,7 @@ export default function CreatePalettePage({
   userData,
   iframe,
   setIframe,
+  setIsLoggedIn,
   // setChangedColours,
   // changedColours,
 }) {
@@ -158,7 +159,11 @@ export default function CreatePalettePage({
 
   return (
     <>
-      <Header isLoggedIn={isLoggedIn} userData={userData} />
+      <Header
+        isLoggedIn={isLoggedIn}
+        userData={userData}
+        setIsLoggedIn={setIsLoggedIn}
+      />
       <CreatePaletteHero />
       <CreateColourPicker2
         setPickedColour={setPickedColour}

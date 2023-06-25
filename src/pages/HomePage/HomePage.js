@@ -4,10 +4,14 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import "./HomePage.scss";
 
-export default function HomePage({ isLoggedIn, userData }) {
+export default function HomePage({ isLoggedIn, userData, setIsLoggedIn }) {
   return (
     <>
-      <Header isLoggedIn={isLoggedIn} userData={userData} />
+      <Header
+        isLoggedIn={isLoggedIn}
+        userData={userData}
+        setIsLoggedIn={setIsLoggedIn}
+      />
       <HomePageHero />
       <Features />
 

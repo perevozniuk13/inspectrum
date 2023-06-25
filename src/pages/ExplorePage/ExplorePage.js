@@ -20,6 +20,7 @@ export default function ExplorePage({
   getPalettesData,
   getUserFavourites,
   userData,
+  setIsLoggedIn,
 }) {
   let pagesArray = [];
   for (let i = 1; i <= totalPages; i++) {
@@ -28,7 +29,11 @@ export default function ExplorePage({
 
   return (
     <>
-      <Header isLoggedIn={isLoggedIn} userData={userData} />
+      <Header
+        isLoggedIn={isLoggedIn}
+        userData={userData}
+        setIsLoggedIn={setIsLoggedIn}
+      />
       <ExplorePageHero />
       <section className="colour-sort">
         <div

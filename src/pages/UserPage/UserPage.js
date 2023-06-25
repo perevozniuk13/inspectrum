@@ -12,6 +12,7 @@ export default function UserPage({
   isLoggedIn,
   userFavouritesData,
   getUserFavourites,
+  setIsLoggedIn,
   userData,
 }) {
   const [librarySection, setLibrarySection] = useState("collections");
@@ -80,7 +81,11 @@ export default function UserPage({
 
   return (
     <>
-      <Header isLoggedIn={isLoggedIn} userData={userData} />
+      <Header
+        isLoggedIn={isLoggedIn}
+        userData={userData}
+        setIsLoggedIn={setIsLoggedIn}
+      />
 
       <section className="user-info">
         <p className="user-info__username">User: {userData.username}</p>
