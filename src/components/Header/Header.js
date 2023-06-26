@@ -44,11 +44,11 @@ export default function Header({ isLoggedIn, userData, setIsLoggedIn }) {
             </a>
             {!isLoggedIn && (
               <>
-                <Link to="/signup" className="nav__link">
-                  Sign Up
-                </Link>
                 <Link to="/login" className="nav__link">
                   Log In
+                </Link>
+                <Link to="/signup" className="nav__link">
+                  Sign Up
                 </Link>
               </>
             )}
@@ -59,7 +59,8 @@ export default function Header({ isLoggedIn, userData, setIsLoggedIn }) {
                   onClick={(e) => handleLink(e, "/profile")}
                   className="nav__link"
                 >
-                  {`${userData.first_name}'s Profile`}
+                  {/* {`${userData.first_name}'s Profile`} */}
+                  My Profile
                 </a>
                 <a
                   onClick={() => {

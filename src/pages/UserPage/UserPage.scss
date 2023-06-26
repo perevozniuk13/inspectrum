@@ -14,7 +14,36 @@
   padding: 2rem;
   border: 1px solid white;
   width: 25%;
+
   // margin: 10rem 20rem;
+
+  &__username {
+    margin: 1rem 0;
+    border-bottom: 1px solid red;
+    padding: 0.5rem;
+  }
+
+  &__name {
+    border-bottom: 1px solid rgb(255, 191, 0);
+    padding: 0.5rem;
+  }
+
+  &__collections {
+    margin: 1rem 0;
+    border-bottom: 1px solid rgb(0, 255, 42);
+    padding: 0.5rem;
+  }
+
+  &__favourites {
+    margin: 1rem 0;
+    border-bottom: 1px solid rgb(0, 170, 255);
+    padding: 0.5rem;
+  }
+  &__palettes {
+    margin: 1rem 0;
+    border-bottom: 1px solid rgb(179, 0, 255);
+    padding: 0.5rem;
+  }
 }
 
 .user-library {

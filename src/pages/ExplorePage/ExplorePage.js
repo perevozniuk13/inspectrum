@@ -23,6 +23,9 @@ export default function ExplorePage({
   userData,
   setIsLoggedIn,
   setPalettesData,
+  getAllUsers,
+  allUsers,
+  currentPage,
 }) {
   let pagesArray = [];
   for (let i = 1; i <= totalPages; i++) {
@@ -32,6 +35,7 @@ export default function ExplorePage({
   useEffect(() => {
     getPalettesData();
     getUserFavourites();
+    getAllUsers();
   }, []);
 
   return (
@@ -154,6 +158,11 @@ export default function ExplorePage({
         {pagesArray.map((page) => {
           return (
             <button
+              style={{
+                backgroundColor: page == currentPage ? "black" : "lightgrey",
+                border: page == currentPage && "1px solid white",
+                color: page == currentPage ? "white" : "black",
+              }}
               key={uuidv4()}
               className="page-button"
               onClick={() => {

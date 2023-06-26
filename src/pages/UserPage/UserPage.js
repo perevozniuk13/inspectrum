@@ -107,18 +107,21 @@ export default function UserPage({
       />
       <section className="user-main">
         <section className="user-info">
-          <p className="user-info__username">User: {userData.username}</p>
+          <p className="user-info__username">
+            <b>User: </b>
+            {userData.username}
+          </p>
           <p className="user-info__name">
-            Name: {userData.first_name} {userData.last_name}
+            <b>Name:</b> {userData.first_name} {userData.last_name}
           </p>
           <p className="user-info__collections">
-            Collections: {collectionsData.length}
+            <b>Collections:</b> {collectionsData.length}
           </p>
           <p className="user-info__favourites">
-            Favourites: {userFavouritesData.length}
+            <b>Favourites:</b> {favouritesData.length}
           </p>
-          <p className="user-info__favourites">
-            Created palettes: {userPalettesData.length}
+          <p className="user-info__palettes">
+            <b>Created palettes: </b> {userPalettesData.length}
           </p>
         </section>
 

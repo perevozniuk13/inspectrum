@@ -15,6 +15,7 @@ export default function PaletteInfoPage({
   iframe,
   setIframe,
   setIsLoggedIn,
+  getAllUsers,
 }) {
   const { paletteId } = useParams();
   const [data, setData] = useState(null);
@@ -122,6 +123,7 @@ export default function PaletteInfoPage({
       // setData(palettesData);
       setPalette(palettesData.find((p) => p.id == paletteId));
     }
+    getAllUsers();
     // setPalette(data.find((p) => p.id == paletteId));
   }, []);
 

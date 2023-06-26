@@ -145,37 +145,43 @@ export default function Collection({
         />
       </div>
       <div className="library-collection__palettes-container">
-        {collectionPalettesData.map((palette) => {
-          return (
-            <div
-              className="library-collection__reduced-palette-container"
-              key={palette.id}
-            >
-              <ReducedPalette
-                colour1={palette.colour1}
-                colour2={palette.colour2}
-                colour3={palette.colour3}
-                colour4={palette.colour4}
-              />
-              <div className="library-collection__icons-container">
-                <img
-                  className="library-collection__delete-palette-button"
-                  src={darkDelete}
-                  alt="delete icon"
-                  onClick={() => handleDeleteCollectionPalette(palette.id)}
+        {!collectionPalettesData.length && (
+          <p style={{ margin: "1rem 0" }}>
+            No palettes in this collection yet...
+          </p>
+        )}
+        {collectionPalettesData.length > 0 &&
+          collectionPalettesData.map((palette) => {
+            return (
+              <div
+                className="library-collection__reduced-palette-container"
+                key={palette.id}
+              >
+                <ReducedPalette
+                  colour1={palette.colour1}
+                  colour2={palette.colour2}
+                  colour3={palette.colour3}
+                  colour4={palette.colour4}
                 />
-                <img
-                  className="library-collection__delete-palette-button"
-                  src={viewIconURL}
-                  alt="view icon"
-                  onClick={() =>
-                    navigate(`/palettes/${palette.id}`, { state: "user" })
-                  }
-                />
+                <div className="library-collection__icons-container">
+                  <img
+                    className="library-collection__delete-palette-button"
+                    src={darkDelete}
+                    alt="delete icon"
+                    onClick={() => handleDeleteCollectionPalette(palette.id)}
+                  />
+                  <img
+                    className="library-collection__delete-palette-button"
+                    src={viewIconURL}
+                    alt="view icon"
+                    onClick={() =>
+                      navigate(`/palettes/${palette.id}`, { state: "user" })
+                    }
+                  />
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
       </div>
       <div className={`overlay ${modalState ? "" : "hidden"}`}></div>
       <div className={`modal ${modalState ? "" : "hidden"}`}>

@@ -145,6 +145,7 @@ const App = () => {
                 palettesData={palettesData}
                 totalPages={totalPages}
                 setCurrentPage={setCurrentPage}
+                currentPage={currentPage}
                 sortMinHue={sortMinHue}
                 sortMaxHue={sortMaxHue}
                 setSortBy={setSortBy}
@@ -154,6 +155,8 @@ const App = () => {
                 getPalettesData={getPalettesData}
                 getUserFavourites={getUserFavourites}
                 setPalettesData={setPalettesData}
+                getAllUsers={getAllUsers}
+                allUsers={allUsers}
               />
             }
           />
@@ -164,10 +167,11 @@ const App = () => {
                 isLoggedIn={isLoggedIn}
                 setIsLoggedIn={setIsLoggedIn}
                 palettesData={palettesData}
-                allUsers={allUsers}
                 userData={userData}
                 iframe={iframe}
                 setIframe={setIframe}
+                allUsers={allUsers}
+                getAllUsers={getAllUsers}
               />
             }
           />

@@ -22,6 +22,20 @@
   }
 
   &__logo {
+    background: linear-gradient(
+      to right,
+      rgb(206, 9, 9),
+      rgb(241, 157, 2),
+      rgb(242, 242, 4),
+      rgb(10, 234, 10),
+      rgb(28, 224, 224),
+      rgb(24, 24, 183),
+      rgb(158, 5, 158)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 70px;
+    font-weight: 300;
     font-size: 4rem;
   }
 
