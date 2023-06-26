@@ -12,8 +12,10 @@ export default function Footer() {
         <section className="footer__contact-info">
           <h3 className="footer__contact-title">Contact us</h3>
           <ul className="footer__contact-info-list">
-            <li className="footer__contact-info-item">+1-678-1232-123</li>
-            <li className="footer__contact-info-item">email@gmail.com</li>
+            <li className="footer__contact-info-item">+1-111-1232-123</li>
+            <li className="footer__contact-info-item">
+              sashaperevozniuk01@gmail.com
+            </li>
             <li className="footer__contact-info-item">
               55-57 Rivington Street, London, UK
             </li>

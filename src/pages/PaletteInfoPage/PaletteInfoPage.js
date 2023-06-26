@@ -8,22 +8,31 @@ import { useState, useEffect } from "react";
 import Footer from "../../components/Footer/Footer";
 
 export default function PaletteInfoPage({
-  palettesData,
   isLoggedIn,
-  allUsers,
-  userData,
   iframe,
   setIframe,
   setIsLoggedIn,
-  getAllUsers,
 }) {
   const { paletteId } = useParams();
   const [palette, setPalette] = useState(null);
-
   const [collectionsData, setCollectionsData] = useState(null);
+  const [allUsers, setAllUsers] = useState(null);
+  const [palettesData, setPalettesData] = useState(null);
+
   const authToken = sessionStorage.getItem("authToken");
   const navigate = useNavigate();
   const location = useLocation();
+
+  const getAllUsers = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_SERVER_URL}/users`
+      );
+      setAllUsers(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const getCollectionsData = async () => {
     try {
@@ -51,6 +60,7 @@ export default function PaletteInfoPage({
           },
         }
       );
+      setPalettesData(response.data);
       setPalette(response.data.find((p) => p.id == paletteId));
     } catch (err) {
       console.log(err);
@@ -110,16 +120,11 @@ export default function PaletteInfoPage({
   };
 
   useEffect(() => {
-    if (isLoggedIn && location.state === "explore") {
-      setPalette(palettesData.find((p) => p.id == paletteId));
-      getCollectionsData();
-    } else if (location.state == "user") {
-      getPalettes();
-      getCollectionsData();
-    } else {
-      setPalette(palettesData.find((p) => p.id == paletteId));
-    }
+    getPalettes();
     getAllUsers();
+    if (isLoggedIn) {
+      getCollectionsData();
+    }
   }, []);
 
   useEffect(() => {
@@ -133,7 +138,7 @@ export default function PaletteInfoPage({
     }
   }, [palette]);
 
-  if (!palette) {
+  if (!palette || !allUsers || !palettesData) {
     return <p>Loading...</p>;
   }
 
@@ -145,11 +150,7 @@ export default function PaletteInfoPage({
 
   return (
     <section className="palette-info-page">
-      <Header
-        isLoggedIn={isLoggedIn}
-        userData={userData}
-        setIsLoggedIn={setIsLoggedIn}
-      />
+      <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
 
       <section className="palette-info">
         <div className="palette-info__colours-container">
@@ -258,9 +259,16 @@ export default function PaletteInfoPage({
           >
             add to favourites
           </button>
-          <form className="add" onSubmit={(e) => handleAddToCollection(e)}>
+          <form
+            className="palette-info-buttons__add-button"
+            onSubmit={(e) => handleAddToCollection(e)}
+          >
             {isLoggedIn && (
-              <select className="add-c" name="collections" id="collections">
+              <select
+                className="palette-info-buttons__add-collection"
+                name="collections"
+                id="collections"
+              >
                 <option value="">-- Select collection --</option>
                 {collectionsData.map((col) => {
                   return (
@@ -280,11 +288,11 @@ export default function PaletteInfoPage({
       {location.state === "user" && (
         <section className="palette-info-buttons">
           <form
-            className="add-button"
+            className="palette-info-buttons__add-button"
             onSubmit={(e) => handleAddToCollection(e)}
           >
             <select
-              className="add-collection"
+              className="palette-info-buttons__add-collection"
               name="collections"
               id="collections"
             >

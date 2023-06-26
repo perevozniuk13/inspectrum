@@ -12,7 +12,6 @@ import Footer from "../../components/Footer/Footer";
 
 export default function CreatePalettePage({
   isLoggedIn,
-  userData,
   iframe,
   setIframe,
   setIsLoggedIn,
@@ -23,10 +22,11 @@ export default function CreatePalettePage({
   const [colour2, setColour2] = useState("");
   const [colour3, setColour3] = useState("");
   const [colour4, setColour4] = useState("");
+  const [collectionsData, setCollectionsData] = useState(null);
 
   const navigate = useNavigate();
-  const [collectionsData, setCollectionsData] = useState(null);
   const authToken = sessionStorage.getItem("authToken");
+
   const getCollectionsData = async () => {
     try {
       const response = await axios.get(
@@ -153,11 +153,7 @@ export default function CreatePalettePage({
 
   return (
     <>
-      <Header
-        isLoggedIn={isLoggedIn}
-        userData={userData}
-        setIsLoggedIn={setIsLoggedIn}
-      />
+      <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       <CreatePaletteHero />
       <CreateColourPicker2
         setPickedColour={setPickedColour}
@@ -198,9 +194,16 @@ export default function CreatePalettePage({
         >
           add to my palettes
         </button>
-        <form className="add" onSubmit={(e) => handleAddToCollection(e)}>
+        <form
+          className="create-palette-buttons__form"
+          onSubmit={(e) => handleAddToCollection(e)}
+        >
           {authToken && (
-            <select className="add-c" name="collections" id="collections">
+            <select
+              className="create-palette-buttons__select"
+              name="collections"
+              id="collections"
+            >
               <option value="">-- Select collection --</option>
               {collectionsData.map((col) => {
                 return (

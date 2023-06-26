@@ -15,7 +15,6 @@ export default function Features() {
           <div className="feature">
             <img src={exploreIcon} alt="explore icon" />
             <h3 className="feature__title">
-              {" "}
               Discover Inspiring Color Combinations
             </h3>
             <p className="feature__description">

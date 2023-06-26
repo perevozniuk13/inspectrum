@@ -5,43 +5,81 @@ import crossIconURL from "../../assets/images/cross-icon.png";
 import "./ExplorePage.scss";
 import { v4 as uuidv4 } from "uuid";
 import Footer from "../../components/Footer/Footer";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-export default function ExplorePage({
-  isLoggedIn,
-  palettesData,
-  totalPages,
-  setCurrentPage,
-  setSortMinHue,
-  setSortMaxHue,
-  sortMinHue,
-  setSortBy,
-  userFavouritesData,
-  getPalettesData,
-  getUserFavourites,
-  userData,
-  setIsLoggedIn,
-  getAllUsers,
-  currentPage,
-}) {
+export default function ExplorePage({ isLoggedIn, setIsLoggedIn }) {
+  const [palettesData, setPalettesData] = useState(null);
+  const [userFavouritesData, setUserFavouritesData] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(null);
+  const [sortMinHue, setSortMinHue] = useState(null);
+  const [sortMaxHue, setSortMaxHue] = useState(null);
+  const [sortBy, setSortBy] = useState({ sort_by: null, order_by: null });
+  const authToken = sessionStorage.getItem("authToken");
+
   let pagesArray = [];
   for (let i = 1; i <= totalPages; i++) {
     pagesArray.push(i);
   }
 
+  const getPalettesData = async () => {
+    try {
+      const receivedPalettesData = await axios.get(
+        `${process.env.REACT_APP_SERVER_URL}/palettes?page=${currentPage}&&min_hue=${sortMinHue}&&max_hue=${sortMaxHue}&&sort_by=${sortBy.sort_by}&&order_by=${sortBy.order_by}`
+      );
+      setPalettesData([...receivedPalettesData.data].slice(0, -1));
+      setTotalPages(
+        receivedPalettesData.data[receivedPalettesData.data.length - 1]
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getUserFavourites = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_SERVER_URL}/users/favourites`,
+        {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+        }
+      );
+      setUserFavouritesData(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getPalettesData();
+  }, [currentPage, sortMinHue, sortBy]);
+
+  useEffect(() => {
+    if (sessionStorage.getItem("authToken")) {
+      setIsLoggedIn(true);
+      getUserFavourites();
+    }
+  }, []);
+
   useEffect(() => {
     getPalettesData();
     getUserFavourites();
-    getAllUsers();
   }, []);
+
+  if (!palettesData) {
+    return <p>Loading...</p>;
+  }
+
+  if (sessionStorage.getItem("authToken") && !userFavouritesData) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <section className="explore">
-      <Header
-        isLoggedIn={isLoggedIn}
-        userData={userData}
-        setIsLoggedIn={setIsLoggedIn}
-      />
+      <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       <ExplorePageHero />
       <section className="colour-sort">
         <div

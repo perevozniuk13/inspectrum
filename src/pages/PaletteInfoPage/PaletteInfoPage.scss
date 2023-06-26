@@ -108,23 +108,23 @@
     font-size: 2rem;
     margin: 1rem 0;
   }
-}
 
-.add-button {
-  @include flexbox(column, null, null);
-  padding: 2rem;
-  background-color: rgb(48, 46, 46);
-  border-radius: 1rem;
-}
+  &__add-button {
+    @include flexbox(column, null, null);
+    padding: 2rem;
+    background-color: rgb(48, 46, 46);
+    border-radius: 1rem;
+  }
 
-.add-collection {
-  font-size: 2rem;
-  text-transform: uppercase;
-  padding: 1rem;
-  border-radius: 1rem;
-  margin-right: 2rem;
-  border: none;
-  background-color: rgb(48, 46, 46);
-  font-size: 2rem;
-  color: white;
+  &__add-collection {
+    font-size: 2rem;
+    text-transform: uppercase;
+    padding: 1rem;
+    border-radius: 1rem;
+    margin-right: 2rem;
+    border: none;
+    background-color: rgb(48, 46, 46);
+    font-size: 2rem;
+    color: white;
+  }
 }

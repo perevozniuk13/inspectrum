@@ -22,7 +22,7 @@ export default function ExplorePalette({
 
   const handleAddToFavourites = async () => {
     try {
-      const response = await axios.post(
+      await axios.post(
         `${process.env.REACT_APP_SERVER_URL}/users/favourites`,
         { palette_id: id },
         {
@@ -55,14 +55,6 @@ export default function ExplorePalette({
     } catch (err) {
       console.log(err);
     }
-  };
-
-  const handleLike = () => {
-    handleAddToFavourites();
-  };
-
-  const handleRemoveLike = () => {
-    handleDeleteFavourite();
   };
 
   return (
@@ -111,14 +103,14 @@ export default function ExplorePalette({
                     className="explore-palette__like-button"
                     src={likeIconURL}
                     alt="like icon"
-                    onClick={handleLike}
+                    onClick={handleAddToFavourites}
                   />
                 ) : (
                   <img
                     className="explore-palette__like-button"
                     src={likedIconURL}
                     alt="liked icon"
-                    onClick={handleRemoveLike}
+                    onClick={handleDeleteFavourite}
                   />
                 )}{" "}
               </section>

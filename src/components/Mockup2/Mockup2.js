@@ -1,4 +1,3 @@
-import { useParams } from "react-router-dom";
 import "./Mockup2.scss";
 import tinycolor from "tinycolor2";
 

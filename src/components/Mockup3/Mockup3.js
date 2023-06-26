@@ -1,10 +1,7 @@
-import { useParams } from "react-router-dom";
 import "./Mockup3.scss";
 import tinycolor from "tinycolor2";
 
 export default function Mockup3({ iframe }) {
-  const { color } = useParams();
-
   let color1;
   let color2;
   let color3;

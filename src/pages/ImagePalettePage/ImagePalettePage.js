@@ -14,13 +14,12 @@ import copyIconURL from "../../assets/images/icons8-copy-30.png";
 
 export default function ImagePalettePage({
   isLoggedIn,
-  userData,
   iframe,
   setIframe,
   setIsLoggedIn,
 }) {
-  const [uploadedImage, setUploadedImage] = useState("");
   const navigate = useNavigate();
+  const [uploadedImage, setUploadedImage] = useState("");
   const [collectionsData, setCollectionsData] = useState(null);
   const authToken = sessionStorage.getItem("authToken");
 
@@ -135,21 +134,15 @@ export default function ImagePalettePage({
     return <p>Loading...</p>;
   }
 
-  const placeholderImgURL = localStorage.getItem("placeholderImg")
-    ? localStorage.getItem("placeholderImg")
-    : "https://via.placeholder.com/600x300";
-
   return (
     <>
-      <Header
-        isLoggedIn={isLoggedIn}
-        userData={userData}
-        setIsLoggedIn={setIsLoggedIn}
-      />
+      <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+
       <form className="image-palette-form">
         <label className="image-palette-form__label" htmlFor="paletteImage">
           Upload your favorite images to generate beautiful color palettes.
         </label>
+
         <input
           className="image-palette-form__input"
           type="file"
@@ -171,6 +164,7 @@ export default function ImagePalettePage({
           />
         )}
       </form>
+
       {localStorage.getItem("placeholderImg") && (
         <Palette
           src={localStorage.getItem("placeholderImg")}
@@ -269,6 +263,7 @@ export default function ImagePalettePage({
                 {localStorage.setItem("colour2", data[1])}
                 {localStorage.setItem("colour3", data[2])}
                 {localStorage.setItem("colour4", data[3])}
+
                 <Mockups
                   iframe={iframe}
                   setIframe={setIframe}
@@ -277,17 +272,19 @@ export default function ImagePalettePage({
                   colour3={data[2]}
                   colour4={data[3]}
                 />
-                <section className="create-palette-buttons">
+
+                <section className="image-palette-buttons">
                   <button
-                    className="create-palette-buttons__button"
+                    className="image-palette-buttons__button"
                     onClick={() =>
                       handleAddToPalettes(data[0], data[1], data[2], data[3])
                     }
                   >
                     add to my palettes
                   </button>
+
                   <form
-                    className="add"
+                    className="image-palette-buttons__form"
                     onSubmit={(e) =>
                       handleAddToCollection(
                         e,
@@ -300,7 +297,7 @@ export default function ImagePalettePage({
                   >
                     {authToken && (
                       <select
-                        className="add-c"
+                        className="image-palette-buttons__select"
                         name="collections"
                         id="collections"
                       >
@@ -313,7 +310,7 @@ export default function ImagePalettePage({
                         })}
                       </select>
                     )}
-                    <button className="create-palette-buttons__add-collection-button">
+                    <button className="image-palette-buttons__add-collection-button">
                       add to collection
                     </button>
                   </form>

@@ -92,11 +92,7 @@ export default function UserPage({ isLoggedIn, setIsLoggedIn }) {
 
   return (
     <>
-      <Header
-        isLoggedIn={isLoggedIn}
-        userData={userData}
-        setIsLoggedIn={setIsLoggedIn}
-      />
+      <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       <section className="user-main">
         <section className="user-info">
           <p className="user-info__username">

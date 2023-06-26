@@ -8,109 +8,23 @@ import UserPage from "./pages/UserPage/UserPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import LoginSignUpPage from "./pages/LoginSignUpPage/LoginSignUpPage";
 import { useEffect, useState } from "react";
-
-import "./App.scss";
-import axios from "axios";
 import Mockup1 from "./components/Mockup1/Mockup1";
 import Mockup2 from "./components/Mockup2/Mockup2";
 import Mockup3 from "./components/Mockup3/Mockup3";
+import "./App.scss";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [palettesData, setPalettesData] = useState(null);
-  const [userFavouritesData, setUserFavouritesData] = useState(null);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(null);
-  const [sortMinHue, setSortMinHue] = useState(null);
-  const [sortMaxHue, setSortMaxHue] = useState(null);
-  const [sortBy, setSortBy] = useState({ sort_by: null, order_by: null });
-
-  const [userData, setUserData] = useState(null);
-  const [allUsers, setAllUsers] = useState(null);
-  const authToken = sessionStorage.getItem("authToken");
-
   const [iframe, setIframe] = useState({
     iframe_key: 0,
     iframe_url: null,
   });
 
-  const getUserData = async () => {
-    try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_SERVER_URL}/users/user`,
-        {
-          headers: {
-            Authorization: `Bearer ${authToken}`,
-          },
-        }
-      );
-      setUserData(response.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  const getAllUsers = async () => {
-    try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_SERVER_URL}/users`
-      );
-      setAllUsers(response.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  const getPalettesData = async () => {
-    try {
-      const receivedPalettesData = await axios.get(
-        `${process.env.REACT_APP_SERVER_URL}/palettes?page=${currentPage}&&min_hue=${sortMinHue}&&max_hue=${sortMaxHue}&&sort_by=${sortBy.sort_by}&&order_by=${sortBy.order_by}`
-      );
-      setPalettesData([...receivedPalettesData.data].slice(0, -1));
-      setTotalPages(
-        receivedPalettesData.data[receivedPalettesData.data.length - 1]
-      );
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const getUserFavourites = async () => {
-    try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_SERVER_URL}/users/favourites`,
-        {
-          headers: {
-            Authorization: `Bearer ${authToken}`,
-          },
-        }
-      );
-      setUserFavouritesData(response.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  useEffect(() => {
-    getPalettesData();
-  }, [currentPage, sortMinHue, sortBy]);
-
   useEffect(() => {
     if (sessionStorage.getItem("authToken")) {
       setIsLoggedIn(true);
-      getUserFavourites();
-      getUserData();
     }
-    getAllUsers();
   }, []);
-
-  if (!palettesData || !allUsers) {
-    return <p>Loading...</p>;
-  }
-
-  if (sessionStorage.getItem("authToken") && !userData) {
-    return <p>Loading...</p>;
-  }
 
   return (
     <>
@@ -119,11 +33,7 @@ const App = () => {
           <Route
             path="/"
             element={
-              <HomePage
-                isLoggedIn={isLoggedIn}
-                userData={userData}
-                setIsLoggedIn={setIsLoggedIn}
-              />
+              <HomePage isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
             }
           />
           <Route
@@ -132,22 +42,6 @@ const App = () => {
               <ExplorePage
                 isLoggedIn={isLoggedIn}
                 setIsLoggedIn={setIsLoggedIn}
-                userData={userData}
-                palettesData={palettesData}
-                totalPages={totalPages}
-                setCurrentPage={setCurrentPage}
-                currentPage={currentPage}
-                sortMinHue={sortMinHue}
-                sortMaxHue={sortMaxHue}
-                setSortBy={setSortBy}
-                setSortMinHue={setSortMinHue}
-                setSortMaxHue={setSortMaxHue}
-                userFavouritesData={userFavouritesData}
-                getPalettesData={getPalettesData}
-                getUserFavourites={getUserFavourites}
-                setPalettesData={setPalettesData}
-                getAllUsers={getAllUsers}
-                allUsers={allUsers}
               />
             }
           />
@@ -157,12 +51,8 @@ const App = () => {
               <PaletteInfoPage
                 isLoggedIn={isLoggedIn}
                 setIsLoggedIn={setIsLoggedIn}
-                palettesData={palettesData}
-                userData={userData}
                 iframe={iframe}
                 setIframe={setIframe}
-                allUsers={allUsers}
-                getAllUsers={getAllUsers}
               />
             }
           />
@@ -172,7 +62,6 @@ const App = () => {
               <CreatePalettePage
                 isLoggedIn={isLoggedIn}
                 setIsLoggedIn={setIsLoggedIn}
-                userData={userData}
                 iframe={iframe}
                 setIframe={setIframe}
               />
@@ -184,7 +73,6 @@ const App = () => {
               <ImagePalettePage
                 isLoggedIn={isLoggedIn}
                 setIsLoggedIn={setIsLoggedIn}
-                userData={userData}
                 iframe={iframe}
                 setIframe={setIframe}
               />
@@ -193,13 +81,7 @@ const App = () => {
           <Route
             path="/profile"
             element={
-              <UserPage
-                isLoggedIn={isLoggedIn}
-                setIsLoggedIn={setIsLoggedIn}
-                userFavouritesData={userFavouritesData}
-                getUserFavourites={getUserFavourites}
-                userData={userData}
-              />
+              <UserPage isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
             }
           />
           <Route
