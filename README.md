@@ -1,70 +1,51 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## Available Scripts
 
 In the project directory, you can run:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Runs the react app in the development mode.\
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### `npm run dev`
 
-### `npm test`
+Runs express app in the development mode. \
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Environment variables
 
-### `npm run build`
+.env.sample has all environment variables examples that must be included in .env file
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# [InSpectrum]
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Overview
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+InSpectrum is a web application designed to assist developers and designers in finding inspiration for colour palettes in their upcoming projects. It provides users with the capability to explore colour combinations on simulated websites, generate personalised collections, and save preferred mockups and palettes.
 
-### `npm run eject`
+### Problem
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Many colour combination applications only provide CSS code for colours and gradients, lacking the capability to visualise how your project would appear with these colours. Additionally, most of them do not offer the feature to create user collections.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### User Profile
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The application is targeting developers and designers who are in search of colour inspiration for their upcoming projects. Users have the ability to explore random colour combinations or combinations based on their chosen colours. They can obtain the hex codes to use in CSS, view example mockups, and save them to a personalised collection.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Features
 
-## Learn More
+```
+As a user I want to be able to get random colour combinations or combinations based on my chosen colour/colours.
+As a user I want to get hex, rgb values for suggested colours and be able to copy them.
+As a user I want to look at the mockups with colour palettes and save them to my collection.
+As a user I want to be able to navigate to my profile, search, edit or delete my collections.
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Tech Stack
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- HTML, CSS, JavaScript, React.js, Node.js, Express.js, MySql, Knex.js,
+- Libraries: color-thief.js, react-colour-picker, react-pagination
 
-### Code Splitting
+### Database tables
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Users
+- Palettes
+- Collections
+- Favourites
+- Pivot (many to many relationship between Collections and Palettes)
