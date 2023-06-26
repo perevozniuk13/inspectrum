@@ -30,7 +30,8 @@ export default function LoginForm({ setIsLoggedIn }) {
 
       sessionStorage.setItem("authToken", response.data.authToken);
       setLoginError("");
-      setIsLoggedIn(true);
+      await setIsLoggedIn(true);
+      navigate("/profile");
       navigate("/profile");
     } catch (error) {
       setLoginError("Log in failed!");

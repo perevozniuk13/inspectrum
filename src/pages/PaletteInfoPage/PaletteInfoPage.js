@@ -18,7 +18,6 @@ export default function PaletteInfoPage({
   getAllUsers,
 }) {
   const { paletteId } = useParams();
-  const [data, setData] = useState(null);
   const [palette, setPalette] = useState(null);
 
   const [collectionsData, setCollectionsData] = useState(null);
@@ -52,7 +51,6 @@ export default function PaletteInfoPage({
           },
         }
       );
-      // setData(response.data);
       setPalette(response.data.find((p) => p.id == paletteId));
     } catch (err) {
       console.log(err);
@@ -113,26 +111,19 @@ export default function PaletteInfoPage({
 
   useEffect(() => {
     if (isLoggedIn && location.state === "explore") {
-      // setData(palettesData);
       setPalette(palettesData.find((p) => p.id == paletteId));
       getCollectionsData();
     } else if (location.state == "user") {
       getPalettes();
       getCollectionsData();
     } else {
-      // setData(palettesData);
       setPalette(palettesData.find((p) => p.id == paletteId));
     }
     getAllUsers();
-    // setPalette(data.find((p) => p.id == paletteId));
   }, []);
 
   useEffect(() => {
     if (palette) {
-      // console.log("sad", data);
-      // setPalette(data.find((p) => p.id == paletteId));
-      console.log("pal", palette);
-      // date = new Date(palette.created_at);
       for (let i = 1; i <= 4; i++) {
         localStorage.setItem(`col1-${i}`, palette.colour1);
         localStorage.setItem(`col2-${i}`, palette.colour2);
@@ -143,8 +134,6 @@ export default function PaletteInfoPage({
   }, [palette]);
 
   if (!palette) {
-    console.log("p", palette);
-    console.log("dvkskl");
     return <p>Loading...</p>;
   }
 
@@ -152,13 +141,7 @@ export default function PaletteInfoPage({
     return <p>Loading...</p>;
   }
 
-  // const palette = data.find((p) => p.id == paletteId);
   const date = new Date(palette.created_at);
-
-  // localStorage.setItem("colour1", palette.colour1);
-  // localStorage.setItem("colour2", palette.colour2);
-  // localStorage.setItem("colour3", palette.colour3);
-  // localStorage.setItem("colour4", palette.colour4);
 
   return (
     <section className="palette-info-page">

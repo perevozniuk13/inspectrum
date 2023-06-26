@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import Collection from "../Collection/Collection";
 import "./Collections.scss";
 import axios from "axios";
-import { useParams } from "react-router-dom";
 import crossIconURL from "../../assets/images/cross-icon.png";
 import searchIconURL from "../../assets/images/icons8-search-32.png";
 

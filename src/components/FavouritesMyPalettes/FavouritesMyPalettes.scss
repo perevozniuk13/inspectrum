@@ -3,18 +3,10 @@
 }
 
 .user-library {
-  &__palettes {
-    // display: flex;
-    // flex-direction: row;
-    // flex-wrap: wrap;
-    // justify-content: center;
-  }
-
   &__palette-container {
     background-color: white;
     width: 15rem;
     border-radius: 1rem;
-    // overflow: hidden;
     margin: 1.2rem;
     overflow: hidden;
   }

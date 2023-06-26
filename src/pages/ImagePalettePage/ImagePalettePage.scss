@@ -41,11 +41,7 @@
 
   &__colours-container {
     @include flexbox(row, center, null);
-    // border: 2px solid rgb(255, 255, 255);
     margin: 0;
-  }
-
-  &__card-container {
   }
 
   &__colour-card {
@@ -75,8 +71,5 @@
 
   &__copy-icon {
     width: 2.5rem;
-    // position: absolute;
-    // right: 0;
-    // bottom: 0;
   }
 }

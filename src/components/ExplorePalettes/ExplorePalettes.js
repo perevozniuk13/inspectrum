@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
 import ExplorePalette from "../ExplorePalette/ExplorePalette";
 import "./ExplorePalettes.scss";
 

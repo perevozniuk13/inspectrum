@@ -1,6 +1,4 @@
 import "./ImagePalettePage.scss";
-import IMAGE_URL from "../../assets/images/Upload-video-preview.jpg";
-import { usePalette } from "color-thief-react";
 import { Palette } from "color-thief-react";
 import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";

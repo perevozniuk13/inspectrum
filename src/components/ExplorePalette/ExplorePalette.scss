@@ -8,7 +8,6 @@
   overflow: hidden;
   background-color: rgba($color: #ffffff, $alpha: 5);
   border: 1px solid #59585c;
-  // box-shadow: 10px 14px 24px 0px rgba(114, 111, 123, 0.5);
   margin: 2rem;
   border-radius: 1rem;
 
@@ -20,9 +19,7 @@
     @include flexbox(column, center, null);
     width: 100%;
     height: 25rem;
-    // border-radius: 1rem;
     overflow: hidden;
-    // box-shadow: 8px 13px 18px -3px rgba(0, 0, 0, 0.5)
   }
 
   &__colour-card {
@@ -42,7 +39,6 @@
     color: black;
     border: none;
     padding: 1rem 3rem;
-    // margin: 1rem 4rem;
     border-radius: 1rem;
   }
 

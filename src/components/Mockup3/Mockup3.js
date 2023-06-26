@@ -5,10 +5,6 @@ import tinycolor from "tinycolor2";
 export default function Mockup3({ iframe }) {
   const { color } = useParams();
 
-  // const color1 = localStorage.getItem("colour1");
-  // const color2 = localStorage.getItem("colour2");
-  // const color3 = localStorage.getItem("colour3");
-  // const color4 = localStorage.getItem("colour4");
   let color1;
   let color2;
   let color3;
@@ -26,8 +22,6 @@ export default function Mockup3({ iframe }) {
           color: tinycolor(color3).isDark() ? "white" : "black",
         }}
       >
-        {/* // style={{ backgroundColor: color && `#${color}` }}></> */}
-
         <nav className="mockup3-nav">
           <p className="mockup3-nav__logo">LOGO</p>
 

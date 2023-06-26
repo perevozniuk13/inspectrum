@@ -1,5 +1,5 @@
 import "./NotFoundPage.scss";
 
 export default function NotFoundPage() {
-  return <>Not Found</>
+  return <>Page Not Found</>;
 }

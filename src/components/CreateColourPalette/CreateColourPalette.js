@@ -18,15 +18,12 @@ export default function CreateColourPalette({
   iframe,
 }) {
   const [coloursError, setColoursError] = useState("");
-  const navigate = useNavigate();
-  let clicked;
 
   const handleSavingColours = () => {
     if (!colour1 || !colour2 || !colour3 || !colour4) {
       setColoursError("Please, provide all 4 colours to the palette!");
       return;
     }
-    console.log(colour1, colour2, colour3, colour4);
     localStorage.setItem("colour1", colour1);
     localStorage.setItem("colour2", colour2);
     localStorage.setItem("colour3", colour3);
@@ -38,7 +35,6 @@ export default function CreateColourPalette({
       localStorage.setItem(`col4-${i}`, colour4);
     }
 
-    // setSelectedCard("colour4");
     setIframe({
       iframe_url: `http://localhost:3000/mockup?-${colour1.substring(
         1

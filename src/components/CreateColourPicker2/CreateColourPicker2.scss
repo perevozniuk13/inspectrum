@@ -3,7 +3,6 @@
 
 .App {
   font-family: sans-serif;
-  //   text-align: center;
   color: white;
   padding: 5rem;
   @include flexbox(row, space-evenly, center);

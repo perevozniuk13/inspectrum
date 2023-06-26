@@ -44,16 +44,6 @@ export default function SignupForm() {
       return;
     }
 
-    if (password.length < 8) {
-      console.log("1");
-    }
-    if (/[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(password) === false) {
-      console.log("2");
-    }
-    if (!/\d/.test(password)) {
-      console.log("3");
-    }
-
     if (
       password.length < 8 ||
       !/[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(password) ||

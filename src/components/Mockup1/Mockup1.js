@@ -4,10 +4,6 @@ import tinycolor from "tinycolor2";
 import { useEffect } from "react";
 
 export default function Mockup1({ iframe }) {
-  // const color1 = "#" + colors[0];
-  // const color2 = "#" + colors[1];
-  // const color3 = "#" + colors[2];
-  // const color4 = "#" + colors[3];
   let color1;
   let color2;
   let color3;
@@ -17,34 +13,10 @@ export default function Mockup1({ iframe }) {
   color3 = localStorage.getItem("col3-1");
   color4 = localStorage.getItem("col4-1");
 
-  // useEffect(() => {
-  //   color1 = localStorage.getItem(`colour${changedColours.col1}`);
-  //   color2 = localStorage.getItem(`colour${changedColours.col2}`);
-  //   color3 = localStorage.getItem(`colour${changedColours.col3}`);
-  //   color4 = localStorage.getItem(`colour${changedColours.col4}`);
-  // }, [changedColours]);
-
-  // const colours = ["colour1", "colour2", "colour3", "colour4"];
-
-  // if (localStorage.getItem("updateMockup") == 1) {
-  //   color1 = localStorage.getItem("colour2");
-  //   color2 = localStorage.getItem("colour1");
-  //   color3 = localStorage.getItem("colour4");
-  // } else if (localStorage.getItem("updateMockup") == 2) {
-  //   color1 = localStorage.getItem("colour4");
-  //   color2 = localStorage.getItem("colour3");
-  //   color3 = localStorage.getItem("colour1");
-  // } else if (localStorage.getItem("updateMockup") == 3) {
-  //   color1 = localStorage.getItem("colour3");
-  //   color2 = localStorage.getItem("colour4");
-  //   color3 = localStorage.getItem("colour2");
-  // }
-
   return (
     <>
       <div
         className="mockup1"
-        // style={{ backgroundColor: color && `#${color}` }}
         style={{
           backgroundColor: color1,
           color: tinycolor(color1).isDark() ? "white" : "black",

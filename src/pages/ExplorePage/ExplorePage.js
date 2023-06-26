@@ -15,16 +15,13 @@ export default function ExplorePage({
   setSortMinHue,
   setSortMaxHue,
   sortMinHue,
-  sortMaxHue,
   setSortBy,
   userFavouritesData,
   getPalettesData,
   getUserFavourites,
   userData,
   setIsLoggedIn,
-  setPalettesData,
   getAllUsers,
-  allUsers,
   currentPage,
 }) {
   let pagesArray = [];

@@ -11,11 +11,9 @@ import { useEffect, useState } from "react";
 
 import "./App.scss";
 import axios from "axios";
-import Footer from "./components/Footer/Footer";
 import Mockup1 from "./components/Mockup1/Mockup1";
 import Mockup2 from "./components/Mockup2/Mockup2";
 import Mockup3 from "./components/Mockup3/Mockup3";
-import FavouritesMyPalettes from "./components/FavouritesMyPalettes/FavouritesMyPalettes";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -33,15 +31,8 @@ const App = () => {
 
   const [iframe, setIframe] = useState({
     iframe_key: 0,
-    iframe_url: null, //Your URL here
+    iframe_url: null,
   });
-
-  // const [changedColours, setChangedColours] = useState({
-  //   col1: 1,
-  //   col2: 2,
-  //   col3: 3,
-  //   col4: 4,
-  // });
 
   const getUserData = async () => {
     try {
@@ -184,8 +175,6 @@ const App = () => {
                 userData={userData}
                 iframe={iframe}
                 setIframe={setIframe}
-                // setChangedColours={setChangedColours}
-                // changedColours={changedColours}
               />
             }
           />
@@ -223,13 +212,7 @@ const App = () => {
               <LoginSignUpPage page="login" setIsLoggedIn={setIsLoggedIn} />
             }
           />
-          <Route
-            path="/mockup1/:query"
-            element={
-              <Mockup1 iframe={iframe} />
-              // <Mockup1 iframe={iframe} changedColours={changedColours} />
-            }
-          />
+          <Route path="/mockup1/:query" element={<Mockup1 iframe={iframe} />} />
           <Route path="/mockup2/:query" element={<Mockup2 iframe={iframe} />} />
           <Route path="/mockup3/:query" element={<Mockup3 iframe={iframe} />} />
           <Route path="*" element={<NotFoundPage />} />

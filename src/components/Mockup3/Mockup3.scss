@@ -18,13 +18,20 @@
   color: $mockup3-color1;
   text-align: center;
   font-family: Plex Sans;
+  font-size: 1.3rem;
+  @include media-desktop {
+    font-size: 1.6rem;
+  }
 }
 
 .mockup3-nav {
   padding: 6rem;
   @include flexbox(row, space-between, center);
   &__logo {
-    font-size: 6rem;
+    font-size: 4rem;
+    @include media-desktop {
+      font-size: 5rem;
+    }
   }
 
   &__list {
@@ -35,8 +42,11 @@
   &__link {
     padding: 1rem;
     margin: 1rem;
-    font-size: 3rem;
+    font-size: 1.6rem;
     font-weight: 700;
+    @include media-desktop {
+      font-size: 2.6rem;
+    }
   }
 }
 
@@ -45,15 +55,20 @@
   padding: 2rem 6rem;
 
   &__title {
-    font-size: 7rem;
+    font-size: 5rem;
     font-weight: 700;
-    // width: 40%;
+    @include media-desktop {
+      font-size: 6rem;
+    }
     margin: 6rem 0 3rem;
   }
 
   &__subtitle {
-    font-size: 3rem;
+    font-size: 2rem;
     width: 60%;
+    @include media-desktop {
+      font-size: 3rem;
+    }
   }
 
   &__button {
@@ -61,7 +76,10 @@
     background-color: $mockup3-color1;
     color: $mockup3-background1;
     text-transform: uppercase;
-    font-size: 3rem;
+    font-size: 2rem;
+    @include media-desktop {
+      font-size: 3rem;
+    }
     letter-spacing: 1rem;
     padding: 1.5rem 2rem;
     margin: 8rem 0;
@@ -74,25 +92,40 @@
   @include flexbox(row, center, null);
   flex-wrap: wrap;
   padding: 4rem;
-  font-size: 2rem;
+  font-size: 1.6rem;
+  @include media-desktop {
+    font-size: 2rem;
+  }
 
   &__card {
-    width: 40%;
     height: 30rem;
     padding: 10rem;
+    width: 40%;
     @include flexbox(column, center, center);
     &--coloured {
       background-color: $mockup2-background2;
+    }
+
+    @include media-desktop {
+      width: 40%;
     }
   }
 
   &__card-title {
     margin: 1rem;
-    font-size: 3rem;
+    font-size: 1.6rem;
+    @include media-desktop {
+      font-size: 3rem;
+    }
     width: 70%;
   }
 
   &__card-subtitle {
-    font-size: 1.6rem;
+    font-size: 1.3rem;
+
+    @include media-desktop {
+      font-size: 1.6rem;
+      width: 80%;
+    }
   }
 }

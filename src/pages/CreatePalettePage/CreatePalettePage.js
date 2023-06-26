@@ -1,4 +1,3 @@
-import CreateColourPicker from "../../components/CreateColourPicker/CreateColourPicker";
 import CreatePaletteHero from "../../components/CreatePaletteHero/CreatePaletteHero";
 import CreateColourPicker2 from "../../components/CreateColourPicker2/CreateColourPicker2";
 import CreateColourPalette from "../../components/CreateColourPalette/CreateColourPalette";
@@ -17,8 +16,6 @@ export default function CreatePalettePage({
   iframe,
   setIframe,
   setIsLoggedIn,
-  // setChangedColours,
-  // changedColours,
 }) {
   const [selectedCard, setSelectedCard] = useState("colour1");
   const [pickedColour, setPickedColour] = useState("");
@@ -138,15 +135,12 @@ export default function CreatePalettePage({
     if (selectedCard === "colour4") {
       await setColour4(pickedColour);
     }
-    console.log("col1", colour1);
   };
 
   useEffect(() => {
     if (authToken) {
       getCollectionsData();
     }
-
-    // setChangedColours({ col1: 1, col2: 2, col3: 3, col4: 4 });
   }, []);
 
   useEffect(() => {
@@ -190,8 +184,6 @@ export default function CreatePalettePage({
         <Mockups
           iframe={iframe}
           setIframe={setIframe}
-          // setChangedColours={setChangedColours}
-          // changedColours={changedColours}
           colour1={colour1}
           colour2={colour2}
           colour3={colour3}

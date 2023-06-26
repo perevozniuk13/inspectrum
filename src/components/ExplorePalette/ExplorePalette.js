@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom";
 import "./ExplorePalette.scss";
 import likeIconURL from "../../assets/images/like-icon.png";
 import likedIconURL from "../../assets/images/liked-icon.png";
-import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function ExplorePalette({
@@ -100,12 +99,6 @@ export default function ExplorePalette({
         </div>
 
         <div className="explore-palette__buttons-container">
-          {/* <button
-            onClick={() => navigate(`/palettes/${id}`, { state: "explore" })}
-            className="explore-palette__view-button"
-          >
-            View
-          </button> */}
           <div className="explore-palette__likes-container">
             <p className="explore-palette__likes-count">{likes}</p>
 

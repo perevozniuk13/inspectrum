@@ -9,7 +9,6 @@ export default function HomePageHero() {
         <h1 className="homepage-hero__title">
           Step into the World of Color: Inspiring Combinations Await.
         </h1>
-        {/* <img src="https://via.placeholder.com/300x200" alt="placeholder image" /> */}
         <button
           onClick={() => navigate("/login")}
           className="homepage-hero__get-started-button"

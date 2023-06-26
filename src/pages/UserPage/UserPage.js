@@ -2,19 +2,11 @@ import "./UserPage.scss";
 import Header from "../../components/Header/Header";
 import { useEffect, useState } from "react";
 import Collections from "../../components/Collections/Collections";
-import ReducedPalette from "../../components/ReducedPalette/ReducedPalette";
 import axios from "axios";
-import { useParams } from "react-router-dom";
 import FavouritesMyPalettes from "../../components/FavouritesMyPalettes/FavouritesMyPalettes";
 import Footer from "../../components/Footer/Footer";
 
-export default function UserPage({
-  isLoggedIn,
-  userFavouritesData,
-  getUserFavourites,
-  setIsLoggedIn,
-  // userData,
-}) {
+export default function UserPage({ isLoggedIn, setIsLoggedIn }) {
   const [librarySection, setLibrarySection] = useState("collections");
   const [userPalettesData, setUserPalettesData] = useState(null);
   const [collectionsData, setCollectionsData] = useState(null);

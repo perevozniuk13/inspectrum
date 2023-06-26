@@ -4,7 +4,6 @@ import createIcon from "../../assets/images/icons8-paint-50.png";
 import collectionIcon from "../../assets/images/icons8-collection-64.png";
 import imageIcon from "../../assets/images/icons8-image-30.png";
 import mockupIcon from "../../assets/images/icons8-mockup-50.png";
-import viewIcon from "../../assets/images/view-icon.png";
 
 export default function Features() {
   return (

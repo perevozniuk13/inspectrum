@@ -6,7 +6,6 @@
 }
 
 .palette-about {
-  // background-color: rgb(48, 46, 46);
   margin: 5rem 29% 2rem;
   padding: 5rem;
   border-radius: 1rem;
@@ -14,7 +13,7 @@
   font-weight: 300;
   position: absolute;
   right: -30rem;
-  top: 32rem;
+  top: 20rem;
   font-weight: 300;
 
   &__title {
@@ -33,12 +32,8 @@
 
   &__colours-container {
     @include flexbox(row, center, null);
-    // border: 2px solid rgb(255, 255, 255);
     padding: 4rem;
-    margin: 20rem 0 5rem;
-  }
-
-  &__card-container {
+    margin: 10rem 0 0;
   }
 
   &__colour-card {
@@ -69,9 +64,6 @@
 
   &__copy-icon {
     width: 2.5rem;
-    // position: absolute;
-    // right: 0;
-    // bottom: 0;
   }
 
   &__view-button {
@@ -119,7 +111,6 @@
 }
 
 .add-button {
-  // width: 20rem;
   @include flexbox(column, null, null);
   padding: 2rem;
   background-color: rgb(48, 46, 46);
@@ -134,7 +125,6 @@
   margin-right: 2rem;
   border: none;
   background-color: rgb(48, 46, 46);
-  // box-shadow: 8px 13px 18px -3px rgba(0, 0, 0, 0.5);
   font-size: 2rem;
   color: white;
 }

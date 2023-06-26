@@ -59,7 +59,6 @@ export default function Header({ isLoggedIn, userData, setIsLoggedIn }) {
                   onClick={(e) => handleLink(e, "/profile")}
                   className="nav__link"
                 >
-                  {/* {`${userData.first_name}'s Profile`} */}
                   My Profile
                 </a>
                 <a

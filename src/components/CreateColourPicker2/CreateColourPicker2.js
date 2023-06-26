@@ -26,7 +26,6 @@ export default function CreateColourPicker2({
     localStorage.setItem(selectedCard, color);
     for (let i = 1; i <= 4; i++) {
       if (!localStorage.getItem(`colour${i}`)) {
-        console.log(`colour${i}`);
         setSelectedCard(`colour${i}`);
         break;
       }
