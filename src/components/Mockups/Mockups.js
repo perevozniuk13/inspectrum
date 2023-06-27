@@ -62,7 +62,7 @@ export default function Mockups({
       <div className="mockups-section__mockup-container">
         <iframe
           className="mockups-section__mockup"
-          src={`http://localhost:3000/mockup3/${key}`}
+          src={`${process.env.REACT_APP_SITE_URL}/mockup3/${key}`}
         ></iframe>
         <img
           src={refreshIconURL}
@@ -83,7 +83,7 @@ export default function Mockups({
       <div className="mockups-section__mockup-container">
         <iframe
           className="mockups-section__mockup"
-          src={`http://localhost:3000/mockup2/${key}`}
+          src={`${process.env.REACT_APP_SITE_URL}/mockup2/${key}`}
         ></iframe>
         <img
           src={refreshIconURL}
@@ -104,7 +104,7 @@ export default function Mockups({
       <div className="mockups-section__mockup-container">
         <iframe
           className="mockups-section__mockup"
-          src={`http://localhost:3000/mockup1/${key}&&`}
+          src={`${process.env.REACT_APP_SITE_URL}/mockup1/${key}&&`}
         ></iframe>
         <img
           src={refreshIconURL}

@@ -21,13 +21,13 @@
   &__logo {
     background: linear-gradient(
       to right,
-      rgb(206, 9, 9),
-      rgb(241, 157, 2),
-      rgb(242, 242, 4),
-      rgb(10, 234, 10),
-      rgb(28, 224, 224),
-      rgb(24, 24, 183),
-      rgb(158, 5, 158)
+      rgb(252, 3, 3),
+      rgb(246, 246, 2),
+      rgb(4, 237, 4),
+      rgb(4, 246, 246),
+      rgb(3, 3, 245),
+      rgb(235, 2, 235),
+      rgb(246, 12, 12)
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -60,13 +60,13 @@
       border: 1px solid;
       border-image: conic-gradient(
           from var(--angle),
-          red,
-          yellow,
-          lime,
-          aqua,
-          blue,
-          magenta,
-          red
+          rgb(250, 0, 0),
+          rgb(254, 254, 3),
+          rgb(1, 249, 1),
+          rgb(0, 249, 249),
+          rgb(0, 0, 251),
+          rgb(251, 1, 251),
+          rgb(246, 1, 1)
         )
         1;
       overflow: hidden;
