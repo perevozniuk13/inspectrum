@@ -6,6 +6,8 @@
 
   &__title {
     font-size: 3rem;
+    position: relative;
+    z-index: 20;
 
     @include media-tablet {
       padding-top: 20rem;

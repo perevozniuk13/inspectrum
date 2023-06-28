@@ -1,373 +1,104 @@
-.homepage {
-  position: relative;
-}
-
-.div1 {
-  background-image: linear-gradient(
-    to right,
-    rgb(12, 101, 10) 35%,
-    rgb(129, 191, 129)
-  );
-  width: 100px;
-  height: 100px;
-  animation: spinning82341 3s linear infinite;
-  animation: float1 10s linear infinite;
-  text-align: center;
-  border-radius: 50px;
-  filter: blur(1px);
-  box-shadow: 0px -5px 20px 0px rgb(16, 97, 32),
-    0px 5px 20px 0px rgb(134, 177, 141);
-  position: absolute;
-  top: 60rem;
-  left: 105rem;
-  //   animation: moving 3s linear infinite;
-}
-
-.div-1-1 {
-  //   background-color: rgb(36, 36, 36);
-  background-image: linear-gradient(
-    to right,
-    rgb(20, 113, 21) 35%,
-    rgb(147, 199, 143)
-  );
-  width: 100px;
-  height: 100px;
-  border-radius: 50px;
-  filter: blur(10px);
-}
-
-@keyframes spinning82341 {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes moving {
-  from {
-    left: 40rem;
-  }
-  to {
-    left: 20rem;
-  }
-}
-
-@keyframes float1 {
-  0% {
-    box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
-    transform: translate(0px, 0px);
-  }
-  50% {
-    box-shadow: 0 25px 15px 0px rgba(0, 0, 0, 0.2);
-    transform: translate(-40px, -40px);
-  }
-  100% {
-    box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
-    transform: translate(0px, 0px);
-  }
-}
-
-@keyframes float2 {
-  0% {
-    box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
-    transform: translate(0px, 0px);
-  }
-  50% {
-    box-shadow: 0 25px 15px 0px rgba(0, 0, 0, 0.2);
-    transform: translate(60px, -40px);
-  }
-  100% {
-    box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
-    transform: translate(0px, 0px);
-  }
-}
-
-.div2 {
-  background-image: linear-gradient(
-    to right,
-    rgb(16, 8, 245) 35%,
-    rgb(147, 156, 234)
-  );
-  width: 200px;
-  height: 200px;
-  animation: spinning82341 3s linear infinite;
-  animation: float1 10s linear infinite;
-  text-align: center;
-  border-radius: 50%;
-  filter: blur(1px);
-  box-shadow: 0px -5px 20px 0px rgb(13, 5, 244),
-    0px 5px 20px 0px rgb(141, 140, 229);
+.card-fan {
   position: absolute;
   top: 40rem;
-  right: 20rem;
+  right: 80rem;
 }
 
-.div2-2 {
-  //   background-color: rgb(36, 36, 36);
-  background-image: linear-gradientto(
-    to right,
-    (4, 44, 243) 35%,
-    rgb(116, 127, 212)
-  );
-  width: 200px;
-  height: 200px;
-  border-radius: 50px;
-  filter: blur(10px);
-}
-
-.div3 {
-  background-image: linear-gradient(
-    to right,
-    rgb(143, 21, 213) 35%,
-    rgb(240, 169, 246)
-  );
-  width: 150px;
-  height: 150px;
-  animation: spinning82341 3s linear infinite;
-  animation: float2 10s linear infinite;
-  text-align: center;
-  border-radius: 50%;
-  filter: blur(1px);
-  box-shadow: 0px -5px 20px 0px rgb(164, 33, 240),
-    0px 5px 20px 0px rgb(217, 148, 213);
+.animation-card1 {
+  width: 30rem;
+  height: 40rem;
+  box-shadow: 6px 6px 3px rgba(0, 0, 0, 0.2);
   position: absolute;
-  top: 70rem;
-  right: 40rem;
-}
-
-.div-3-3 {
-  //   background-color: rgb(36, 36, 36);
-  background-image: linear-gradient(
-    to right,
-    rgb(147, 19, 221) 35%,
-    rgb(231, 160, 229)
-  );
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  filter: blur(10px);
-}
-
-.div4 {
-  background-image: linear-gradient(rgb(248, 244, 8), rgb(201, 204, 136));
-  width: 160px;
-  height: 160px;
-  animation: spinning82341 3s linear infinite;
-  animation: float2 10s linear infinite;
-  text-align: center;
-  border-radius: 50%;
-  filter: blur(1px);
-  box-shadow: 0px -5px 20px 0px rgb(231, 247, 5),
-    0px 5px 20px 0px rgb(215, 214, 158);
-  position: absolute;
-  top: 80rem;
-  right: 10rem;
-}
-
-.div-4-4 {
-  //   background-color: rgb(36, 36, 36);
-
-  background-image: linear-gradient(
-    to right,
-    rgb(233, 244, 14),
-    rgb(233, 240, 167)
-  );
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  filter: blur(10px);
-}
-
-.div5 {
-  background-image: linear-gradient(rgb(232, 29, 11), rgb(204, 141, 136));
-  width: 120px;
-  height: 120px;
-  animation: spinning82341 3s linear infinite;
-  animation: float2 10s linear infinite;
-  text-align: center;
-  border-radius: 50%;
-  filter: blur(1px);
-  box-shadow: 0px -5px 20px 0px rgb(247, 33, 5),
-    0px 5px 20px 0px rgb(239, 186, 180);
-  position: absolute;
-  top: 100rem;
-  right: 40rem;
-}
-
-.div-5-5 {
-  //   background-color: rgb(36, 36, 36);
-
-  background-image: linear-gradient(
-    to right,
-    rgb(240, 48, 14),
-    rgb(226, 150, 141)
-  );
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  filter: blur(10px);
-}
-
-$background: #000;
-$radius: 20px;
-$size: 40px; //Generally don't go below 20 or over 100, it'll look bad
-$blehness: 0%;
-$duration: 10s;
-$altGradient: false;
-
-.div6 {
-  &::before {
-    content: "";
-    width: 100%;
-    height: 100%;
-    display: block;
-    top: 0;
-    left: 0;
-    position: absolute;
-    z-index: 0;
-    //Rainbow gradient, change this to whatever you want to adjust what colours the colour pulse will be
-    background-image: linear-gradient(
-      to right,
-      #ff0000 0%,
-      #ffff00 15%,
-      #00ff00 30%,
-      #00ffff 50%,
-      #0000ff 65%,
-      #ff00ff 80%,
-      #ff0000 100%
-    );
-    background-size: 100% 100%;
-    animation: pulse_transform $duration linear infinite,
-      pulse_hue $duration linear infinite;
-  }
-
-  //Inset box shadow (basically the mask)
-  &::after {
-    content: "";
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    position: absolute;
-    box-shadow: inset 0 0 $size $size/1.25 $background;
-  }
-
-  //Other outer styling
+  border-radius: 2rem;
+  transform-origin: center 600px;
+  transition: all 0.6s linear;
   overflow: hidden;
-  width: 500px;
-  height: 20rem;
-  margin: 25px auto;
-  box-sizing: border-box;
-  padding: $size/1.5;
-  background: red;
+  z-index: 100;
+  transform: rotate(20deg);
+
+  &__color {
+    width: 100%;
+    height: 10rem;
+
+    &--1 {
+      background-color: rgb(0, 102, 255);
+    }
+    &--2 {
+      background-color: rgb(57, 57, 247);
+    }
+    &--3 {
+      background-color: rgb(128, 25, 246);
+    }
+    &--4 {
+      background-color: rgb(197, 52, 237);
+    }
+  }
+}
+
+.animation-card2 {
+  width: 30rem;
+  height: 40rem;
+  overflow: hidden;
+  border-radius: 2rem;
+  box-shadow: 6px 6px 3px rgba(0, 0, 0, 0.2);
   position: absolute;
-  top: 60rem;
-  right: 20rem;
-  z-index: 1;
-}
-//Inner content box styling
-.div6-6 {
-  padding: 10px 20px;
-  box-sizing: border-box;
-  position: relative;
-  z-index: 2;
-  border-radius: $radius;
-  background: $background;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background-clip: padding;
-  width: 100%;
-  height: 100%;
-}
+  transform-origin: center 600px;
+  transition: all 0.6s linear;
 
-@keyframes pulse_transform {
-  0% {
-    transform: rotate(0deg) scale(3);
-  }
-  100% {
-    transform: rotate(360deg) scale(3);
-  }
-}
-@keyframes pulse_hue {
-  0% {
-    filter: hue-rotate(0deg) grayscale($blehness);
-  }
-  100% {
-    filter: hue-rotate(360deg) grayscale($blehness);
+  &__color {
+    width: 100%;
+    height: 10rem;
+
+    &--1 {
+      background-color: #f6ff00;
+    }
+    &--2 {
+      background-color: #ffb300;
+    }
+    &--3 {
+      background-color: #ff5500;
+    }
+    &--4 {
+      background-color: #ff0000;
+    }
   }
 }
 
-@keyframes rainbow {
-  0% {
-    background-position: 0% 82%;
-  }
-  50% {
-    background-position: 100% 19%;
-  }
-  100% {
-    background-position: 0% 82%;
-  }
-}
-
-.first {
-  height: 1rem;
-  margin-bottom: 1rem;
-  width: 200rem;
-  top: 80rem;
-  //   right: 5rem;
-  transform: rotate(-30deg);
+.animation-card3 {
+  width: 30rem;
+  height: 40rem;
+  overflow: hidden;
+  border-radius: 2rem;
+  box-shadow: 6px 6px 3px rgba(0, 0, 0, 0.2);
   position: absolute;
-  background: linear-gradient(
-    30deg,
-    #ff2400,
-    #e81d1d,
-    #e8b71d,
-    #e3e81d,
-    #1de840,
-    #1ddde8,
-    #2b1de8,
-    #dd00f3,
-    #dd00f3
-  );
-  animation: rainbow 18s linear infinite;
+  transform-origin: center 600px;
+  transition: all 0.6s linear;
+  transform: rotate(10deg);
+
+  &__color {
+    width: 100%;
+    height: 10rem;
+
+    &--1 {
+      background: #6fff00;
+    }
+    &--2 {
+      background: #00ffa2;
+    }
+
+    &--3 {
+      background: #04ebe7;
+    }
+    &--4 {
+      background: #04c8e7;
+    }
+  }
 }
 
-.second {
-  height: 1rem;
-  width: 200rem;
-  margin-bottom: 1rem;
-  transform: rotate(-30deg);
-  background: linear-gradient(
-    30deg,
-    #ff2400,
-    #e81d1d,
-    #e8b71d,
-    #e3e81d,
-    #1de840,
-    #1ddde8,
-    #2b1de8,
-    #dd00f3,
-    #dd00f3
-  );
-  position: absolute;
-  top: 75rem;
+.card-fan:hover .animation-card2 {
+  transform: rotate(50deg);
 }
 
-.third {
-  height: 1rem;
-  width: 200rem;
-  margin-bottom: 1rem;
-  position: absolute;
-  top: 70rem;
-  transform: rotate(-30deg);
-  background: linear-gradient(
-    30deg,
-    #ff2400,
-    #e81d1d,
-    #e8b71d,
-    #e3e81d,
-    #1de840,
-    #1ddde8,
-    #2b1de8,
-    #dd00f3,
-    #dd00f3
-  );
+.card-fan:hover .animation-card3 {
+  transform: rotate(35deg);
 }
