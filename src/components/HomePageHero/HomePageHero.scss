@@ -2,7 +2,7 @@
 @use "../../styles/partials/variables" as *;
 
 .homepage-hero {
-  padding: 15vw 10rem 2rem;
+  padding: 15vw 10rem 4rem;
 
   &__title {
     font-size: 3rem;
@@ -33,6 +33,6 @@
     box-shadow: 8px 13px 18px -3px rgba(0, 0, 0, 0.5);
     font-size: 2rem;
     color: white;
-    margin: 2rem 0;
+    margin: 4rem 0;
   }
 }
