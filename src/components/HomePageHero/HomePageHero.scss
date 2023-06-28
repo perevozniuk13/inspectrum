@@ -2,7 +2,8 @@
 @use "../../styles/partials/variables" as *;
 
 .homepage-hero {
-  padding: 30vw 10rem 4rem;
+  padding: 25vw 10rem 4rem;
+  margin-bottom: 10rem;
 
   &__title {
     font-size: 3rem;
