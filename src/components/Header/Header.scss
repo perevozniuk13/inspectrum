@@ -14,8 +14,8 @@
 }
 
 .nav {
+  display: none;
   position: relative;
-  @include flexbox(row, space-between, center);
   padding: 3rem 3rem 3rem 10rem;
 
   &__logo {
@@ -34,12 +34,8 @@
     font-size: 70px;
   }
 
-  &__tablet-links-container {
-    display: none;
-
-    @include media-tablet {
-      display: flex;
-    }
+  @include media-tablet {
+    @include flexbox(row, space-between, center);
   }
 
   &__link {
@@ -74,28 +70,30 @@
       animation: 3s rotate linear infinite;
     }
   }
-
-  &__menu-icon {
-    width: 5rem;
-    position: absolute;
-    top: 2.5rem;
-    right: 1rem;
-
-    @include media-tablet {
-      display: none;
-    }
-  }
 }
 
 .menu-nav {
   position: relative;
+  width: 100%;
   @include flexbox(column, null, null);
 
   &__logo {
     color: $secondary-text-color;
     text-decoration: none;
     padding: 2rem;
-    font-size: 5rem;
+    font-size: 4rem;
+    background: linear-gradient(
+      to right,
+      rgb(252, 3, 3),
+      rgb(246, 246, 2),
+      rgb(4, 237, 4),
+      rgb(4, 246, 246),
+      rgb(3, 3, 245),
+      rgb(235, 2, 235),
+      rgb(246, 12, 12)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   &__links-container {
@@ -113,10 +111,13 @@
     margin-bottom: 1rem;
   }
 
-  &__menu-icon {
-    width: 5rem;
+  &__icon {
+    width: 4rem;
     position: absolute;
     top: 2.5rem;
     right: 1rem;
+  }
+  &__tablet-links-container {
+    @include flexbox(column, null, center);
   }
 }

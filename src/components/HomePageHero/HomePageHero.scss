@@ -2,7 +2,11 @@
 @use "../../styles/partials/variables" as *;
 
 .homepage-hero {
-  padding: 15vw 10rem 4rem;
+  padding: 15rem 4rem;
+
+  @include media-tablet {
+    padding: 15vw 10rem 4rem;
+  }
 
   &__title {
     font-size: 3rem;
@@ -26,13 +30,19 @@
     text-transform: uppercase;
     background-color: rgb(48, 46, 46);
     color: $secondary-text-color;
-    padding: 2rem;
+    padding: 1rem;
     border-radius: 1rem;
     margin-right: 2rem;
     border: none;
     box-shadow: 8px 13px 18px -3px rgba(0, 0, 0, 0.5);
-    font-size: 2rem;
+    font-size: 1.3rem;
     color: white;
-    margin: 4rem 0;
+    margin: 2rem 0;
+
+    @include media-tablet {
+      padding: 2rem;
+      margin: 4rem 0;
+      font-size: 2rem;
+    }
   }
 }

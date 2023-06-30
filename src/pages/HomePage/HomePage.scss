@@ -1,7 +1,15 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
 .card-fan {
+  display: none;
   position: absolute;
   top: 45%;
   right: 45vw;
+
+  @include media-tablet {
+    display: flex;
+  }
 }
 
 .animation-card1 {
