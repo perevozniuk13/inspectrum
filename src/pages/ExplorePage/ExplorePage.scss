@@ -1,47 +1,88 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
 .explore {
-  text-align: center;
+  // text-align: center;
 }
 
 .page-buttons {
   display: flex;
   justify-content: center;
+  margin-bottom: 5rem;
 }
 
 .page-button {
   color: black;
   background-color: white;
   border: none;
-  width: 5rem;
-  height: 5rem;
+  width: 3rem;
+  height: 3rem;
   border-radius: 4px;
-  font-size: 2rem;
+  font-size: 1.2rem;
   font-weight: 700;
-  margin: 1rem;
+  margin: 0.5rem;
+
+  @include media-tablet {
+    width: 5rem;
+    height: 5rem;
+    font-size: 2rem;
+    margin: 1rem;
+  }
 }
 
 .colour-sort {
   display: flex;
-  margin: 3rem;
+  margin: 1rem;
   justify-content: center;
 
+  @include media-desktop {
+    margin: 3rem;
+  }
+
   &__colour {
-    width: 5rem;
-    height: 5rem;
     border-radius: 50%;
-    margin: 2rem;
+    width: 2rem;
+    height: 2rem;
+    margin: 0.8rem;
+    @include flexbox(row, center, center);
+
+    @include media-tablet {
+      width: 5rem;
+      height: 5rem;
+      margin: 2rem;
+    }
 
     &--selected {
       border: 2px solid white;
     }
   }
+
+  &__cross {
+    width: 2rem;
+
+    @include media-tablet {
+      width: 4rem;
+    }
+  }
 }
 
 .select-sort {
-  height: 3rem;
-  font-size: 1.6rem;
-  padding: 0.5rem;
+  height: 2rem;
+  font-size: 1rem;
   margin: 0 4rem;
-  width: 15rem;
+  width: 10rem;
   border-radius: 1rem;
   background-color: rgb(94, 94, 95);
+
+  @include media-tablet {
+    height: 3rem;
+    font-size: 1.6rem;
+    padding: 0.5rem;
+    margin: 1rem 10rem;
+    width: 15rem;
+  }
+
+  @include media-desktop {
+    margin: 1rem 30rem;
+  }
 }

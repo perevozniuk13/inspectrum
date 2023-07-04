@@ -90,7 +90,7 @@ export default function ExplorePage({ isLoggedIn, setIsLoggedIn }) {
             setSortMaxHue(null);
           }}
         >
-          <img src={crossIconURL} alt="" />
+          <img className="colour-sort__cross" src={crossIconURL} alt="" />
         </div>
         <div
           className={`colour-sort__colour colour-sort__colour${

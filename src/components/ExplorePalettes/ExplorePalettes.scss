@@ -2,8 +2,12 @@
 @use "../../styles/partials/variables" as *;
 
 .explore-palettes {
-  @include flexbox(row, null, null);
+  @include flexbox(row, center, null);
   flex-wrap: wrap;
   align-content: center;
-  margin: 4rem 20rem;
+  margin: 2rem;
+
+  @include media-desktop {
+    margin: 4rem 20rem;
+  }
 }

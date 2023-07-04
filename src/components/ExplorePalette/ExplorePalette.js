@@ -126,7 +126,7 @@ export default function ExplorePalette({
             )}
           </div>
 
-          <p className="date">{`${date.getDate()}/${date.getMonth()}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`}</p>
+          <p className="date">{`${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`}</p>
         </div>
       </section>
     </>
