@@ -39,6 +39,7 @@ export default function CreateColourPicker2({
           <slider-color-picker
             ref={ref}
             onChange={onColorChange}
+            className="slider-picker"
           ></slider-color-picker>
           <div className="input-hex">
             Or paste your colour:

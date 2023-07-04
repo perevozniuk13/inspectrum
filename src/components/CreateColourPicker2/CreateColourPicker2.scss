@@ -4,8 +4,12 @@
 .App {
   font-family: sans-serif;
   color: white;
-  padding: 5rem;
-  @include flexbox(row, space-evenly, center);
+  padding: 1.6rem;
+
+  @include media-tablet {
+    @include flexbox(row, space-evenly, center);
+    padding: 5rem;
+  }
 }
 
 #in1,
@@ -23,8 +27,8 @@ input[type="number"] {
 }
 
 .preview {
-  width: 20rem;
-  height: 20rem;
+  width: 10rem;
+  height: 10rem;
   border-radius: 50%;
   background: linear-gradient(
     to bottom,
@@ -36,43 +40,82 @@ input[type="number"] {
     rgb(24, 24, 183),
     rgb(158, 5, 158)
   );
+
+  @include media-tablet {
+    width: 15rem;
+    height: 15rem;
+    margin-bottom: 5rem;
+  }
+
+  @include media-desktop {
+    width: 20rem;
+    height: 20rem;
+  }
 }
 
 .container {
-  @include flexbox(column, null, null);
+  @include flexbox(row, center, null);
+  @include media-tablet {
+    @include flexbox(column, null, null);
+  }
 }
 
 .button {
   text-transform: uppercase;
   background-color: rgb(48, 46, 46);
   color: $secondary-text-color;
-  padding: 2rem;
+  padding: 1rem;
   border-radius: 1rem;
-  margin-right: 2rem;
   border: none;
   box-shadow: 8px 13px 18px -3px rgba(0, 0, 0, 0.5);
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   color: white;
-  margin: 2rem 0;
+  margin: 2rem 0 2rem 5rem;
+  width: 8rem;
+
+  @include media-tablet {
+    padding: 2rem;
+    margin: 2rem 0 4rem;
+    font-size: 1.6rem;
+    width: 15rem;
+  }
+
+  @include media-desktop {
+    padding: 2rem;
+    margin-right: 2rem;
+    font-size: 1.6rem;
+  }
 }
 
 .left-container {
-  @include flexbox(column, null, null);
+  @include flexbox(column, null, center);
 }
 
 .input-hex {
   background-color: rgb(48, 46, 46);
   color: $secondary-text-color;
-  padding: 2rem;
+  padding: 1rem;
   border-radius: 1rem;
   border: none;
   box-shadow: 8px 13px 18px -3px rgba(0, 0, 0, 0.5);
-  font-size: 2rem;
+  font-size: 1.2rem;
   color: white;
-  margin-top: 7rem;
+  margin: 2rem 0;
+
+  @include media-tablet {
+    padding: 2rem;
+    font-size: 2rem;
+    margin-top: 7rem;
+  }
 
   &__input {
-    margin-left: 2rem;
-    font-size: 2rem;
+    margin-left: 1rem;
+    font-size: 1.2rem;
+
+    @include media-tablet {
+      margin-left: 2rem;
+      font-size: 2rem;
+      width: 10rem;
+    }
   }
 }
