@@ -8,7 +8,7 @@
   border: 1px solid white;
   overflow: hidden;
 
-  @include media-tablet {
+  @include media-desktop {
     margin: 10rem 20rem;
     @include flexbox(row, null, null);
   }
@@ -20,7 +20,7 @@
   border: 1px solid white;
   // width: 25%;
 
-  @include media-tablet {
+  @include media-desktop {
     width: 25%;
   }
 
@@ -59,7 +59,7 @@
   font-size: 1.5rem;
   border: 1px solid white;
 
-  @include media-tablet {
+  @include media-desktop {
     width: 75%;
     padding: 2rem;
     font-size: 2rem;
@@ -80,6 +80,7 @@
 
     @include media-tablet {
       font-size: 3rem;
+      margin: 1rem;
     }
 
     &--selected {

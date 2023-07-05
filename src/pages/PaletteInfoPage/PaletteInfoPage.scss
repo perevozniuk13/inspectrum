@@ -6,15 +6,21 @@
 }
 
 .palette-about {
-  margin: 5rem 29% 2rem;
   padding: 5rem;
   border-radius: 1rem;
   font-size: 2rem;
   font-weight: 300;
-  position: absolute;
-  right: -30rem;
-  top: 20rem;
-  font-weight: 300;
+
+  @include media-tablet {
+    right: -25rem;
+    top: 20rem;
+    position: absolute;
+    margin: 5rem 29% 2rem;
+  }
+
+  @include media-desktop {
+    right: -32rem;
+  }
 
   &__title {
     font-size: 3rem;
@@ -27,8 +33,45 @@
   }
 }
 
+.mobile-tablet-palette {
+  width: 25rem;
+  margin: 3rem;
+  border-radius: 2rem;
+  overflow: hidden;
+  margin: 2rem auto;
+  margin-top: 10rem;
+
+  @include media-desktop {
+    display: none;
+  }
+
+  &__colour {
+    height: 8rem;
+    position: relative;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+  }
+
+  &__hex {
+    font-size: 3rem;
+    padding: 1rem 2rem;
+  }
+
+  &__copy-icon {
+    position: absolute;
+    right: 1rem;
+    top: 2rem;
+    width: 4rem;
+  }
+}
+
 .palette-info {
-  @include flexbox(column, null, null);
+  display: none;
+
+  @include media-desktop {
+    @include flexbox(column, null, null);
+  }
 
   &__colours-container {
     @include flexbox(row, center, null);
@@ -79,34 +122,51 @@
 }
 
 .palette-info-buttons {
-  @include flexbox(column, flex-end, flex-end);
-  margin: 5rem 10rem 5rem;
+  @include flexbox(column, flex-end, center);
+  margin: 5rem 0;
+
+  @include media-tablet {
+    margin: 5rem 10rem 5rem;
+    @include flexbox(column, flex-end, flex-end);
+  }
 
   &__button {
     text-transform: uppercase;
     background-color: rgb(48, 46, 46);
     color: $secondary-text-color;
-    padding: 2rem;
+    padding: 1rem;
     border-radius: 1rem;
     margin-right: 2rem;
     border: none;
     box-shadow: 8px 13px 18px -3px rgba(0, 0, 0, 0.5);
-    font-size: 2rem;
+    font-size: 1.4rem;
     color: white;
-    margin: 2rem 0;
+    margin: 1rem 0;
+
+    @include media-tablet {
+      padding: 2rem;
+      font-size: 2rem;
+      margin: 2rem 3rem;
+    }
   }
 
   &__add-collection-button {
     text-transform: uppercase;
     background-color: white;
     color: black;
-    padding: 2rem;
+    padding: 1rem;
     border-radius: 1rem;
     margin-right: 2rem;
     border: none;
     box-shadow: 8px 13px 18px -3px rgba(0, 0, 0, 0.5);
-    font-size: 2rem;
+    font-size: 1.4rem;
     margin: 1rem 0;
+
+    @include media-tablet {
+      padding: 2rem;
+      font-size: 2rem;
+      margin: 1rem 0;
+    }
   }
 
   &__add-button {
@@ -117,14 +177,17 @@
   }
 
   &__add-collection {
-    font-size: 2rem;
+    font-size: 1.4rem;
     text-transform: uppercase;
     padding: 1rem;
     border-radius: 1rem;
     margin-right: 2rem;
     border: none;
     background-color: rgb(48, 46, 46);
-    font-size: 2rem;
     color: white;
+
+    @include media-tablet {
+      font-size: 2rem;
+    }
   }
 }

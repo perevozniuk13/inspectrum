@@ -10,7 +10,9 @@ import Mockups from "../../components/Mockups/Mockups";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import convert from "color-convert";
-import copyIconURL from "../../assets/images/icons8-copy-30.png";
+import copyIconDark from "../../assets/images/icons8-copy-dark.png";
+import copyIconURL from "../../assets/images/icons8-copy-50.png";
+import tinycolor from "tinycolor2";
 
 export default function ImagePalettePage({
   isLoggedIn,
@@ -184,6 +186,101 @@ export default function ImagePalettePage({
             }
             return (
               <div>
+                <section className="image-mobile-tablet-palette">
+                  <div
+                    className="image-mobile-tablet-palette__colour"
+                    style={{ backgroundColor: data[0] }}
+                  >
+                    <p
+                      className="image-mobile-tablet-palette__hex"
+                      style={{
+                        color: tinycolor(data[0]).isDark() ? "white" : "black",
+                      }}
+                    >
+                      {data[0]}
+                    </p>
+                    <img
+                      className="image-mobile-tablet-palette__copy-icon"
+                      onClick={() => {
+                        navigator.clipboard.writeText(data[0]);
+                      }}
+                      src={
+                        tinycolor(data[0]).isDark() ? copyIconURL : copyIconDark
+                      }
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    className="image-mobile-tablet-palette__colour"
+                    style={{ backgroundColor: data[1] }}
+                  >
+                    <p
+                      className="image-mobile-tablet-palette__hex"
+                      style={{
+                        color: tinycolor(data[1]).isDark() ? "white" : "black",
+                      }}
+                    >
+                      {data[1]}
+                    </p>
+                    <img
+                      className="image-mobile-tablet-palette__copy-icon"
+                      onClick={() => {
+                        navigator.clipboard.writeText(data[1]);
+                      }}
+                      src={
+                        tinycolor(data[1]).isDark() ? copyIconURL : copyIconDark
+                      }
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    className="image-mobile-tablet-palette__colour"
+                    style={{ backgroundColor: data[2] }}
+                  >
+                    <p
+                      className="image-mobile-tablet-palette__hex"
+                      style={{
+                        color: tinycolor(data[2]).isDark() ? "white" : "black",
+                      }}
+                    >
+                      {data[2]}
+                    </p>
+                    <img
+                      className="image-mobile-tablet-palette__copy-icon"
+                      onClick={() => {
+                        navigator.clipboard.writeText(data[2]);
+                      }}
+                      src={
+                        tinycolor(data[2]).isDark() ? copyIconURL : copyIconDark
+                      }
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    className="image-mobile-tablet-palette__colour"
+                    style={{ backgroundColor: data[3] }}
+                  >
+                    <p
+                      className="image-mobile-tablet-palette__hex"
+                      style={{
+                        color: tinycolor(data[3]).isDark() ? "white" : "black",
+                      }}
+                    >
+                      {data[3]}
+                    </p>
+                    <img
+                      className="image-mobile-tablet-palette__copy-icon"
+                      onClick={() => {
+                        navigator.clipboard.writeText(data[3]);
+                      }}
+                      src={
+                        tinycolor(data[3]).isDark() ? copyIconURL : copyIconDark
+                      }
+                      alt=""
+                    />
+                  </div>
+                </section>
+
                 <section className="image-palette">
                   <div className="image-palette__colours-container">
                     <section className="image-palette__card-container">

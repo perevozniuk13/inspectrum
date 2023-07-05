@@ -35,7 +35,7 @@
     position: relative;
 
     @include media-tablet {
-      width: 35%;
+      width: 40%;
       height: 5rem;
       margin: 4rem 0 2rem;
     }
@@ -72,9 +72,14 @@
   height: 40rem;
 
   @include media-tablet {
+    height: 35rem;
+    padding: 3rem 5rem;
+    margin: 20% auto;
+  }
+
+  @include media-desktop {
     width: 60%;
     height: 28rem;
-    margin: 20% auto;
     padding: 4rem 15rem 4rem 6rem;
   }
 

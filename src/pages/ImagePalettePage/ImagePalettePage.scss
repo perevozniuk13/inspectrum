@@ -23,6 +23,11 @@
     width: 80%;
 
     @include media-tablet {
+      font-size: 5rem;
+      width: 70%;
+    }
+
+    @include media-desktop {
       font-size: 6rem;
       width: 50%;
     }
@@ -58,7 +63,11 @@
 }
 
 .image-palette {
-  @include flexbox(column, null, null);
+  display: none;
+
+  @include media-tablet {
+    @include flexbox(column, null, null);
+  }
 
   &__colours-container {
     @include flexbox(row, center, null);
@@ -101,51 +110,109 @@
 }
 
 .image-palette-buttons {
-  @include flexbox(column, null, flex-end);
-  margin-right: 10rem;
+  @include flexbox(column, null, center);
+  margin-bottom: 5rem;
+
+  @include media-tablet {
+    margin-right: 10rem;
+    @include flexbox(column, null, flex-end);
+  }
+
   &__button {
     text-transform: uppercase;
     background-color: rgb(48, 46, 46);
     color: $secondary-text-color;
-    padding: 2rem;
+    padding: 1rem;
     border-radius: 1rem;
     margin-right: 2rem;
     border: none;
     box-shadow: 8px 13px 18px -3px rgba(0, 0, 0, 0.5);
-    font-size: 2rem;
+    font-size: 1.4rem;
     color: white;
-    margin: 2rem 3rem;
+    margin: 1rem 0;
+
+    @include media-tablet {
+      padding: 2rem;
+      font-size: 2rem;
+      margin: 2rem 0;
+    }
   }
 
   &__form {
     @include flexbox(column, null, null);
-    padding: 2rem;
+    padding: 0.5rem 1rem;
     background-color: rgb(48, 46, 46);
     border-radius: 1rem;
+
+    @include media-tablet {
+      padding: 2rem;
+    }
   }
 
   &__select {
-    font-size: 2rem;
+    font-size: 1.4rem;
     text-transform: uppercase;
     padding: 1rem;
     border-radius: 1rem;
     margin-right: 2rem;
     border: none;
     background-color: rgb(48, 46, 46);
-    font-size: 2rem;
     color: white;
+
+    @include media-tablet {
+      padding: 1rem;
+      font-size: 2rem;
+    }
   }
 
   &__add-collection-button {
     text-transform: uppercase;
     background-color: white;
     color: black;
-    padding: 2rem;
+    padding: 1rem;
     border-radius: 1rem;
     margin-right: 2rem;
     border: none;
     box-shadow: 8px 13px 18px -3px rgba(0, 0, 0, 0.5);
-    font-size: 2rem;
+    font-size: 1.4rem;
     margin: 1rem 0;
+
+    @include media-tablet {
+      padding: 2rem;
+      font-size: 2rem;
+    }
+  }
+}
+
+.image-mobile-tablet-palette {
+  width: 25rem;
+  margin: 3rem;
+  border-radius: 2rem;
+  overflow: hidden;
+  margin: 2rem auto;
+  margin-top: 10rem;
+
+  @include media-tablet {
+    display: none;
+  }
+
+  &__colour {
+    height: 8rem;
+    position: relative;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+  }
+
+  &__hex {
+    font-size: 3rem;
+    padding: 1rem 2rem;
+  }
+
+  &__copy-icon {
+    position: absolute;
+    right: 1rem;
+    top: 2rem;
+    width: 4rem;
   }
 }

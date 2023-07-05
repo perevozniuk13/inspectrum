@@ -2,10 +2,12 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Header from "../../components/Header/Header";
 import "./PaletteInfoPage.scss";
-import copyIconURL from "../../assets/images/icons8-copy-30.png";
+import copyIconDark from "../../assets/images/icons8-copy-dark.png";
+import copyIconURL from "../../assets/images/icons8-copy-50.png";
 import Mockups from "../../components/Mockups/Mockups";
 import { useState, useEffect } from "react";
 import Footer from "../../components/Footer/Footer";
+import tinycolor from "tinycolor2";
 
 export default function PaletteInfoPage({
   isLoggedIn,
@@ -151,6 +153,101 @@ export default function PaletteInfoPage({
   return (
     <section className="palette-info-page">
       <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+
+      <section className="mobile-tablet-palette">
+        <div
+          className="mobile-tablet-palette__colour"
+          style={{ backgroundColor: palette.colour1 }}
+        >
+          <p
+            className="mobile-tablet-palette__hex"
+            style={{
+              color: tinycolor(palette.colour1).isDark() ? "white" : "black",
+            }}
+          >
+            {palette.colour1}
+          </p>
+          <img
+            className="mobile-tablet-palette__copy-icon"
+            onClick={() => {
+              navigator.clipboard.writeText(palette.colour1);
+            }}
+            src={
+              tinycolor(palette.colour1).isDark() ? copyIconURL : copyIconDark
+            }
+            alt=""
+          />
+        </div>
+        <div
+          className="mobile-tablet-palette__colour"
+          style={{ backgroundColor: palette.colour2 }}
+        >
+          <p
+            className="mobile-tablet-palette__hex"
+            style={{
+              color: tinycolor(palette.colour2).isDark() ? "white" : "black",
+            }}
+          >
+            {palette.colour2}
+          </p>
+          <img
+            className="mobile-tablet-palette__copy-icon"
+            onClick={() => {
+              navigator.clipboard.writeText(palette.colour2);
+            }}
+            src={
+              tinycolor(palette.colour2).isDark() ? copyIconURL : copyIconDark
+            }
+            alt=""
+          />
+        </div>
+        <div
+          className="mobile-tablet-palette__colour"
+          style={{ backgroundColor: palette.colour3 }}
+        >
+          <p
+            className="mobile-tablet-palette__hex"
+            style={{
+              color: tinycolor(palette.colour3).isDark() ? "white" : "black",
+            }}
+          >
+            {palette.colour3}
+          </p>
+          <img
+            className="mobile-tablet-palette__copy-icon"
+            onClick={() => {
+              navigator.clipboard.writeText(palette.colour3);
+            }}
+            src={
+              tinycolor(palette.colour3).isDark() ? copyIconURL : copyIconDark
+            }
+            alt=""
+          />
+        </div>
+        <div
+          className="mobile-tablet-palette__colour"
+          style={{ backgroundColor: palette.colour4 }}
+        >
+          <p
+            className="mobile-tablet-palette__hex"
+            style={{
+              color: tinycolor(palette.colour4).isDark() ? "white" : "black",
+            }}
+          >
+            {palette.colour4}
+          </p>
+          <img
+            className="mobile-tablet-palette__copy-icon"
+            onClick={() => {
+              navigator.clipboard.writeText(palette.colour4);
+            }}
+            src={
+              tinycolor(palette.colour4).isDark() ? copyIconURL : copyIconDark
+            }
+            alt=""
+          />
+        </div>
+      </section>
 
       <section className="palette-info">
         <div className="palette-info__colours-container">
