@@ -17,17 +17,28 @@
     margin-right: 2rem;
     border: none;
     box-shadow: 8px 13px 18px -3px rgba(0, 0, 0, 0.5);
-    font-size: 2rem;
+    font-size: 1.6rem;
     color: white;
     margin: 2rem 4rem;
     align-self: flex-end;
+
+    @include media-tablet {
+      font-size: 2rem;
+      padding: 2rem;
+    }
   }
 
   &__searchbar-container {
-    width: 35%;
+    width: 90%;
     height: 5rem;
-    margin: 4rem 0 2rem;
+    margin: 2rem 0;
     position: relative;
+
+    @include media-tablet {
+      width: 35%;
+      height: 5rem;
+      margin: 4rem 0 2rem;
+    }
   }
 
   &__searchbar {
@@ -50,15 +61,22 @@
   background-color: white;
   top: 0;
   bottom: 0;
-  padding: 4rem 15rem 4rem 6rem;
+  padding: 5rem 2rem;
   position: fixed;
-  margin: 20% auto;
+  margin: 40% auto;
   border-radius: 1rem;
   left: 0;
   right: 0;
 
-  width: 60%;
-  height: 28rem;
+  width: 90%;
+  height: 40rem;
+
+  @include media-tablet {
+    width: 60%;
+    height: 28rem;
+    margin: 20% auto;
+    padding: 4rem 15rem 4rem 6rem;
+  }
 
   &__cross {
     position: absolute;
@@ -98,9 +116,13 @@
     font-size: 2rem;
     border-radius: 1rem;
     left: auto;
-    right: 6rem;
+    right: 2rem;
     bottom: 4rem;
-    padding: 1rem 2rem;
+    padding: 2rem;
+
+    @include media-tablet {
+      right: 6rem;
+    }
   }
 }
 
