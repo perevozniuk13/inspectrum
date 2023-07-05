@@ -2,9 +2,13 @@
 @use "../../styles/partials/variables" as *;
 
 .homepage-hero {
-  padding: 15rem 4rem;
+  padding: 15rem 2rem 2rem;
 
   @include media-tablet {
+    padding: 15vw 3.6rem 4rem;
+  }
+
+  @include media-desktop {
     padding: 15vw 10rem 4rem;
   }
 

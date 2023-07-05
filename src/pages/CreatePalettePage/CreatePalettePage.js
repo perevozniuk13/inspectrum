@@ -198,22 +198,22 @@ export default function CreatePalettePage({
           className="create-palette-buttons__form"
           onSubmit={(e) => handleAddToCollection(e)}
         >
-          {authToken && (
-            <select
-              className="create-palette-buttons__select"
-              name="collections"
-              id="collections"
-            >
-              <option value="">-- Select collection --</option>
-              {collectionsData.map((col) => {
+          <select
+            className="create-palette-buttons__select"
+            name="collections"
+            id="collections"
+          >
+            <option value="">-- Select collection --</option>
+            {authToken &&
+              collectionsData.map((col) => {
                 return (
                   <option key={col.id} value={col.collection_name}>
                     {col.collection_name}
                   </option>
                 );
               })}
-            </select>
-          )}
+          </select>
+
           <button className="create-palette-buttons__add-collection-button">
             add to collection
           </button>

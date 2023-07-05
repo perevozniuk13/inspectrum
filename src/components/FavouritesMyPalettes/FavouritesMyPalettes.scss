@@ -3,6 +3,9 @@
 }
 
 .user-library {
+  &__palettes {
+    justify-content: center;
+  }
   &__palette-container {
     background-color: white;
     width: 15rem;

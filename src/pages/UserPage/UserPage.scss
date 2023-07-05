@@ -2,18 +2,27 @@
 @use "../../styles/partials/variables" as *;
 
 .user-main {
-  @include flexbox(row, null, null);
-  margin: 10rem 20rem;
+  @include flexbox(column, null, null);
+  margin: 2rem;
   border-radius: 2rem;
   border: 1px solid white;
   overflow: hidden;
+
+  @include media-tablet {
+    margin: 10rem 20rem;
+    @include flexbox(row, null, null);
+  }
 }
 
 .user-info {
   font-size: 2rem;
   padding: 2rem;
   border: 1px solid white;
-  width: 25%;
+  // width: 25%;
+
+  @include media-tablet {
+    width: 25%;
+  }
 
   &__username {
     margin: 1rem 0;
@@ -45,19 +54,33 @@
 }
 
 .user-library {
-  width: 75%;
-  padding: 2rem;
-  font-size: 2rem;
+  // width: 75%;
+  padding: 1rem;
+  font-size: 1.5rem;
   border: 1px solid white;
+
+  @include media-tablet {
+    width: 75%;
+    padding: 2rem;
+    font-size: 2rem;
+  }
 
   &__nav {
     list-style: none;
-    display: flex;
+    @include flexbox(column, null, null);
+
+    @include media-tablet {
+      @include flexbox(row, null, null);
+    }
   }
 
   &__nav-link {
     padding: 1rem;
-    font-size: 3rem;
+    font-size: 2.5rem;
+
+    @include media-tablet {
+      font-size: 3rem;
+    }
 
     &--selected {
       background-color: white;

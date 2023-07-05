@@ -3,51 +3,79 @@
 
 .create-palette-buttons {
   @include flexbox(column, flex-end, flex-end);
-  margin: 10rem;
+
+  margin: 5rem 2rem;
+
+  @include media-tablet {
+    margin: 5rem;
+  }
+  @include media-desktop {
+    margin: 10rem;
+  }
 
   &__button {
     text-transform: uppercase;
     background-color: rgb(48, 46, 46);
     color: $secondary-text-color;
-    padding: 2rem;
+    padding: 1rem;
     border-radius: 1rem;
     margin-right: 2rem;
     border: none;
     box-shadow: 8px 13px 18px -3px rgba(0, 0, 0, 0.5);
-    font-size: 2rem;
+    font-size: 1.4rem;
     color: white;
-    margin: 2rem 3rem;
+    margin: 1rem 0;
+
+    @include media-tablet {
+      padding: 2rem;
+      font-size: 2rem;
+      margin: 2rem 3rem;
+    }
   }
 
   &__add-collection-button {
     text-transform: uppercase;
     background-color: white;
     color: black;
-    padding: 2rem;
+    padding: 1rem;
     border-radius: 1rem;
     margin-right: 2rem;
     border: none;
     box-shadow: 8px 13px 18px -3px rgba(0, 0, 0, 0.5);
-    font-size: 2rem;
+    font-size: 1.4rem;
     margin: 1rem 0;
+
+    @include media-tablet {
+      padding: 2rem;
+      font-size: 2rem;
+      margin: 1rem 0;
+    }
   }
 
   &__form {
     @include flexbox(column, null, null);
-    padding: 2rem;
+    padding: 0.5rem 1rem;
     background-color: rgb(48, 46, 46);
     border-radius: 1rem;
+
+    @include media-tablet {
+      padding: 2rem;
+    }
   }
 
   &__select {
-    font-size: 2rem;
+    font-size: 1.2rem;
     text-transform: uppercase;
     padding: 1rem;
     border-radius: 1rem;
     margin-right: 2rem;
     border: none;
     background-color: rgb(48, 46, 46);
-    font-size: 2rem;
     color: white;
+
+    @include media-tablet {
+      font-size: 2rem;
+      padding: 1rem;
+    }
   }
 }

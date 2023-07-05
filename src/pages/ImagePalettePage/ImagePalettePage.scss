@@ -4,36 +4,56 @@
 .image-palette-form {
   border-radius: 4px;
   border: 2px solid black;
-  padding: 5rem 5rem 0;
+  padding: 2rem 1.6rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin-top: 10rem;
+  margin: 10rem 0 5rem;
+
+  @include media-tablet {
+    padding: 5rem 5rem 0;
+  }
 
   &__label {
-    font-size: 6rem;
+    font-size: 3rem;
     margin: 2rem;
     font-weight: 700;
     display: inline-block;
-    width: 50%;
+    width: 80%;
+
+    @include media-tablet {
+      font-size: 6rem;
+      width: 50%;
+    }
   }
 
   &__input {
     margin: 2rem;
     background-color: rgb(48, 46, 46);
-    padding: 2rem;
+    padding: 1rem;
     border-radius: 1rem;
     margin-right: 2rem;
     border: none;
     box-shadow: 8px 13px 18px -3px rgba(0, 0, 0, 0.5);
-    font-size: 2.5rem;
+    font-size: 1.6rem;
     color: white;
-    width: 40rem;
+    width: 25rem;
+
+    @include media-tablet {
+      width: 40rem;
+      font-size: 2.5rem;
+      padding: 2rem;
+      margin: 2rem;
+    }
   }
 
   &__image {
-    width: 60rem;
+    width: 30rem;
+
+    @include media-tablet {
+      width: 60rem;
+    }
   }
 }
 
@@ -47,9 +67,14 @@
 
   &__colour-card {
     border-bottom: 0.5px solid rgb(94, 94, 94);
-    width: 15rem;
-    height: 20rem;
+    width: 7rem;
+    height: 10rem;
     @include flexbox(row, center, center);
+
+    @include media-tablet {
+      width: 15rem;
+      height: 20rem;
+    }
 
     &--left {
       border-left: 0.5px solid rgb(94, 94, 94);

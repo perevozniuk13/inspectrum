@@ -34,7 +34,7 @@
     font-size: 70px;
   }
 
-  @include media-tablet {
+  @include media-desktop {
     @include flexbox(row, space-between, center);
   }
 
@@ -76,11 +76,15 @@
   position: relative;
   width: 100%;
   @include flexbox(column, null, null);
+  @include media-desktop {
+    display: none;
+  }
 
   &__logo {
     color: $secondary-text-color;
     text-decoration: none;
     padding: 2rem;
+    text-align: left;
     font-size: 4rem;
     background: linear-gradient(
       to right,
@@ -94,6 +98,11 @@
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+
+    @include media-tablet {
+      font-size: 7rem;
+      padding: 3.6rem;
+    }
   }
 
   &__links-container {
@@ -109,6 +118,12 @@
     width: 15rem;
     text-align: center;
     margin-bottom: 1rem;
+
+    @include media-tablet {
+      font-size: 2.4rem;
+      padding: 3rem;
+      width: 30rem;
+    }
   }
 
   &__icon {
@@ -116,8 +131,18 @@
     position: absolute;
     top: 2.5rem;
     right: 1rem;
+
+    @include media-tablet {
+      top: 5rem;
+      right: 3.6rem;
+      width: 7rem;
+    }
   }
   &__tablet-links-container {
     @include flexbox(column, null, center);
+
+    @include media-tablet {
+      margin-bottom: -20rem;
+    }
   }
 }
