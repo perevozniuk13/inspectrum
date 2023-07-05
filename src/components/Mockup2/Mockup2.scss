@@ -18,18 +18,42 @@
   color: $mockup2-color1;
   text-align: center;
   font-family: Plex Sans;
-  font-size: 1.3rem;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  @include media-mobile {
+    font-size: 1.2rem;
+  }
+  @include media-tablet {
+    font-size: 1.4rem;
+  }
   @include media-desktop {
     font-size: 1.6rem;
   }
 }
 
 .mockup2-nav {
-  padding: 6rem;
+  padding: 2rem;
   background-color: $mockup2-background2;
   @include flexbox(row, space-between, center);
+
+  @include media-tablet {
+    padding: 3rem;
+  }
+  @include media-desktop {
+    padding: 6rem;
+  }
+
   &__logo {
-    font-size: 4rem;
+    font-size: 2rem;
+
+    @include media-mobile {
+      font-size: 3rem;
+    }
+
+    @include media-tablet {
+      font-size: 4rem;
+    }
 
     @include media-desktop {
       font-size: 6rem;
@@ -37,8 +61,11 @@
   }
 
   &__list {
+    display: none;
     list-style: none;
-    @include flexbox(row, null, center);
+    @include media-tablet {
+      @include flexbox(row, null, center);
+    }
   }
 
   &__link {
@@ -56,39 +83,73 @@
 .mockup2-hero {
   background-color: $mockup2-background2;
   @include flexbox(column, null, null);
-  padding: 2rem 6rem;
+  padding: 2rem;
+
+  @include media-tablet {
+    padding: 2rem 6rem;
+  }
+
   text-align: left;
+
   &__title {
-    font-size: 5rem;
+    font-size: 3rem;
     font-weight: 700;
-    width: 40%;
-    margin: 6rem 0 3rem;
+    margin: 2rem 0;
+    width: 70%;
+
+    @include media-mobile {
+      font-size: 4rem;
+      font-weight: 700;
+      margin: 6rem 0 3rem;
+    }
+
+    @include media-tablet {
+      font-size: 5rem;
+    }
+
     @include media-desktop {
       font-size: 7rem;
     }
   }
 
   &__subtitle {
-    font-size: 3rem;
-    width: 40%;
+    font-size: 1.4rem;
+    width: 80%;
+
+    @include media-mobile {
+      font-size: 2rem;
+      width: 60%;
+    }
+
     @include media-desktop {
-      font-size: 4rem;
+      font-size: 3rem;
     }
   }
 
   &__button {
-    width: 25%;
     background-color: $mockup2-color1;
     color: $mockup2-background1;
     text-transform: uppercase;
-    font-size: 2rem;
-    letter-spacing: 1rem;
-    padding: 1.5rem 2rem;
-    margin: 4rem 0;
+    font-size: 1.2rem;
+    letter-spacing: 0.5rem;
+    padding: 1rem 2rem;
+    margin: 2rem 0;
     border: none;
     border-radius: 1rem;
+    width: 12rem;
+
+    @include media-mobile {
+      font-size: 1.6rem;
+      letter-spacing: 1rem;
+      padding: 1.5rem 2rem;
+      margin: 4rem 0;
+      width: 15rem;
+    }
+
     @include media-desktop {
       font-size: 3rem;
+      width: 25%;
+      margin: 8rem 0;
     }
   }
 }
@@ -97,14 +158,25 @@
   font-size: 4rem;
   font-weight: 700;
   margin: 4rem auto;
+  display: none;
+  @include media-tablet {
+    display: flex;
+  }
+
   @include media-desktop {
+    margin: 4rem auto;
     font-size: 6rem;
   }
 }
 
 .mockup2-squares {
-  padding: 0 6rem 10rem;
-  @include flexbox(row, space-around, center);
+  display: none;
+
+  @include media-tablet {
+    @include flexbox(row, space-around, center);
+    padding: 0 6rem 10rem;
+  }
+
   &__square-container {
     @include flexbox(column, center, null);
     text-align: left;
@@ -113,9 +185,14 @@
 
   &__square {
     background-color: $mockup2-background2;
-    width: 18rem;
-    height: 25rem;
+    width: 10rem;
+    height: 17rem;
     border-radius: 1rem;
+
+    @include media-tablet {
+      width: 15rem;
+      height: 22rem;
+    }
 
     @include media-desktop {
       width: 25rem;
@@ -142,9 +219,15 @@
 }
 
 .mockup2-circles {
-  padding: 10rem 6rem;
+  padding: 4rem 2rem;
 
-  @include flexbox(row, space-around, center);
+  @include flexbox(column, null, center);
+
+  @include media-tablet {
+    @include flexbox(row, space-around, center);
+    padding: 10rem 6rem;
+  }
+
   &__circle-container {
     @include flexbox(column, center, center);
     text-align: center;
@@ -152,9 +235,14 @@
 
   &__circle {
     background-color: $mockup2-background3;
-    width: 15rem;
-    height: 15rem;
+    width: 10rem;
+    height: 10rem;
     border-radius: 50%;
+
+    @include media-tablet {
+      width: 15rem;
+      height: 15rem;
+    }
 
     @include media-desktop {
       width: 20rem;
@@ -163,18 +251,26 @@
   }
 
   &__circle-title {
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: 700;
-    margin: 2rem;
+    margin: 1rem;
+    @include media-tablet {
+      font-size: 3rem;
+      margin: 2rem;
+    }
     @include media-desktop {
       font-size: 4rem;
     }
   }
 
   &__circle-description {
-    font-size: 2rem;
-    margin: 1rem;
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
     width: 70%;
+    @include media-tablet {
+      font-size: 2rem;
+      margin: 1rem;
+    }
     @include media-desktop {
       font-size: 3rem;
     }

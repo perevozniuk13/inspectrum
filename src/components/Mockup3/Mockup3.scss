@@ -18,25 +18,51 @@
   color: $mockup3-color1;
   text-align: center;
   font-family: Plex Sans;
-  font-size: 1.3rem;
+  font-size: 1rem;
+  @include media-mobile {
+    font-size: 1.2rem;
+  }
+  @include media-tablet {
+    font-size: 1.4rem;
+  }
   @include media-desktop {
     font-size: 1.6rem;
   }
 }
 
 .mockup3-nav {
-  padding: 6rem;
+  padding: 2rem;
   @include flexbox(row, space-between, center);
+
+  @include media-tablet {
+    padding: 3rem;
+  }
+  @include media-desktop {
+    padding: 6rem;
+  }
+
   &__logo {
-    font-size: 4rem;
+    font-size: 2rem;
+
+    @include media-mobile {
+      font-size: 3rem;
+    }
+
+    @include media-tablet {
+      font-size: 4rem;
+    }
+
     @include media-desktop {
-      font-size: 5rem;
+      font-size: 6rem;
     }
   }
 
   &__list {
+    display: none;
     list-style: none;
-    @include flexbox(row, null, center);
+    @include media-tablet {
+      @include flexbox(row, null, center);
+    }
   }
 
   &__link {
@@ -52,62 +78,111 @@
 
 .mockup3-hero {
   @include flexbox(column, center, center);
-  padding: 2rem 6rem;
+  padding: 2rem;
+
+  @include media-tablet {
+    padding: 2rem 6rem;
+  }
 
   &__title {
-    font-size: 5rem;
+    margin: 2rem 0;
+    font-size: 3rem;
     font-weight: 700;
+    @include media-mobile {
+      font-size: 4rem;
+      font-weight: 700;
+      margin: 6rem 0 3rem;
+    }
+
+    @include media-tablet {
+      font-size: 5rem;
+    }
+
     @include media-desktop {
       font-size: 6rem;
     }
-    margin: 6rem 0 3rem;
   }
 
   &__subtitle {
-    font-size: 2rem;
-    width: 60%;
+    font-size: 1.4rem;
+    width: 80%;
+
+    @include media-mobile {
+      font-size: 2rem;
+      width: 60%;
+    }
+
     @include media-desktop {
       font-size: 3rem;
     }
   }
 
   &__button {
-    width: 25%;
     background-color: $mockup3-color1;
     color: $mockup3-background1;
     text-transform: uppercase;
-    font-size: 2rem;
-    @include media-desktop {
-      font-size: 3rem;
-    }
-    letter-spacing: 1rem;
-    padding: 1.5rem 2rem;
-    margin: 8rem 0;
+    font-size: 1.2rem;
+    letter-spacing: 0.5rem;
+    padding: 1rem;
+    margin: 2rem 0;
     border-radius: 2rem;
     border: none;
+
+    @include media-mobile {
+      font-size: 1.6rem;
+      letter-spacing: 1rem;
+      padding: 1.5rem 2rem;
+      margin: 4rem 0;
+    }
+
+    @include media-desktop {
+      font-size: 3rem;
+      width: 25%;
+      margin: 8rem 0;
+    }
   }
 }
 
 .mockup3-main {
   @include flexbox(row, center, null);
   flex-wrap: wrap;
-  padding: 4rem;
-  font-size: 1.6rem;
+  padding: 2rem;
+  font-size: 1rem;
+
+  @include media-mobile {
+    font-size: 1.3rem;
+    padding: 4rem;
+  }
+
+  @include media-tablet {
+    font-size: 1.6rem;
+  }
   @include media-desktop {
     font-size: 2rem;
   }
 
   &__card {
     height: 30rem;
-    padding: 10rem;
-    width: 40%;
+    padding: 1rem;
+    width: 100%;
     @include flexbox(column, center, center);
     &--coloured {
       background-color: $mockup2-background2;
+      display: none;
+
+      @include media-tablet {
+        display: flex;
+      }
+    }
+
+    @include media-tablet {
+      width: 50%;
+      padding: 2rem;
     }
 
     @include media-desktop {
       width: 40%;
+      padding: 10rem;
     }
   }
 

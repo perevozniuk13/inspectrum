@@ -66,7 +66,10 @@ export default function Mockup3({ iframe }) {
             <h2 className="mockup3-main__card-title">Lorem</h2>
           </div>
 
-          <div className="mockup3-main__card">
+          <div
+            className="mockup3-main__card"
+            style={{ borderBottom: `2px solid ${color1}` }}
+          >
             <h2 className="mockup3-main__card-title">Lorem ipsum dolor sit</h2>
             <p className="mockup3-main__card-subtitle">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
@@ -76,7 +79,10 @@ export default function Mockup3({ iframe }) {
             </p>
           </div>
 
-          <div className="mockup3-main__card">
+          <div
+            className="mockup3-main__card"
+            style={{ borderBottom: `2px solid ${color1}` }}
+          >
             <h2 className="mockup3-main__card-title">Lorem ipsum dolor sit</h2>
             <p className="mockup3-main__card-subtitle">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
@@ -106,7 +112,10 @@ export default function Mockup3({ iframe }) {
             <h2 className="mockup3-main__card-title">Lorem</h2>
           </div>
 
-          <div className="mockup3-main__card">
+          <div
+            className="mockup3-main__card"
+            style={{ borderBottom: `2px solid ${color1}` }}
+          >
             <h2 className="mockup3-main__card-title">Lorem ipsum dolor sit</h2>
             <p className="mockup3-main__card-subtitle">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
