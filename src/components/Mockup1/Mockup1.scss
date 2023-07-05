@@ -16,20 +16,41 @@
 .mockup1 {
   text-align: center;
   font-family: Plex Sans;
-  font-size: 1.3rem;
-
+  font-size: 1rem;
+  @include media-mobile {
+    font-size: 1.2rem;
+  }
+  @include media-tablet {
+    font-size: 1.4rem;
+  }
   @include media-desktop {
     font-size: 1.6rem;
   }
 }
 
 .mockup1-nav {
-  padding: 6rem;
+  padding: 2rem;
   @include flexbox(row, space-between, center);
+
+  @include media-tablet {
+    padding: 3rem;
+  }
+  @include media-desktop {
+    padding: 6rem;
+  }
   &__logo {
-    font-size: 4rem;
-    padding: 2rem;
+    font-size: 2rem;
+    padding: 1rem;
     border-radius: 2rem;
+
+    @include media-mobile {
+      font-size: 3rem;
+      padding: 2rem;
+    }
+
+    @include media-tablet {
+      font-size: 4rem;
+    }
 
     @include media-desktop {
       font-size: 6rem;
@@ -37,17 +58,21 @@
   }
 
   &__list {
+    display: none;
     list-style: none;
-    @include flexbox(row, null, center);
+
+    @include media-tablet {
+      @include flexbox(row, null, center);
+    }
   }
 
   &__link {
     padding: 1rem;
     margin: 1rem;
-    font-size: 2rem;
     font-weight: 700;
+    font-size: 1.5rem;
     @include media-desktop {
-      font-size: 3rem;
+      font-size: 2.5rem;
     }
   }
 }
@@ -55,20 +80,38 @@
 .mockup1-hero {
   @include flexbox(column, center, flex-end);
   text-align: right;
-  padding: 2rem 6rem;
+  padding: 2rem;
+  @include media-tablet {
+    padding: 2rem 6rem;
+  }
 
   &__title {
-    font-size: 5rem;
+    margin: 2rem 0;
+    font-size: 3rem;
     font-weight: 700;
-    margin: 6rem 0 3rem;
+    @include media-mobile {
+      font-size: 4rem;
+      font-weight: 700;
+      margin: 6rem 0 3rem;
+    }
+
+    @include media-tablet {
+      font-size: 5rem;
+    }
+
     @include media-desktop {
       font-size: 7rem;
     }
   }
 
   &__subtitle {
-    font-size: 2rem;
-    width: 60%;
+    font-size: 1.4rem;
+    width: 80%;
+
+    @include media-mobile {
+      font-size: 2rem;
+      width: 60%;
+    }
 
     @include media-desktop {
       font-size: 3rem;
@@ -76,27 +119,42 @@
   }
 
   &__button {
-    width: 25%;
     text-transform: uppercase;
-    font-size: 2rem;
-    letter-spacing: 1rem;
-    padding: 1.5rem 2rem;
-    margin: 8rem 0;
+    font-size: 1.2rem;
+    letter-spacing: 0.5rem;
+    padding: 1rem;
+    margin: 2rem 0;
     border-radius: 2rem;
     border: none;
 
+    @include media-mobile {
+      font-size: 1.6rem;
+      letter-spacing: 1rem;
+      padding: 1.5rem 2rem;
+      margin: 4rem 0;
+    }
+
     @include media-desktop {
       font-size: 3rem;
+      width: 25%;
+      margin: 8rem 0;
     }
   }
 }
 
 .mockup1-banner {
-  padding: 10rem 5rem 5rem;
+  padding: 5rem 2rem;
   text-align: center;
-  @include flexbox(column, null, null);
+  @include flexbox(column, null, center);
+
+  @include media-mobile {
+    padding: 10rem 5rem 5rem;
+  }
   &__text {
-    font-size: 2rem;
+    font-size: 1.3rem;
+    @include media-mobile {
+      font-size: 2rem;
+    }
 
     @include media-desktop {
       font-size: 3rem;
@@ -104,37 +162,59 @@
   }
 
   &__button {
-    width: 20%;
     text-transform: uppercase;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+    padding: 1rem;
+    margin-top: 3rem;
+    width: 15rem;
+
+    @include media-mobile {
+      width: 20rem;
+      font-size: 1.5rem;
+      padding: 1.5rem 2rem;
+      margin: 3rem 0;
+      letter-spacing: 1rem;
+    }
 
     @include media-desktop {
       font-size: 2rem;
+      width: 20%;
     }
-    letter-spacing: 1rem;
-    padding: 1.5rem 2rem;
-    margin: 3rem 0;
+    letter-spacing: 0.5rem;
     border-radius: 2rem;
     border: none;
   }
 }
 
 .mockup1-title {
-  font-size: 4rem;
+  font-size: 2rem;
   font-weight: 700;
+  margin-top: 3rem;
+
+  @include media-mobile {
+    font-size: 4rem;
+    margin-top: 10rem;
+  }
 
   @include media-desktop {
     font-size: 6rem;
   }
-  margin-top: 10rem;
 }
 
 .mockup1-cards {
-  @include flexbox(row, center, center);
-  padding: 5rem;
+  @include media-tablet {
+    @include flexbox(row, center, center);
+    padding: 5rem;
+  }
+  @include flexbox(column, center, center);
+  padding: 2rem;
 
   &__card {
-    width: 30%;
+    @include media-tablet {
+      width: 30%;
+      height: 30rem;
+    }
+    width: 80%;
     height: 30rem;
     margin: 1rem;
     border-radius: 2rem;
@@ -143,8 +223,10 @@
     text-align: left;
 
     &--center {
-      height: 35rem;
-      width: 35%;
+      @include media-tablet {
+        height: 35rem;
+        width: 35%;
+      }
     }
   }
 
@@ -155,8 +237,10 @@
     margin-bottom: 2rem;
 
     &--center {
-      width: 10rem;
-      height: 10rem;
+      @include media-tablet {
+        width: 10rem;
+        height: 10rem;
+      }
     }
   }
 
